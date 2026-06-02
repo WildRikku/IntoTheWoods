@@ -1,0 +1,3 @@
+[submodule "IntoTheWoods-Unity/Assets/Scripts/Editor/SceneViewPresets"]
+	path = IntoTheWoods-Unity/Assets/Scripts/Editor/SceneViewPresets
+	url = https://github.com/WildRikku/SceneViewPresets.git
