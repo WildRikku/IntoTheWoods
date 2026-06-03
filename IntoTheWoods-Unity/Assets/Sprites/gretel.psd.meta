@@ -1,0 +1,338 @@
+fileFormatVersion: 2
+guid: fdd55560fd1e2485789ad1cdc5ccb708
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1451924289015878297
+    second: gretel_0
+  - first:
+      213: 2707404429224355140
+    second: gretel_1
+  - first:
+      213: -5774221925916164226
+    second: gretel_2
+  - first:
+      213: 9213473726158322199
+    second: gretel_3
+  - first:
+      213: 6693746838363561413
+    second: gretel_4
+  - first:
+      213: 2535385930813085909
+    second: gretel_5
+  - first:
+      213: 7472425925995214776
+    second: gretel_6
+  - first:
+      213: -2961432739762154989
+    second: gretel_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gretel_0
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1446
+        width: 527
+        height: 661
+      alignment: 9
+      pivot: {x: 0.5932115, y: 0.4775363}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9929d8fb275462410800000000000000
+      internalID: 1451924289015878297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_1
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1583
+        width: 707
+        height: 526
+      alignment: 9
+      pivot: {x: 0.56141675, y: 0.23116103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445ac33ebf1a29520800000000000000
+      internalID: 2707404429224355140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_2
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 678
+        width: 131
+        height: 316
+      alignment: 9
+      pivot: {x: 0.3325299, y: 0.85255545}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fbe7360c7dddfa0800000000000000
+      internalID: -5774221925916164226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_3
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 688
+        width: 142
+        height: 246
+      alignment: 9
+      pivot: {x: 0.2448335, y: 0.870076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71abf03f985dcdf70800000000000000
+      internalID: 9213473726158322199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_4
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 710
+        width: 408
+        height: 211
+      alignment: 9
+      pivot: {x: 0.15262648, y: 0.7438042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cddd05d847f4ec50800000000000000
+      internalID: 6693746838363561413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_5
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 332
+        width: 391
+        height: 258
+      alignment: 9
+      pivot: {x: 0.16513826, y: 0.7651336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d813ae22108f2320800000000000000
+      internalID: 2535385930813085909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_6
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 117
+        width: 213
+        height: 341
+      alignment: 9
+      pivot: {x: 0.8306664, y: 0.89206827}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b73d510ac363b760800000000000000
+      internalID: 7472425925995214776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gretel_7
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 133
+        width: 160
+        height: 299
+      alignment: 9
+      pivot: {x: 0.75368273, y: 0.8965292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 312d3401d90e6e6d0800000000000000
+      internalID: -2961432739762154989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3a09731bbf9f3c094bc8cfde7d571341
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      gretel_0: 1451924289015878297
+      gretel_1: 2707404429224355140
+      gretel_2: -5774221925916164226
+      gretel_3: 9213473726158322199
+      gretel_4: 6693746838363561413
+      gretel_5: 2535385930813085909
+      gretel_6: 7472425925995214776
+      gretel_7: -2961432739762154989
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
