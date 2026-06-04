@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -18,10 +20,12 @@ namespace IntoTheWoods {
 
         // setup fields
         [SerializeField] private Animator animator;
+        public Inventory inventory;
 
         // internal setup fields
         private @InputSystem_Actions _wrapper;
         private Rigidbody2D _rigidbody;
+        private CollectibleDetector _collectibleDetector;
 
         // states
         private bool _walking;
@@ -30,7 +34,10 @@ namespace IntoTheWoods {
         // events
         public event PlayerWillMoveEventHandler WillMove;
 
-        private void Start() {
+        // interactions
+        private Dictionary<int, GameObject> _nearbyCollectibles;
+
+        private void Awake() {
             _rigidbody = GetComponent<Rigidbody2D>();
             Assert.IsNotNull(_rigidbody);
 
@@ -39,6 +46,25 @@ namespace IntoTheWoods {
             _wrapper.Enable();
 
             Assert.IsNotNull(animator);
+            Assert.IsNotNull(inventory);
+
+            _nearbyCollectibles = new();
+
+            _collectibleDetector = GetComponentInChildren<CollectibleDetector>();
+        }
+
+        private void OnEnable() {
+            if (_collectibleDetector != null) {
+                _collectibleDetector.CollectibleDetected += OnCollectibleDetected;
+                _collectibleDetector.CollectibleLost += OnCollectibleLost;
+            }
+        }
+
+        private void OnDisable() {
+            if (_collectibleDetector != null) {
+                _collectibleDetector.CollectibleDetected -= OnCollectibleDetected;
+                _collectibleDetector.CollectibleLost -= OnCollectibleLost;
+            }
         }
 
         private void Update() {
@@ -86,6 +112,18 @@ namespace IntoTheWoods {
             if (context.performed) {
                 StopWalking();
                 animator.SetBool(Pickup, true); // will reset itself
+
+                // TODO: wait for correct timing in animation
+                foreach ((int key, GameObject value) in _nearbyCollectibles) {
+                    Collectible c = value.GetComponent<Collectible>();
+                    if (c == null) {
+                        continue;
+                    }
+
+                    c.PickUp();
+                    inventory.AddCollectible(c);
+                    // _nearbyCollectibles.Remove(key);
+                }
             }
         }
 
@@ -107,6 +145,16 @@ namespace IntoTheWoods {
         public void OnSprint(InputAction.CallbackContext context) {
         }
 
+        private void OnCollectibleDetected(Collider2D obj) {
+            _nearbyCollectibles.TryAdd(obj.gameObject.GetInstanceID(), obj.gameObject);
+            // Debug.Log($"Hello {obj.gameObject.name}");
+        }
+
+        private void OnCollectibleLost(Collider2D obj) {
+            _nearbyCollectibles.Remove(obj.gameObject.GetInstanceID());
+            // Debug.Log($"Bye {obj.gameObject.name}");
+        }
+
         /// <summary>
         /// Our game does not support analogue movement, so sanitize values from joysticks.
         /// </summary>
@@ -117,6 +165,7 @@ namespace IntoTheWoods {
             float y = input.y > 0 ? 1 : input.y < 0 ? -1 : 0;
             return new(x, y);
         }
+
 
         private void StopWalking() {
             _walking = false;

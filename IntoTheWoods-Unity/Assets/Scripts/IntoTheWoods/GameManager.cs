@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using IntoTheWoods.Data;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UIElements;
 
 namespace IntoTheWoods {
     public class GameManager : MonoBehaviour {
@@ -18,7 +20,10 @@ namespace IntoTheWoods {
         private List<Screen> _screens;
         private int _currentScreen;
 
+        private GameData _gameData;
+
         [SerializeField] private Player primaryPlayer;
+        [SerializeField] private UIDocument UI;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -36,6 +41,11 @@ namespace IntoTheWoods {
             // Get all screens
             _screens = new(GetComponentsInChildren<Screen>());
             Assert.IsTrue(_screens.Count > 0);
+
+            Assert.IsNotNull(primaryPlayer);
+            _gameData = new(primaryPlayer.inventory);
+            Assert.IsNotNull(UI);
+            UI.rootVisualElement.dataSource = _gameData;
         }
 
         private void OnEnable() {
