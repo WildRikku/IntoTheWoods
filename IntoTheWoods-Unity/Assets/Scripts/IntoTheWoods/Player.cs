@@ -23,7 +23,7 @@ namespace IntoTheWoods {
         private void Update() {
             if (_walking) {
                 // zeroing out y axis since that only makes sense for ladders etc
-                transform.position += new Vector3(_walkingDirection.x, 0) * speed * Time.deltaTime;
+                transform.position += new Vector3(speed * Time.deltaTime * _walkingDirection.x, 0);
             }
         }
 
