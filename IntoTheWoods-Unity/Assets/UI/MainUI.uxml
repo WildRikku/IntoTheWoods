@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox name="Border" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:GroupBox style="align-content: auto; flex-grow: 1; justify-content: space-between; aspect-ratio: 1.777778;">
+            <ui:Label text="stones" name="StonesCount" data-source-type="IntoTheWoods.Data.GameData, Assembly-CSharp">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="stones" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+            <ui:Label text="bread" data-source-type="IntoTheWoods.Data.GameData, Assembly-CSharp" name="BreadCount">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source-path="bread" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>
