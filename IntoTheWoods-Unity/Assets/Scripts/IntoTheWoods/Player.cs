@@ -46,7 +46,7 @@ namespace IntoTheWoods {
                 // By sending the event before moving, we have the game manager check if we are going out of bounds
                 // the order is relevant to prevent glitching outside
                 if (!WillMove?.Invoke(this, _walkingDirection) ?? false) {
-                    _walking = false;
+                    StopWalking();
                     return;
                 }
 
