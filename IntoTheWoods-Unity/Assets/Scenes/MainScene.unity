@@ -685,8 +685,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gretel
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -8164083041596343440, guid: 2d6c6971c11b77f85a9b694f4cec8565, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
