@@ -13,10 +13,13 @@ namespace IntoTheWoods {
         // Cached property indices for animator for efficiency
         private static readonly int Walking = Animator.StringToHash("walking");
         private static readonly int Pickup = Animator.StringToHash("pickup");
+        private static readonly int Throwing = Animator.StringToHash("throwing");
 
         // configurable fields
         [SerializeField] private float speed = 1.7f;
         [SerializeField] private int jumpForce = 125;
+        [SerializeField] private bool canThrow;
+        [SerializeField] private bool canPick;
 
         // setup fields
         [SerializeField] private Animator animator;
@@ -106,10 +109,13 @@ namespace IntoTheWoods {
         }
 
         public void OnAttack(InputAction.CallbackContext context) {
+            if (canThrow && context.performed) {
+                animator.SetBool(Throwing, true); // will reset itself
+            }
         }
 
         public void OnInteract(InputAction.CallbackContext context) {
-            if (context.performed) {
+            if (canPick && context.performed) {
                 StopWalking();
                 animator.SetBool(Pickup, true); // will reset itself
 

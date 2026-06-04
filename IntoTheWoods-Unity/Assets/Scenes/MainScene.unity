@@ -431,6 +431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
   speed: 2.5
   jumpForce: 125
+  canThrow: 1
+  canPick: 0
   animator: {fileID: 648596925}
   inventory: {fileID: 170961710}
 --- !u!50 &170961709
@@ -506,6 +508,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
   speed: 2.5
   jumpForce: 125
+  canThrow: 0
+  canPick: 1
   animator: {fileID: 1959801605}
   inventory: {fileID: 296062540}
 --- !u!50 &296062538
