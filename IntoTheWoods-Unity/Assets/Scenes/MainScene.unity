@@ -344,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
   speed: 2.5
   jumpForce: 125
+  animator: {fileID: 1959801605}
 --- !u!50 &296062538
 Rigidbody2D:
   serializedVersion: 5
@@ -1037,6 +1038,11 @@ MonoBehaviour:
 --- !u!4 &1959801604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 623796354943013828, guid: 2d6c6971c11b77f85a9b694f4cec8565, type: 3}
+  m_PrefabInstance: {fileID: 559903767}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1959801605 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6815667405419862542, guid: 2d6c6971c11b77f85a9b694f4cec8565, type: 3}
   m_PrefabInstance: {fileID: 559903767}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2145105974
