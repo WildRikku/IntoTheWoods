@@ -85,7 +85,7 @@ namespace IntoTheWoods {
         }
 
         public void OnMove(InputAction.CallbackContext context) {
-            if (context.started && !animator.GetBool(Pickup)) {
+            if (context.started && (!canPick || !animator.GetBool(Pickup))) {
                 // grab input
                 Vector2 moveVector = DigitizeMovement(context.ReadValue<Vector2>());
                 if (moveVector.x == 0) {
