@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5677362904900036796}
   - component: {fileID: 8532301153540376547}
   - component: {fileID: 6161016826956984051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 623796354943013828}
   - component: {fileID: 1452086508758565419}
   - component: {fileID: 6815667405419862542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gretel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 5491733745998060783}
   - component: {fileID: 1380677859872181494}
   - component: {fileID: 5821869210161649330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegBackLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 2601080253239722497}
   - component: {fileID: 8671758364030310051}
   - component: {fileID: 7484861116792639129}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 2658012574915141965}
   - component: {fileID: 6999599558688819088}
   - component: {fileID: 581934879429742681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegBackUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 4711637287965290449}
   - component: {fileID: 4810030008747449519}
   - component: {fileID: 8297838223066163906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegFrontLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 5559474471900284442}
   - component: {fileID: 6765627377663846853}
   - component: {fileID: 1105346463032755876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1340,7 @@ GameObject:
   - component: {fileID: 8129687030931062038}
   - component: {fileID: 4504287158931583500}
   - component: {fileID: 7764618343090050362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1538,7 +1538,7 @@ GameObject:
   - component: {fileID: 8888468113223745328}
   - component: {fileID: 2290429421316229323}
   - component: {fileID: 4613503506118374152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegFrontUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

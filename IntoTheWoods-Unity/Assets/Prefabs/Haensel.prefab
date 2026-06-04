@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5857756741885225303}
   - component: {fileID: 4033594058075818154}
   - component: {fileID: 4316566040947135340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 1459253701140021216}
   - component: {fileID: 6731505489694967236}
   - component: {fileID: 4838743973881831056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 9088949914342257231}
   - component: {fileID: 4194553827381718515}
   - component: {fileID: 1821568717347806647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArmFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 7122338786115666297}
   - component: {fileID: 3983638598573774993}
   - component: {fileID: 4673303281192322855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegBackLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 895342831129859504}
   - component: {fileID: 4814508892062579694}
   - component: {fileID: 540102076076754960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegFrontLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 3072723438373206356}
   - component: {fileID: 6997697802664792965}
   - component: {fileID: 2239809343398059785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegFrontUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 1877191129902823004}
   - component: {fileID: 3342060441703048196}
   - component: {fileID: 8066224004831757081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LegBackUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 9051883228840994756}
   - component: {fileID: 4036254417154229985}
   - component: {fileID: 8956111346806210148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

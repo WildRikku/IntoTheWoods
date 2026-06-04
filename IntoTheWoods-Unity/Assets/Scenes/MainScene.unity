@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Haensel
       objectReference: {fileID: 0}
+    - target: {fileID: 2163598600656941176, guid: d794f1691238dfcfd9bac669fc2044ac, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9064687106027218162, guid: d794f1691238dfcfd9bac669fc2044ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.74376
@@ -389,7 +393,7 @@ GameObject:
   - component: {fileID: 170961707}
   - component: {fileID: 170961709}
   - component: {fileID: 170961708}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HaenselPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,12 +409,12 @@ Transform:
   m_GameObject: {fileID: 170961706}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -1.373, z: 0}
+  m_LocalPosition: {x: -4.42, y: -2.746, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 56236857}
-  m_Father: {fileID: 296062539}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &170961708
 MonoBehaviour:
@@ -419,14 +423,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170961706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21b945219fc04149b02f5d0e60d2506c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
   speed: 2.5
   jumpForce: 125
-  animator: {fileID: 0}
+  animator: {fileID: 648596925}
 --- !u!50 &170961709
 Rigidbody2D:
   serializedVersion: 5
@@ -465,7 +469,7 @@ GameObject:
   - component: {fileID: 296062539}
   - component: {fileID: 296062538}
   - component: {fileID: 296062537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GretelPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +532,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1959801604}
-  - {fileID: 170961707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346312010
@@ -921,6 +924,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 346312011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &648596925 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7017557263990355823, guid: d794f1691238dfcfd9bac669fc2044ac, type: 3}
+  m_PrefabInstance: {fileID: 56236856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128207705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1253,11 +1261,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1160261970079544701, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02876
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1160261970079544701, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15114
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1160261970079544701, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1458,6 +1466,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 346312011}
   - {fileID: 60425745}
+  - {fileID: 170961707}
   - {fileID: 296062539}
   - {fileID: 105656735}
   - {fileID: 1727744961}
