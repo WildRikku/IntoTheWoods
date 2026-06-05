@@ -106,3 +106,6 @@ Assets/_Local\ User\ Stuff\ -\ NO\ USED\ ASSETS\ HERE/*
 
 # Ignore Odin's auto-generated AOT compatibility dll.
 Assets/Library/Plugins/Sirenix/Assemblies/AOT/*
+
+# Krita
+*.psd~
