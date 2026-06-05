@@ -859,6 +859,7 @@ GameObject:
   - component: {fileID: 895342831129859504}
   - component: {fileID: 4814508892062579694}
   - component: {fileID: 540102076076754960}
+  - component: {fileID: 1088326488230332936}
   m_Layer: 6
   m_Name: LegFrontLower
   m_TagString: Untagged
@@ -1027,6 +1028,18 @@ PolygonCollider2D:
       - {x: -0.07745797, y: -0.24267522}
       - {x: -0.08378708, y: -0.2120845}
   m_UseDelaunayMesh: 1
+--- !u!114 &1088326488230332936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4721252128433370621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4b4df943ef4a79b43ae9c96e1670cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.TransferDetector
 --- !u!1 &7889239514324034534
 GameObject:
   m_ObjectHideFlags: 0

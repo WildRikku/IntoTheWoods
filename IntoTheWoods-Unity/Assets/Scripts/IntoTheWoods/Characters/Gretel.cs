@@ -47,7 +47,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnInteract(InputAction.CallbackContext context) {
-            if (context.performed) {
+            if (!walker.IsTransfering && context.performed) {
                 walker.StopWalking();
                 animator.SetBool(Pickup, true); // will reset itself
 

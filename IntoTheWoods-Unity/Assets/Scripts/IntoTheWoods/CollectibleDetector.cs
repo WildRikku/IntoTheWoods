@@ -7,11 +7,15 @@ namespace IntoTheWoods {
         public event Action<Collider2D> CollectibleLost;
 
         private void OnTriggerEnter2D(Collider2D other) {
-            CollectibleDetected?.Invoke(other);
+            if (other.CompareTag("Collectible")) {
+                CollectibleDetected?.Invoke(other);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
-            CollectibleLost?.Invoke(other);
+            if (other.CompareTag("Collectible")) {
+                CollectibleLost?.Invoke(other);
+            }
         }
     }
 }
