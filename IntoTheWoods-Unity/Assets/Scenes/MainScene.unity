@@ -336,8 +336,8 @@ GameObject:
   m_Component:
   - component: {fileID: 170961707}
   - component: {fileID: 170961709}
-  - component: {fileID: 170961708}
   - component: {fileID: 170961710}
+  - component: {fileID: 170961711}
   m_Layer: 6
   m_Name: HaenselPlayer
   m_TagString: Untagged
@@ -361,24 +361,6 @@ Transform:
   - {fileID: 56236857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &170961708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170961706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b945219fc04149b02f5d0e60d2506c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
-  speed: 2.5
-  jumpForce: 125
-  canThrow: 1
-  canPick: 0
-  animator: {fileID: 648596925}
-  inventory: {fileID: 170961710}
 --- !u!50 &170961709
 Rigidbody2D:
   serializedVersion: 5
@@ -419,6 +401,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
   collectibles: []
+--- !u!114 &170961711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170961706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c96d05793e54654b56b0921ed460e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Haensel
+  animator: {fileID: 648596925}
 --- !u!1 &296062536
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +424,6 @@ GameObject:
   m_Component:
   - component: {fileID: 296062539}
   - component: {fileID: 296062538}
-  - component: {fileID: 296062537}
   - component: {fileID: 296062540}
   m_Layer: 6
   m_Name: GretelPlayer
@@ -438,24 +432,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &296062537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296062536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21b945219fc04149b02f5d0e60d2506c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
-  speed: 2.5
-  jumpForce: 125
-  canThrow: 0
-  canPick: 1
-  animator: {fileID: 1959801605}
-  inventory: {fileID: 296062540}
 --- !u!50 &296062538
 Rigidbody2D:
   serializedVersion: 5
@@ -508,10 +484,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 296062536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5bc2d2bd2645bc99e79d4bfc841c31, type: 3}
+  m_Script: {fileID: 11500000, guid: bd73a39fa8e44bd78da95235981b0bbc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
-  collectibles: []
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Gretel
+  animator: {fileID: 1959801605}
+  inventory: {fileID: 1727744963}
 --- !u!1 &346312010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1727744961}
   - component: {fileID: 1727744962}
+  - component: {fileID: 1727744963}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1228,8 +1206,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d60a196f726ae126a88348c8cd28e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
-  primaryPlayer: {fileID: 296062537}
+  primaryCharacter: {fileID: 296062540}
+  secondaryCharacter: {fileID: 170961711}
   UI: {fileID: 60425744}
+  gretelAnimator: {fileID: 1959801605}
+  haenselAnimator: {fileID: 648596925}
+--- !u!114 &1727744963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727744960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5bc2d2bd2645bc99e79d4bfc841c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
+  collectibles: []
 --- !u!1001 &1755568114
 PrefabInstance:
   m_ObjectHideFlags: 0

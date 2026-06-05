@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using IntoTheWoods.Characters;
 using IntoTheWoods.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UIElements;
 
 namespace IntoTheWoods {
+    [RequireComponent(typeof(Inventory))]
     public class GameManager : MonoBehaviour {
         private const float FullHDratio = 0.5625f;
         /// <summary>
@@ -21,9 +24,13 @@ namespace IntoTheWoods {
         private int _currentScreen;
 
         private GameData _gameData;
+        private Player _player;
 
-        [SerializeField] private Player primaryPlayer;
+        [SerializeField] private Character primaryCharacter;
+        [SerializeField] private Character secondaryCharacter;
         [SerializeField] private UIDocument UI;
+        [SerializeField] private Animator gretelAnimator;
+        [SerializeField] private Animator haenselAnimator;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -42,21 +49,36 @@ namespace IntoTheWoods {
             _screens = new(GetComponentsInChildren<Screen>());
             Assert.IsTrue(_screens.Count > 0);
 
-            Assert.IsNotNull(primaryPlayer);
-            _gameData = new(primaryPlayer.inventory);
+            Assert.IsNotNull(primaryCharacter);
+            _player = primaryCharacter.AddComponent<Player>();
+            _player.Init(gretelAnimator, haenselAnimator);
+
+            Assert.IsNotNull(secondaryCharacter);
+            secondaryCharacter.AddComponent<Walker>(); // TODO
+
+            Inventory inventory = GetComponent<Inventory>();
+            Assert.IsNotNull(inventory);
+            _gameData = new(inventory);
+
             Assert.IsNotNull(UI);
             UI.rootVisualElement.dataSource = _gameData;
         }
 
         private void OnEnable() {
-            primaryPlayer.WillMove += PlayerHasMoved;
+            _player.WillMove += PlayerHasMoved;
         }
 
         private void OnDisable() {
-            primaryPlayer.WillMove -= PlayerHasMoved;
+            _player.WillMove -= PlayerHasMoved;
         }
 
-        private bool PlayerHasMoved(Player sender, Vector2 walkingDirection) {
+        /// <summary>
+        /// Reacts to movement by adjusting camera. Also verifies if movement is allowed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="walkingDirection"></param>
+        /// <returns>true if movement was done, false if movement was not allowed because it was at a map edge</returns>
+        private bool PlayerHasMoved(Walker sender, Vector2 walkingDirection) {
             // possible optimization: cache screen position 
             if (walkingDirection.x > 0 && sender.transform.position.x > _screens[_currentScreen].transform.position.x + CrossScreenThreshold) {
                 if (_currentScreen < _screens.Count - 1) {
