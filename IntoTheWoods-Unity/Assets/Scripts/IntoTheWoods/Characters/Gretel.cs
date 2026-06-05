@@ -74,5 +74,9 @@ namespace IntoTheWoods.Characters {
             _nearbyCollectibles.Remove(obj.gameObject.GetInstanceID());
             // Debug.Log($"Bye {obj.gameObject.name}");
         }
+
+        public override bool IsBusy() {
+            return animator.GetBool(Pickup);
+        }
     }
 }

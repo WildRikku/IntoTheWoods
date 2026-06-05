@@ -1,9 +1,6 @@
-using System;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 
 namespace IntoTheWoods.Characters {
     public delegate bool PlayerWillMoveEventHandler(Walker sender, Vector2 direction);
@@ -11,30 +8,30 @@ namespace IntoTheWoods.Characters {
     /// <summary>
     /// Human control on top of a <see cref="Walker"/>.
     /// </summary>
-    public class Player : Walker, InputSystem_Actions.IPrimaryPlayerActions {
-        // Cached property indices for animator for efficiency
-        private static readonly int Pickup = Animator.StringToHash("pickup");
-
+    public class PlayerController : MonoBehaviour, InputSystem_Actions.IPrimaryPlayerActions {
         // internal setup fields
-        private Animator _gretelAnimator;
-        private Animator _haenselAnimator;
+        private Walker _walker;
+        private Character _character;
         private @InputSystem_Actions _wrapper;
 
-        public void Init(Animator gretelAnimator, Animator haenselAnimator) {
-            _gretelAnimator = gretelAnimator;
-            _haenselAnimator = haenselAnimator;
-        }
-
         private void Start() {
+            // init controls
             _wrapper = new();
             _wrapper.PrimaryPlayer.AddCallbacks(this);
             _wrapper.Enable();
 
-            Assert.IsNotNull(_gretelAnimator);
+            // get components dynamically since PlayerController is instantiated at runtime
+            _walker = GetComponent<Walker>();
+            _character = GetComponent<Character>();
         }
 
         public void OnMove(InputAction.CallbackContext context) {
-            if (!IsTransfering && context.started && !_gretelAnimator.GetBool(Pickup)) {
+            if (_walker.IsBusy() || _character.IsBusy()) {
+                // walking is only allowed when not busy, so if busy, process neither starting nor stopping walking
+                return;
+            }
+
+            if (context.started) {
                 // grab input
                 Vector2 moveVector = DigitizeMovement(context.ReadValue<Vector2>());
                 if (moveVector.x == 0) {
@@ -45,10 +42,10 @@ namespace IntoTheWoods.Characters {
                 // This is relevant for distinguishing between player-controled movement and animated movement to background/foreground
                 moveVector.y = 0;
 
-                ActivateWalking(moveVector);
+                _walker.ActivateWalking(moveVector);
             }
             else if (context.canceled) {
-                StopWalking();
+                _walker.StopWalking();
             }
         }
 
@@ -57,7 +54,7 @@ namespace IntoTheWoods.Characters {
 
         public void OnJump(InputAction.CallbackContext context) {
             if (context.started) {
-                rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
+                // rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
             }
         }
 
@@ -72,22 +69,14 @@ namespace IntoTheWoods.Characters {
 
         public void OnChangeLane(InputAction.CallbackContext context) {
             // TODO: replace animator check with generic character is busy check
-            if (canTransfer && context.started && !_gretelAnimator.GetBool(Pickup)) {
+            if (_walker.CanTransfer() && !_walker.IsBusy() && !_character.IsBusy() && context.started) {
                 // grab input
                 Vector2 inputVector = DigitizeMovement(context.ReadValue<Vector2>());
                 if (inputVector.y == 0) {
                     return;
                 }
 
-                // check if possible direction matches
-                Vector2 moveVector = nextTransferTarget - (Vector2)transform.position;
-                if (Math.Sign(moveVector.y) != Math.Sign(inputVector.y)) {
-                    return;
-                }
-
-                currentTransferTarget = nextTransferTarget;
-                IsTransfering = true;
-                ActivateWalking(currentTransferTarget - (Vector2)transform.position);
+                _walker.ActivateTransfer(inputVector);
             }
         }
 

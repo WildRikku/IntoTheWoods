@@ -24,7 +24,8 @@ namespace IntoTheWoods {
         private int _currentScreen;
 
         private GameData _gameData;
-        private Player _player;
+        private PlayerController _playerController;
+        private Walker _walker;
 
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
@@ -50,11 +51,10 @@ namespace IntoTheWoods {
             Assert.IsTrue(_screens.Count > 0);
 
             Assert.IsNotNull(primaryCharacter);
-            _player = primaryCharacter.AddComponent<Player>();
-            _player.Init(gretelAnimator, haenselAnimator);
+            _playerController = primaryCharacter.AddComponent<PlayerController>();
+            _walker = primaryCharacter.GetComponent<Walker>();
 
             Assert.IsNotNull(secondaryCharacter);
-            secondaryCharacter.AddComponent<Walker>(); // TODO
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
@@ -65,11 +65,11 @@ namespace IntoTheWoods {
         }
 
         private void OnEnable() {
-            _player.WillMove += PlayerHasMoved;
+            _walker.WillMove += PlayerHasMoved;
         }
 
         private void OnDisable() {
-            _player.WillMove -= PlayerHasMoved;
+            _walker.WillMove -= PlayerHasMoved;
         }
 
         /// <summary>

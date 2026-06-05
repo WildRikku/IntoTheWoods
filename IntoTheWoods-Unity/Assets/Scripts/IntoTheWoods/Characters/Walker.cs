@@ -12,34 +12,30 @@ namespace IntoTheWoods.Characters {
 
         // configurable fields
         [SerializeField] private float speed = 1.7f;
-        [SerializeField] protected int jumpForce = 125;
 
         // internal setup fields
-        protected Rigidbody2D rb2D;
         private Animator _animator;
         private TransferDetector _transferDetector;
 
         // states
         private bool _walking;
         private Vector2 _walkingDirection;
-        protected bool canTransfer;
+        private bool _canTransfer;
         /// <summary>
         /// only set when actually transfering
         /// </summary>
-        protected Vector2 currentTransferTarget;
+        private Vector2 _currentTransferTarget;
         /// <summary>
         /// always set when a transfer collider is entered
         /// </summary>
-        protected Vector2 nextTransferTarget;
+        private Vector2 _nextTransferTarget;
 
-        public bool IsTransfering { get; protected set; }
+        public bool IsTransfering { get; private set; }
 
         // events
         public event PlayerWillMoveEventHandler WillMove;
 
         private void Awake() {
-            rb2D = GetComponent<Rigidbody2D>();
-            Assert.IsNotNull(rb2D);
             _animator = GetComponentInChildren<Animator>();
             Assert.IsNotNull(_animator);
             _transferDetector = GetComponentInChildren<TransferDetector>();
@@ -75,8 +71,8 @@ namespace IntoTheWoods.Characters {
                 else {
                     // if y is != 0, the animation was turned on for the move to foreground / background animation
                     transform.position += new Vector3(speed * Time.deltaTime * _walkingDirection.x, speed * Time.deltaTime * _walkingDirection.y, 0);
-                    float distance = new Vector2(transform.position.x - currentTransferTarget.x, transform.position.y - currentTransferTarget.y).magnitude;
-                    float scaleScalar = 1;
+                    float distance = new Vector2(transform.position.x - _currentTransferTarget.x, transform.position.y - _currentTransferTarget.y).magnitude;
+                    float scaleScalar;
 
                     if (distance < 0.05f) {
                         // close enough
@@ -103,15 +99,15 @@ namespace IntoTheWoods.Characters {
         }
 
         private void OnTransferZoneEntered(Collider2D obj) {
-            canTransfer = true;
-            nextTransferTarget = obj.GetComponent<TransferZone>().partner.position;
+            _canTransfer = true;
+            _nextTransferTarget = obj.GetComponent<TransferZone>().partner.position;
         }
 
         private void OnTransferZoneLeft(Collider2D obj) {
-            canTransfer = false;
+            _canTransfer = false;
         }
 
-        protected void ActivateWalking(Vector2 moveVector) {
+        public void ActivateWalking(Vector2 moveVector) {
             _walking = true;
             _walkingDirection = moveVector;
             _animator.SetBool(Walking, true);
@@ -124,9 +120,29 @@ namespace IntoTheWoods.Characters {
             }
         }
 
+        public void ActivateTransfer(Vector2 inputVector) {
+            // check if possible direction matches
+            Vector2 moveVector = _nextTransferTarget - (Vector2)transform.position;
+            if (Math.Sign(moveVector.y) != Math.Sign(inputVector.y)) {
+                return;
+            }
+
+            _currentTransferTarget = _nextTransferTarget;
+            IsTransfering = true;
+            ActivateWalking(_currentTransferTarget - (Vector2)transform.position);
+        }
+
         public void StopWalking() {
             _walking = false;
             _animator.SetBool(Walking, false);
+        }
+
+        public bool IsBusy() {
+            return IsTransfering;
+        }
+
+        public bool CanTransfer() {
+            return _canTransfer;
         }
     }
 }

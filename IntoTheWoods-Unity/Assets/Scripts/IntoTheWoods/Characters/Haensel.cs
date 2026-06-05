@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -25,6 +26,10 @@ namespace IntoTheWoods.Characters {
             if (context.performed) {
                 animator.SetBool(Throwing, true); // will reset itself
             }
+        }
+
+        public override bool IsBusy() {
+            return animator.GetBool(Throwing);
         }
     }
 }

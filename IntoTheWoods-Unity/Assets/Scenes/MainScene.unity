@@ -336,8 +336,8 @@ GameObject:
   m_Component:
   - component: {fileID: 170961707}
   - component: {fileID: 170961709}
-  - component: {fileID: 170961710}
   - component: {fileID: 170961711}
+  - component: {fileID: 170961712}
   m_Layer: 6
   m_Name: HaenselPlayer
   m_TagString: Untagged
@@ -388,19 +388,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &170961710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170961706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5bc2d2bd2645bc99e79d4bfc841c31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
-  collectibles: []
 --- !u!114 &170961711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +400,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c96d05793e54654b56b0921ed460e43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Haensel
+  walker: {fileID: 170961712}
   animator: {fileID: 648596925}
+--- !u!114 &170961712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170961706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
+  speed: 1.7
+  jumpForce: 125
+  _walking: 0
+  canTransfer: 0
+  currentTransferTarget: {x: 0, y: 0}
+  nextTransferTarget: {x: 0, y: 0}
 --- !u!1 &296062536
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +431,7 @@ GameObject:
   - component: {fileID: 296062539}
   - component: {fileID: 296062538}
   - component: {fileID: 296062540}
+  - component: {fileID: 296062541}
   m_Layer: 6
   m_Name: GretelPlayer
   m_TagString: Untagged
@@ -487,8 +494,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd73a39fa8e44bd78da95235981b0bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Gretel
+  walker: {fileID: 296062541}
   animator: {fileID: 1959801605}
   inventory: {fileID: 1727744963}
+--- !u!114 &296062541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296062536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
+  speed: 1.7
+  jumpForce: 125
+  _walking: 0
+  canTransfer: 0
+  currentTransferTarget: {x: 0, y: 0}
+  nextTransferTarget: {x: 0, y: 0}
 --- !u!1 &346312010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,8 +1246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d60a196f726ae126a88348c8cd28e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
-  primaryCharacter: {fileID: 296062540}
-  secondaryCharacter: {fileID: 170961711}
+  primaryCharacter: {fileID: 170961711}
+  secondaryCharacter: {fileID: 296062540}
   UI: {fileID: 60425744}
   gretelAnimator: {fileID: 1959801605}
   haenselAnimator: {fileID: 648596925}
