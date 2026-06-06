@@ -21,6 +21,12 @@ namespace IntoTheWoods.Characters {
         private bool _walking;
         private Vector2 _walkingDirection;
         private bool _canTransfer;
+
+        /// <summary>
+        /// true = back lane, false = front lane
+        /// </summary>
+        public bool BackLane { get; private set; }
+
         /// <summary>
         /// only set when actually transfering
         /// </summary>
@@ -129,6 +135,7 @@ namespace IntoTheWoods.Characters {
 
             _currentTransferTarget = _nextTransferTarget;
             IsTransfering = true;
+            BackLane = !BackLane;
             ActivateWalking(_currentTransferTarget - (Vector2)transform.position);
         }
 
