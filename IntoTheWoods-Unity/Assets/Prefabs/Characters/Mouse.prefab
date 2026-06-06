@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1441915123966968057}
   - component: {fileID: 205031299751019415}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Tail
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +101,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6374185688751170815}
   - component: {fileID: 2521930261525521664}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LegFrontBack
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,9 +193,10 @@ GameObject:
   - component: {fileID: 6672108057853162229}
   - component: {fileID: 4222153748174353831}
   - component: {fileID: 1568572357937631180}
-  m_Layer: 0
+  - component: {fileID: 4376724322402443844}
+  m_Layer: 14
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,6 +243,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Mouse
   backLane: 0
+  speed: 2.7
+  head: {fileID: 4795009083524240805}
+  animator: {fileID: 2423156346406769569}
+  animatorSignal: {fileID: 7708882104923035054}
+--- !u!61 &4376724322402443844
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650655458671705491}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.06771666, y: 0.080468506}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1354333, y: 0.839063}
+  m_EdgeRadius: 0
 --- !u!1 &4711262741943789556
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,9 +304,9 @@ GameObject:
   - component: {fileID: 5802683858962479665}
   - component: {fileID: 167586319422676327}
   - component: {fileID: 3427456833863687211}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,9 +476,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4795009083524240805}
   - component: {fileID: 5154032203485187453}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,9 +567,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2692131845303836881}
   - component: {fileID: 2423156346406769569}
-  m_Layer: 0
+  - component: {fileID: 7708882104923035054}
+  m_Layer: 14
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,6 +617,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7708882104923035054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097784045237138724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d4c4eeb34e4bd9ab22b710898f1d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.AnimatorSignal
 --- !u!1 &8380676182493229682
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,9 +639,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5001081605376203513}
   - component: {fileID: 2332785744342767709}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LegFrontFront
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

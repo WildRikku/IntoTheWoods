@@ -15,7 +15,7 @@ namespace IntoTheWoods.Characters {
         // internal setup fields
         private @InputSystem_Actions _wrapper;
         private CollectibleDetector _collectibleDetector;
-        private Pickup _pickup;
+        private AnimatorSignal _animatorSignal;
 
         // interactions
         private Dictionary<int, GameObject> _nearbyCollectibles;
@@ -31,7 +31,7 @@ namespace IntoTheWoods.Characters {
             _nearbyCollectibles = new();
 
             _collectibleDetector = GetComponentInChildren<CollectibleDetector>();
-            _pickup = GetComponentInChildren<Pickup>();
+            _animatorSignal = GetComponentInChildren<AnimatorSignal>();
         }
 
         private void OnEnable() {
@@ -40,8 +40,8 @@ namespace IntoTheWoods.Characters {
                 _collectibleDetector.CollectibleLost += OnCollectibleLost;
             }
 
-            if (_pickup != null) {
-                _pickup.PickingUp += OnPickingUp;
+            if (_animatorSignal != null) {
+                _animatorSignal.AnimationEnded += OnAnimationEnded;
             }
         }
 
@@ -51,8 +51,8 @@ namespace IntoTheWoods.Characters {
                 _collectibleDetector.CollectibleLost -= OnCollectibleLost;
             }
 
-            if (_pickup != null) {
-                _pickup.PickingUp -= OnPickingUp;
+            if (_animatorSignal != null) {
+                _animatorSignal.AnimationEnded -= OnAnimationEnded;
             }
         }
 
@@ -75,7 +75,7 @@ namespace IntoTheWoods.Characters {
             // Debug.Log($"Bye {obj.gameObject.name}");
         }
 
-        private void OnPickingUp() {
+        private void OnAnimationEnded() {
             foreach ((int _, GameObject value) in _nearbyCollectibles) {
                 Collectible c = value.GetComponent<Collectible>();
                 if (c == null) {

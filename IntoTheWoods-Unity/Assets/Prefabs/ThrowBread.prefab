@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 944162407331005382}
   - component: {fileID: -7039125826702549490}
   - component: {fileID: 8987201624115900835}
+  - component: {fileID: 359029635119275366}
   m_Layer: 10
   m_Name: ThrowBread
   m_TagString: Untagged
@@ -175,3 +176,15 @@ PolygonCollider2D:
       - {x: 0.05, y: 0.021333333}
       - {x: 0.044666667, y: 0.037333332}
   m_UseDelaunayMesh: 1
+--- !u!114 &359029635119275366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962114630809755198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57386b4db529438995c04cec6bd817b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Bread
