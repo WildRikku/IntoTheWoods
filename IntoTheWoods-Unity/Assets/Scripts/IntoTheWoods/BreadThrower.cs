@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Assertions;
 using UnityEngine;
 
@@ -26,6 +27,6 @@ public class BreadThrower : MonoBehaviour {
         _breadInstance = Instantiate(breadPrefab, spawnPoint.position, spawnPoint.rotation, parent);
         _breadRigidbody = _breadInstance.GetComponent<Rigidbody2D>();
         _breadRigidbody.gravityScale = 1;
-        _breadRigidbody.AddForce(new(3, 2), ForceMode2D.Impulse);
+        _breadRigidbody.AddForce(new(3 * Math.Sign(transform.parent.transform.localScale.x), 2), ForceMode2D.Impulse);
     }
 }
