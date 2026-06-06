@@ -465,7 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1160261970079544701}
   m_Layer: 0
-  m_Name: Forest1
+  m_Name: ForestDivergingPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
