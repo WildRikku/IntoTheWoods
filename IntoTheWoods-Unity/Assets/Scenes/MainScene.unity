@@ -1360,8 +1360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d60a196f726ae126a88348c8cd28e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
-  primaryCharacter: {fileID: 170961711}
-  secondaryCharacter: {fileID: 296062540}
+  primaryCharacter: {fileID: 296062540}
+  secondaryCharacter: {fileID: 170961711}
   UI: {fileID: 60425744}
   gretelAnimator: {fileID: 1959801605}
   haenselAnimator: {fileID: 648596925}
@@ -1377,6 +1377,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5bc2d2bd2645bc99e79d4bfc841c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
+  breadSprites:
+  - {fileID: 1068720322, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: -4375611562936488269, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: 7177532305288283000, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: 7928358586247172495, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  stoneSprites:
+  - {fileID: 4622151875478157621, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: -6561814019891611672, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: 5475166737216776937, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: -2693916250688638604, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
 --- !u!1001 &1755568114
 PrefabInstance:
   m_ObjectHideFlags: 0

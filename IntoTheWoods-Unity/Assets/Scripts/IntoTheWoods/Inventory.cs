@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
+using UnityEngine.UIElements;
+
+// ReSharper disable UnusedMember.Global - used in UI
+// ReSharper disable MemberCanBePrivate.Global - used in UI
 
 namespace IntoTheWoods {
     public class Inventory : MonoBehaviour {
         private List<Collectible> _stones;
+        [SerializeField] private List<Sprite> breadSprites;
+        [SerializeField] private List<Sprite> stoneSprites;
 
         [CreateProperty]
         // ReSharper disable once MemberCanBePrivate.Global - used in UI
@@ -16,11 +22,16 @@ namespace IntoTheWoods {
 
         public void AddCollectible(Collectible collectible) {
             _stones.Add(collectible);
+            if (_stones.Count > 1) {
+                // make next one come to top for UI - from 2nd one, first one is show at all
+                stoneSprites.RemoveAt(0);
+            }
         }
 
         public bool TryGetBread() {
             if (BreadCount > 0) {
                 BreadCount--;
+                breadSprites.RemoveAt(0); // make next one come to top for UI
                 return true;
             }
 
@@ -28,7 +39,9 @@ namespace IntoTheWoods {
         }
 
         [CreateProperty]
-        // ReSharper disable once UnusedMember.Global - used in UI
         public int StoneCount => _stones.Count;
+
+        [CreateProperty]
+        public StyleEnum<Visibility> HasStones => StoneCount > 0 ? Visibility.Visible : Visibility.Hidden;
     }
 }

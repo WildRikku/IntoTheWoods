@@ -1,16 +1,34 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:GroupBox name="Border" style="flex-grow: 1; align-items: center; justify-content: center;">
-        <ui:GroupBox style="align-content: auto; flex-grow: 1; justify-content: space-between; aspect-ratio: 1.777778;">
-            <ui:Label text="stones" name="StonesCount" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" style="color: rgb(255, 255, 255);">
+        <ui:GroupBox name="StretchBox" style="align-content: auto; flex-grow: 1; justify-content: space-between; aspect-ratio: 1.777778;">
+            <ui:GroupBox name="StoneBox" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" style="flex-direction: row;">
+                <ui:Label text="stones" name="StonesCount" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" style="color: rgb(255, 255, 255);">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="StoneCount" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Image data-source-type="IntoTheWoods.Inventory, Assembly-CSharp">
+                    <Bindings>
+                        <ui:DataBinding property="source" data-source-path="stoneSprites[0]" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Image>
                 <Bindings>
-                    <ui:DataBinding property="text" data-source-path="StoneCount" binding-mode="ToTarget"/>
+                    <ui:DataBinding property="style.visibility" data-source-path="HasStones" binding-mode="ToTarget"/>
                 </Bindings>
-            </ui:Label>
-            <ui:Label text="bread" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" name="BreadCount" style="color: rgb(255, 255, 255);">
-                <Bindings>
-                    <ui:DataBinding property="text" data-source-path="BreadCount" binding-mode="ToTarget"/>
-                </Bindings>
-            </ui:Label>
+            </ui:GroupBox>
+            <ui:GroupBox name="BreadBox" style="flex-direction: row;">
+                <ui:Label text="bread" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" name="BreadCount" style="color: rgb(255, 255, 255);">
+                    <Bindings>
+                        <ui:DataBinding property="text" data-source-path="BreadCount" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Label>
+                <ui:Image source="project://database/Assets/Sprites/brot_steine.psd?fileID=7928358586247172495&amp;guid=8c8668cbf3d002e5888dd1a6c14aa198&amp;type=3#brot_steine_8" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp"
+                          name="Image">
+                    <Bindings>
+                        <ui:DataBinding property="source" data-source-path="breadSprites[0]" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Image>
+            </ui:GroupBox>
         </ui:GroupBox>
     </ui:GroupBox>
 </ui:UXML>
