@@ -1,20 +1,34 @@
-using System;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 namespace IntoTheWoods {
     public class Inventory : MonoBehaviour {
-        [SerializeField] private List<Collectible> collectibles;
+        private List<Collectible> _stones;
 
-        public event Action<List<Collectible>> CollectiblesUpdated;
+        [CreateProperty]
+        // ReSharper disable once MemberCanBePrivate.Global - used in UI
+        public int BreadCount { get; private set; } = 4;
 
         private void Awake() {
-            collectibles = new();
+            _stones = new();
         }
 
         public void AddCollectible(Collectible collectible) {
-            collectibles.Add(collectible);
-            CollectiblesUpdated?.Invoke(collectibles);
+            _stones.Add(collectible);
         }
+
+        public bool TryGetBread() {
+            if (BreadCount > 0) {
+                BreadCount--;
+                return true;
+            }
+
+            return false;
+        }
+
+        [CreateProperty]
+        // ReSharper disable once UnusedMember.Global - used in UI
+        public int StoneCount => _stones.Count;
     }
 }

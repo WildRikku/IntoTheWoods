@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using IntoTheWoods.Characters;
-using IntoTheWoods.Data;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -23,7 +22,6 @@ namespace IntoTheWoods {
         private List<Screen> _screens;
         private int _currentScreen;
 
-        private GameData _gameData;
         private PlayerController _playerController;
         private Walker _walker;
 
@@ -58,10 +56,9 @@ namespace IntoTheWoods {
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
-            _gameData = new(inventory);
 
             Assert.IsNotNull(UI);
-            UI.rootVisualElement.dataSource = _gameData;
+            UI.rootVisualElement.dataSource = inventory;
         }
 
         private void OnEnable() {

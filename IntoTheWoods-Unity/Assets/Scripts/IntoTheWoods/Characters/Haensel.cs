@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
@@ -10,6 +9,7 @@ namespace IntoTheWoods.Characters {
 
         // setup fields
         [SerializeField] private Animator animator;
+        [SerializeField] private Inventory inventory;
 
         // internal setup fields
         private @InputSystem_Actions _wrapper;
@@ -23,7 +23,8 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnAttack(InputAction.CallbackContext context) {
-            if (context.performed) {
+            // note that the order matters because TryGetBread() will reduce bread count
+            if (context.performed && inventory.TryGetBread()) {
                 animator.SetBool(Throwing, true); // will reset itself
             }
         }

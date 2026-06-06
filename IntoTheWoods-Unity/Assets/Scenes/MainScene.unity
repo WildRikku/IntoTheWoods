@@ -402,6 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Haensel
   walker: {fileID: 170961712}
   animator: {fileID: 648596925}
+  inventory: {fileID: 1727744963}
 --- !u!114 &170961712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,8 +1303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d60a196f726ae126a88348c8cd28e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
-  primaryCharacter: {fileID: 296062540}
-  secondaryCharacter: {fileID: 170961711}
+  primaryCharacter: {fileID: 170961711}
+  secondaryCharacter: {fileID: 296062540}
   UI: {fileID: 60425744}
   gretelAnimator: {fileID: 1959801605}
   haenselAnimator: {fileID: 648596925}
@@ -1319,7 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5bc2d2bd2645bc99e79d4bfc841c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
-  collectibles: []
+  stones: []
 --- !u!1001 &1755568114
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,14 +1,14 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:GroupBox name="Border" style="flex-grow: 1; align-items: center; justify-content: center;">
         <ui:GroupBox style="align-content: auto; flex-grow: 1; justify-content: space-between; aspect-ratio: 1.777778;">
-            <ui:Label text="stones" name="StonesCount" data-source-type="IntoTheWoods.Data.GameData, Assembly-CSharp">
+            <ui:Label text="stones" name="StonesCount" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" style="color: rgb(255, 255, 255);">
                 <Bindings>
-                    <ui:DataBinding property="text" data-source-path="stones" binding-mode="ToTarget"/>
+                    <ui:DataBinding property="text" data-source-path="StoneCount" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Label>
-            <ui:Label text="bread" data-source-type="IntoTheWoods.Data.GameData, Assembly-CSharp" name="BreadCount">
+            <ui:Label text="bread" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" name="BreadCount" style="color: rgb(255, 255, 255);">
                 <Bindings>
-                    <ui:DataBinding property="text" data-source-path="bread" binding-mode="ToTarget"/>
+                    <ui:DataBinding property="text" data-source-path="BreadCount" binding-mode="ToTarget"/>
                 </Bindings>
             </ui:Label>
         </ui:GroupBox>
