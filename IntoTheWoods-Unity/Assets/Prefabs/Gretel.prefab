@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 623796354943013828}
   - component: {fileID: 1452086508758565419}
   - component: {fileID: 6815667405419862542}
+  - component: {fileID: 1656644470814995924}
   m_Layer: 6
   m_Name: Gretel
   m_TagString: Untagged
@@ -277,6 +278,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1656644470814995924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305309544855369176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d4c4eeb34e4bd9ab22b710898f1d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Pickup
 --- !u!1 &3223605391526796309
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +301,7 @@ GameObject:
   - component: {fileID: 5491733745998060783}
   - component: {fileID: 1380677859872181494}
   - component: {fileID: 5821869210161649330}
+  - component: {fileID: 5951059476229254914}
   m_Layer: 6
   m_Name: LegBackLower
   m_TagString: Untagged
@@ -451,6 +465,18 @@ PolygonCollider2D:
       - {x: -0.03850906, y: -0.23977937}
       - {x: -0.04272847, y: -0.22290173}
   m_UseDelaunayMesh: 1
+--- !u!114 &5951059476229254914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3223605391526796309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324bd2acaf39453fb73cc5af405a2db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.CollectibleDetector
 --- !u!1 &3299863939166433680
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +488,6 @@ GameObject:
   - component: {fileID: 2601080253239722497}
   - component: {fileID: 8671758364030310051}
   - component: {fileID: 7484861116792639129}
-  - component: {fileID: 4400280595507889587}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -675,18 +700,6 @@ PolygonCollider2D:
       - {x: 0.20854421, y: -0.3031638}
       - {x: 0.21487333, y: -0.29683468}
   m_UseDelaunayMesh: 1
---- !u!114 &4400280595507889587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3299863939166433680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324bd2acaf39453fb73cc5af405a2db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.CollectibleDetector
 --- !u!1 &4012639561638373928
 GameObject:
   m_ObjectHideFlags: 0

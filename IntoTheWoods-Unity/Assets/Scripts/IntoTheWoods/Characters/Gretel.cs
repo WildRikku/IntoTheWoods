@@ -15,6 +15,7 @@ namespace IntoTheWoods.Characters {
         // internal setup fields
         private @InputSystem_Actions _wrapper;
         private CollectibleDetector _collectibleDetector;
+        private Pickup _pickup;
 
         // interactions
         private Dictionary<int, GameObject> _nearbyCollectibles;
@@ -30,12 +31,17 @@ namespace IntoTheWoods.Characters {
             _nearbyCollectibles = new();
 
             _collectibleDetector = GetComponentInChildren<CollectibleDetector>();
+            _pickup = GetComponentInChildren<Pickup>();
         }
 
         private void OnEnable() {
             if (_collectibleDetector != null) {
                 _collectibleDetector.CollectibleDetected += OnCollectibleDetected;
                 _collectibleDetector.CollectibleLost += OnCollectibleLost;
+            }
+
+            if (_pickup != null) {
+                _pickup.PickingUp += OnPickingUp;
             }
         }
 
@@ -44,24 +50,18 @@ namespace IntoTheWoods.Characters {
                 _collectibleDetector.CollectibleDetected -= OnCollectibleDetected;
                 _collectibleDetector.CollectibleLost -= OnCollectibleLost;
             }
+
+            if (_pickup != null) {
+                _pickup.PickingUp -= OnPickingUp;
+            }
         }
 
         public void OnInteract(InputAction.CallbackContext context) {
-            if (!walker.IsTransfering && context.performed) {
+            if (!walker.IsTransfering && _nearbyCollectibles.Count > 0 && context.performed) {
                 walker.StopWalking();
-                animator.SetBool(Pickup, true); // will reset itself
-
-                // TODO: wait for correct timing in animation
-                foreach ((int key, GameObject value) in _nearbyCollectibles) {
-                    Collectible c = value.GetComponent<Collectible>();
-                    if (c == null) {
-                        continue;
-                    }
-
-                    c.PickUp();
-                    inventory.AddCollectible(c);
-                    // _nearbyCollectibles.Remove(key);
-                }
+                // animation resets itself
+                // animation also triggers the actual pickup via event
+                animator.SetBool(Pickup, true);
             }
         }
 
@@ -73,6 +73,20 @@ namespace IntoTheWoods.Characters {
         private void OnCollectibleLost(Collider2D obj) {
             _nearbyCollectibles.Remove(obj.gameObject.GetInstanceID());
             // Debug.Log($"Bye {obj.gameObject.name}");
+        }
+
+        private void OnPickingUp() {
+            foreach ((int _, GameObject value) in _nearbyCollectibles) {
+                Collectible c = value.GetComponent<Collectible>();
+                if (c == null) {
+                    continue;
+                }
+
+                c.PickUp();
+                inventory.AddCollectible(c);
+            }
+
+            _nearbyCollectibles.Clear();
         }
 
         public override bool IsBusy() {
