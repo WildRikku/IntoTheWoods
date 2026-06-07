@@ -164,6 +164,7 @@ namespace IntoTheWoods.Characters {
             else {
                 _sortingGroup.sortingOrder = isPlayer ? 12 : 11;
             }
+
             ActivateWalking(_currentTransferTarget - (Vector2)transform.position);
 
             // if this is the leading character (player), send a forced move event so the follower reaches the transfer zone
