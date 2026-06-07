@@ -4,7 +4,7 @@ using Vector2 = UnityEngine.Vector2;
 using UnityEngine.Rendering;
 
 namespace IntoTheWoods.Characters {
-    public delegate bool PlayerWillMoveEventHandler(Walker sender, Vector2 direction);
+    public delegate bool PlayerWillMoveEventHandler(Vector2 nextPosition, Vector2 direction);
 
     /// <summary>
     /// Human control on top of a <see cref="Walker"/>.

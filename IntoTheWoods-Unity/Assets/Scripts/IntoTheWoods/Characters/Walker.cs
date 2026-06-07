@@ -83,14 +83,15 @@ namespace IntoTheWoods.Characters {
             if (IsWalking) {
                 // By sending the event before moving, we have the game manager check if we are going out of bounds
                 // the order is relevant to prevent glitching outside
-                if (!WillMove?.Invoke(this, _walkingDirection) ?? false) {
+                Vector3 posDelta = new(speed * Time.deltaTime * _walkingDirection.x, 0);
+                if (!WillMove?.Invoke(transform.position + posDelta, _walkingDirection) ?? false) {
                     StopWalking();
                     return;
                 }
 
                 if (_walkingDirection.y == 0) {
                     // actual player-controled walking has y = 0 set manually    
-                    transform.position += new Vector3(speed * Time.deltaTime * _walkingDirection.x, 0);
+                    transform.position += posDelta;
                     Moved?.Invoke(transform.position, inTransferZone: CanTransfer);
                 }
                 else {

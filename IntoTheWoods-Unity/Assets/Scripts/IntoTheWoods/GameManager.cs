@@ -10,10 +10,6 @@ namespace IntoTheWoods {
     public class GameManager : MonoBehaviour {
         private const float FullHDratio = 0.5625f;
         /// <summary>
-        /// Value chosen based on what looks good and also so that it's a little asymmetrical to avoid jumping back and forth between screens
-        /// </summary>
-        private const float CrossScreenThreshold = 3.6f;
-        /// <summary>
         /// // 4 high and 16:9
         /// </summary>
         private const float ScreenWidth = 7.11f;
@@ -72,38 +68,46 @@ namespace IntoTheWoods {
         /// <summary>
         /// Reacts to movement by adjusting camera. Also verifies if movement is allowed
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="nextPosition"></param>
         /// <param name="walkingDirection"></param>
         /// <returns>true if movement was done, false if movement was not allowed because it was at a map edge</returns>
-        private bool OnPlayerWillMove(Walker sender, Vector2 walkingDirection) {
-            // possible optimization: cache screen position
-            if (walkingDirection.x > 0 && sender.transform.position.x > _screens[_currentScreen].transform.position.x + CrossScreenThreshold) {
-                // going right close to the edge
-                if (_currentScreen < _screens.Count - 1) {
-                    // scroll right
-                    Vector3 pos = _mainCamera.transform.position;
-                    pos.x += ScreenWidth;
-                    _mainCamera.transform.position = pos;
-                    _currentScreen++;
-                }
-                else {
-                    // player would leave the game
+        private bool OnPlayerWillMove(Vector2 nextPosition, Vector2 walkingDirection) {
+            Screen.ScreenEdgeResult edgeStatus = _screens[_currentScreen].CheckPosition(nextPosition);
+            switch (edgeStatus) {
+                case Screen.ScreenEdgeResult.IllegalLeft:
+                case Screen.ScreenEdgeResult.IllegalRight:
+                    // Reached forbidden area
                     return false;
-                }
-            }
-            else if (walkingDirection.x < 0 && sender.transform.position.x < _screens[_currentScreen].transform.position.x - CrossScreenThreshold) {
-                // going left close to the edge
-                if (_currentScreen > 0) {
-                    // scroll left
-                    Vector3 pos = _mainCamera.transform.position;
-                    pos.x -= ScreenWidth;
-                    _mainCamera.transform.position = pos;
-                    _currentScreen--;
-                }
-                else {
-                    // player would leave the game
-                    return false;
-                }
+                case Screen.ScreenEdgeResult.LeavingRight when walkingDirection.x > 0:
+                    // going right close to the edge
+                    if (_currentScreen < _screens.Count - 1) {
+                        // scroll right
+                        Vector3 pos = _mainCamera.transform.position;
+                        pos.x += ScreenWidth;
+                        _mainCamera.transform.position = pos;
+                        _currentScreen++;
+                    }
+                    else {
+                        // player would leave the game
+                        return false;
+                    }
+
+                    break;
+                case Screen.ScreenEdgeResult.LeavingLeft when walkingDirection.x < 0:
+                    // going left close to the edge
+                    if (_currentScreen > 0) {
+                        // scroll left
+                        Vector3 pos = _mainCamera.transform.position;
+                        pos.x -= ScreenWidth;
+                        _mainCamera.transform.position = pos;
+                        _currentScreen--;
+                    }
+                    else {
+                        // player would leave the game
+                        return false;
+                    }
+
+                    break;
             }
 
             return true;
