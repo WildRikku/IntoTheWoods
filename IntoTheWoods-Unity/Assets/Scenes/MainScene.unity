@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 7960069300485645745, guid: dc53bf2a87c35b1c6bfd9a2e7b2cc9f7, type: 3}
     - target: {fileID: 1254857725700223511, guid: d794f1691238dfcfd9bac669fc2044ac, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2163598600656941176, guid: d794f1691238dfcfd9bac669fc2044ac, type: 3}
       propertyPath: m_Name
@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4222153748174353831, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_SortingOrder
-      value: 99
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6672108057853162229, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672108057853162229, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.26
+      value: -1.51
       objectReference: {fileID: 0}
     - target: {fileID: 6672108057853162229, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -969,7 +969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1452086508758565419, guid: 2d6c6971c11b77f85a9b694f4cec8565, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_Intensity: 0.2
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000154aa7ce
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1261,6 +1261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6700362936456837498, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_Name
       value: collectible_stone back
@@ -1293,7 +1297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4222153748174353831, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_SortingOrder
-      value: 99
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6672108057853162229, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1301,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6672108057853162229, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.26
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: 6672108057853162229, guid: 39979b4de889a007696c231b47528cc1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1609,6 +1613,10 @@ PrefabInstance:
     - target: {fileID: 1221297858163201350, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6700362936456837498, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_Name

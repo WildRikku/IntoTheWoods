@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Rendering;
 
 namespace IntoTheWoods.Characters {
     /// <summary>
@@ -16,6 +17,7 @@ namespace IntoTheWoods.Characters {
         // internal setup fields
         private Animator _animator;
         private TransferDetector _transferDetector;
+        private SortingGroup _sortingGroup;
 
         // states
         private bool _walking;
@@ -42,6 +44,8 @@ namespace IntoTheWoods.Characters {
         public event PlayerWillMoveEventHandler WillMove;
 
         private void Awake() {
+            _sortingGroup = GetComponentInChildren<SortingGroup>();
+            Assert.IsNotNull(_sortingGroup);
             _animator = GetComponentInChildren<Animator>();
             Assert.IsNotNull(_animator);
             _transferDetector = GetComponentInChildren<TransferDetector>();
@@ -126,7 +130,7 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public void ActivateTransfer(Vector2 inputVector) {
+        public void ActivateTransfer(Vector2 inputVector, bool isPlayer = false) {
             // check if possible direction matches
             Vector2 moveVector = _nextTransferTarget - (Vector2)transform.position;
             if (Math.Sign(moveVector.y) != Math.Sign(inputVector.y)) {
@@ -136,6 +140,13 @@ namespace IntoTheWoods.Characters {
             _currentTransferTarget = _nextTransferTarget;
             IsTransfering = true;
             BackLane = !BackLane;
+            //Change the order of the layer
+            if (BackLane) {
+                _sortingGroup.sortingOrder = isPlayer ? 2 : 1;
+            }
+            else {
+                _sortingGroup.sortingOrder = isPlayer ? 12 : 11;
+            }
             ActivateWalking(_currentTransferTarget - (Vector2)transform.position);
         }
 
