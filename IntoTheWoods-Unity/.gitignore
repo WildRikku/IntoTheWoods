@@ -110,3 +110,5 @@ Assets/Library/Plugins/Sirenix/Assemblies/AOT/*
 
 # Krita
 *.psd~
+*.png~
+*.kra~
