@@ -39,6 +39,7 @@ namespace IntoTheWoods {
                 }
             }
 
+            // find Mouse component on global collider or body part collider
             Mouse mouse = hit.transform.GetComponent<Mouse>();
             if (mouse == null) {
                 mouse = hit.transform.GetComponentInParent<Mouse>();

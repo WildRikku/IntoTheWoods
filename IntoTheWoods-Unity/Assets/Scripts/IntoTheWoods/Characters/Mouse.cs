@@ -17,14 +17,12 @@ namespace IntoTheWoods.Characters {
         private Vector2 _target;
         private Vector2 _direction;
         private bool _moving;
-        private bool _lookingLeft;
         private Action _afterEatingAction;
 
         private void Start() {
             Assert.IsNotNull(head);
             Assert.IsNotNull(animator);
             Assert.IsNotNull(animatorSignal);
-            _lookingLeft = true;
         }
 
         private void OnEnable() {
@@ -55,25 +53,22 @@ namespace IntoTheWoods.Characters {
         }
 
         public void Call(Vector2 position, Action afterEating) {
+            // TODO: if already eating, delay until done eating
             _target = position;
-            Debug.Log(transform.position.ToString() + _lookingLeft.ToString() +position.ToString());
             Vector3 scale = transform.localScale;
             if (position.x < transform.position.x) {
                 _direction = new(-1, 0);
-                if (!_lookingLeft) {
-                    Debug.Log("Flipping left"+scale.x);
-                    _lookingLeft = true;
-                    scale.x *= -1;
+                if (Math.Sign(scale.x) == -1) {
+                    scale.x *= -1; // flip left, ensure to just flip, not change scale
                 }
             }
             else {
                 _direction = new(1, 0);
-                if (_lookingLeft) {
-                    Debug.Log("Flipping right"+scale.x);
-                    _lookingLeft = false;
-                    scale.x *= -1; // ensure to just flip, not change scale 
+                if (Math.Sign(scale.x) == 1) {
+                    scale.x *= -1; // flip right, ensure to just flip, not change scale 
                 }
             }
+
             transform.localScale = scale;
 
             _moving = true;
