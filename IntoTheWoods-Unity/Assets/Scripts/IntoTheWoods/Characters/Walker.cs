@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
 
 namespace IntoTheWoods.Characters {
+    public delegate void MoveEventHandler(Vector2 moveVector, bool ignoreDistance = false, bool inTransferZone = false);
+
+    public delegate void TransferEventHandler(Vector2 moveVector);
+
     /// <summary>
     /// Any character that can walk, not necessarily controled by a human.
     /// </summary>
@@ -20,9 +25,11 @@ namespace IntoTheWoods.Characters {
         private SortingGroup _sortingGroup;
 
         // states
-        private bool _walking;
+        public bool IsWalking { get; private set; }
         private Vector2 _walkingDirection;
-        private bool _canTransfer;
+        private readonly Dictionary<int, Collider2D> _inTransferZones = new();
+
+        public bool CanTransfer => _inTransferZones.Count > 0;
 
         /// <summary>
         /// true = back lane, false = front lane
@@ -37,11 +44,18 @@ namespace IntoTheWoods.Characters {
         /// always set when a transfer collider is entered
         /// </summary>
         private Vector2 _nextTransferTarget;
+        /// <summary>
+        /// The position of the transfer target the walker is currently standing on.
+        /// Not valid when <see cref="CanTransfer"/> is false.
+        /// </summary>
+        private Vector2 _inTransferTarget;
 
         public bool IsTransfering { get; private set; }
 
         // events
         public event PlayerWillMoveEventHandler WillMove;
+        public event MoveEventHandler Moved;
+        public event TransferEventHandler Transfering;
 
         private void Awake() {
             _sortingGroup = GetComponentInChildren<SortingGroup>();
@@ -66,7 +80,7 @@ namespace IntoTheWoods.Characters {
         }
 
         private void Update() {
-            if (_walking) {
+            if (IsWalking) {
                 // By sending the event before moving, we have the game manager check if we are going out of bounds
                 // the order is relevant to prevent glitching outside
                 if (!WillMove?.Invoke(this, _walkingDirection) ?? false) {
@@ -77,6 +91,7 @@ namespace IntoTheWoods.Characters {
                 if (_walkingDirection.y == 0) {
                     // actual player-controled walking has y = 0 set manually    
                     transform.position += new Vector3(speed * Time.deltaTime * _walkingDirection.x, 0);
+                    Moved?.Invoke(transform.position, inTransferZone: CanTransfer);
                 }
                 else {
                     // if y is != 0, the animation was turned on for the move to foreground / background animation
@@ -109,16 +124,18 @@ namespace IntoTheWoods.Characters {
         }
 
         private void OnTransferZoneEntered(Collider2D obj) {
-            _canTransfer = true;
-            _nextTransferTarget = obj.GetComponent<TransferZone>().partner.position;
+            _inTransferZones.TryAdd(obj.GetInstanceID(), obj);
+            TransferZone transferZone = obj.GetComponent<TransferZone>();
+            _nextTransferTarget = transferZone.partner.position;
+            _inTransferTarget = transferZone.transform.position;
         }
 
         private void OnTransferZoneLeft(Collider2D obj) {
-            _canTransfer = false;
+            _inTransferZones.Remove(obj.GetInstanceID());
         }
 
         public void ActivateWalking(Vector2 moveVector) {
-            _walking = true;
+            IsWalking = true;
             _walkingDirection = moveVector;
             _animator.SetBool(Walking, true);
 
@@ -148,19 +165,22 @@ namespace IntoTheWoods.Characters {
                 _sortingGroup.sortingOrder = isPlayer ? 12 : 11;
             }
             ActivateWalking(_currentTransferTarget - (Vector2)transform.position);
+
+            // if this is the leading character (player), send a forced move event so the follower reaches the transfer zone
+            if (isPlayer) {
+                Moved?.Invoke(_inTransferTarget, true);
+            }
+
+            Transfering?.Invoke(inputVector);
         }
 
         public void StopWalking() {
-            _walking = false;
+            IsWalking = false;
             _animator.SetBool(Walking, false);
         }
 
         public bool IsBusy() {
             return IsTransfering;
-        }
-
-        public bool CanTransfer() {
-            return _canTransfer;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace IntoTheWoods {
         private int _currentScreen;
 
         private PlayerController _playerController;
-        private Walker _walker;
+        private Walker _playerWalker;
 
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
@@ -50,9 +50,12 @@ namespace IntoTheWoods {
 
             Assert.IsNotNull(primaryCharacter);
             _playerController = primaryCharacter.AddComponent<PlayerController>();
-            _walker = primaryCharacter.GetComponent<Walker>();
+            _playerWalker = primaryCharacter.GetComponent<Walker>();
 
             Assert.IsNotNull(secondaryCharacter);
+            FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();
+            followerController.leader = _playerWalker;
+            // we might need to save the follower walker and subscribe to its events, too, but maybe not since the follower should never walk off the screen if the player doesn't...
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
@@ -62,11 +65,11 @@ namespace IntoTheWoods {
         }
 
         private void OnEnable() {
-            _walker.WillMove += PlayerHasMoved;
+            _playerWalker.WillMove += PlayerHasMoved;
         }
 
         private void OnDisable() {
-            _walker.WillMove -= PlayerHasMoved;
+            _playerWalker.WillMove -= PlayerHasMoved;
         }
 
         /// <summary>
