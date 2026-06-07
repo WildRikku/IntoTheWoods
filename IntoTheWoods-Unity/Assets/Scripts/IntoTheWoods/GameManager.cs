@@ -22,14 +22,11 @@ namespace IntoTheWoods {
         private List<Screen> _screens;
         private int _currentScreen;
 
-        private PlayerController _playerController;
         private Walker _playerWalker;
 
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
         [SerializeField] private UIDocument UI;
-        [SerializeField] private Animator gretelAnimator;
-        [SerializeField] private Animator haenselAnimator;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -49,7 +46,7 @@ namespace IntoTheWoods {
             Assert.IsTrue(_screens.Count > 0);
 
             Assert.IsNotNull(primaryCharacter);
-            _playerController = primaryCharacter.AddComponent<PlayerController>();
+            primaryCharacter.AddComponent<PlayerController>();
             _playerWalker = primaryCharacter.GetComponent<Walker>();
 
             Assert.IsNotNull(secondaryCharacter);
@@ -65,11 +62,11 @@ namespace IntoTheWoods {
         }
 
         private void OnEnable() {
-            _playerWalker.WillMove += PlayerHasMoved;
+            _playerWalker.WillMove += OnPlayerWillMove;
         }
 
         private void OnDisable() {
-            _playerWalker.WillMove -= PlayerHasMoved;
+            _playerWalker.WillMove -= OnPlayerWillMove;
         }
 
         /// <summary>
@@ -78,9 +75,10 @@ namespace IntoTheWoods {
         /// <param name="sender"></param>
         /// <param name="walkingDirection"></param>
         /// <returns>true if movement was done, false if movement was not allowed because it was at a map edge</returns>
-        private bool PlayerHasMoved(Walker sender, Vector2 walkingDirection) {
-            // possible optimization: cache screen position 
+        private bool OnPlayerWillMove(Walker sender, Vector2 walkingDirection) {
+            // possible optimization: cache screen position
             if (walkingDirection.x > 0 && sender.transform.position.x > _screens[_currentScreen].transform.position.x + CrossScreenThreshold) {
+                // going right close to the edge
                 if (_currentScreen < _screens.Count - 1) {
                     // scroll right
                     Vector3 pos = _mainCamera.transform.position;
@@ -94,6 +92,7 @@ namespace IntoTheWoods {
                 }
             }
             else if (walkingDirection.x < 0 && sender.transform.position.x < _screens[_currentScreen].transform.position.x - CrossScreenThreshold) {
+                // going left close to the edge
                 if (_currentScreen > 0) {
                     // scroll left
                     Vector3 pos = _mainCamera.transform.position;
