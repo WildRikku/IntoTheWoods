@@ -70,15 +70,14 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnChangeLane(InputAction.CallbackContext context) {
-            // TODO: replace animator check with generic character is busy check
-            if (!_walker.IsBusy() && !_character.IsBusy() && _walker.CanTransfer() && context.started) {
+            if (!_walker.IsBusy() && !_character.IsBusy() && _walker.CanTransfer && context.started) {
                 // grab input
                 Vector2 inputVector = DigitizeMovement(context.ReadValue<Vector2>());
                 if (inputVector.y == 0) {
                     return;
                 }
 
-                _walker.ActivateTransfer(inputVector);
+                _walker.ActivateTransfer(inputVector, true);
             }
         }
 
