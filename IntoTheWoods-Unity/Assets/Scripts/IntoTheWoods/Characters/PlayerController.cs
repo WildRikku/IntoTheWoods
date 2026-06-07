@@ -77,7 +77,7 @@ namespace IntoTheWoods.Characters {
                     return;
                 }
 
-                _walker.ActivateTransfer(inputVector);
+                _walker.ActivateTransfer(inputVector, true);
             }
         }
 
