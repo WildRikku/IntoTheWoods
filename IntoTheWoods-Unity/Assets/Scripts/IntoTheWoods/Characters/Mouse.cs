@@ -53,6 +53,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void Call(Vector2 position, Action afterEating) {
+            // TODO: if already eating, delay until done eating
             _target = position;
             Vector3 scale = transform.localScale;
             if (position.x < transform.position.x) {
