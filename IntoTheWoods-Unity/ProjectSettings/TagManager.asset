@@ -41,6 +41,48 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: SkyAndFloor
+    uniqueID: 2091645325
+    locked: 0
+  - name: Background
+    uniqueID: 3113580561
+    locked: 0
+  - name: PathBack
+    uniqueID: 2405963463
+    locked: 0
+  - name: PathFront
+    uniqueID: 413596857
+    locked: 0
+  - name: BackgroundTrees
+    uniqueID: 3532953239
+    locked: 0
+  - name: BackgroundTreesShadows
+    uniqueID: 36262273
+    locked: 0
+  - name: FollowerBack
+    uniqueID: 4175481485
+    locked: 0
+  - name: PlayerBack
+    uniqueID: 1035248417
+    locked: 0
+  - name: MidGroundTreesAndBushes
+    uniqueID: 3001531931
+    locked: 0
+  - name: MidGroundTreesAndBushesShadows
+    uniqueID: 1325915393
+    locked: 0
+  - name: FollowerFront
+    uniqueID: 527743675
+    locked: 0
+  - name: PlayerFront
+    uniqueID: 1557814033
+    locked: 0
+  - name: ForegroundTreesAndBushes
+    uniqueID: 2459190495
+    locked: 0
+  - name: UI
+    uniqueID: 1805211089
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
