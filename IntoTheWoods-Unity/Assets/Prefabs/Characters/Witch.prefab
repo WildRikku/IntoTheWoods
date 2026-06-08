@@ -5063,6 +5063,7 @@ GameObject:
   - component: {fileID: 1868794630877118982}
   - component: {fileID: 3242082527861842630}
   - component: {fileID: 4759024244454782829}
+  - component: {fileID: 9033886655979276177}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Untagged
@@ -5175,6 +5176,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 10.119404, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9033886655979276177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413806030617109210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85950938d0ef46989009a0bccc0310ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Witch
+  myWalker: {fileID: 444470622589607088}
 --- !u!1 &4222035068346884182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,7 +5198,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2640962027047503204}
-  - component: {fileID: 138553779976930600}
   - component: {fileID: 444470622589607088}
   m_Layer: 0
   m_Name: Witch
@@ -5209,18 +5222,6 @@ Transform:
   - {fileID: 2370759704749159458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &138553779976930600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4222035068346884182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85950938d0ef46989009a0bccc0310ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Witch
 --- !u!114 &444470622589607088
 MonoBehaviour:
   m_ObjectHideFlags: 0

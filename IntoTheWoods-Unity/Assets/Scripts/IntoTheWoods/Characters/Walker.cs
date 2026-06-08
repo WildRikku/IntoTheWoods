@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 using UnityEngine.Rendering;
 
 namespace IntoTheWoods.Characters {
-    public delegate void MoveEventHandler(Vector2 moveVector, bool ignoreDistance = false, bool inTransferZone = false);
+    public delegate void MoveEventHandler(Vector2 newPosition, bool ignoreDistance = false, bool inTransferZone = false);
 
     public delegate void TransferEventHandler(Vector2 moveVector);
 
@@ -135,16 +135,23 @@ namespace IntoTheWoods.Characters {
             _inTransferZones.Remove(obj.GetInstanceID());
         }
 
-        public void ActivateWalking(Vector2 moveVector) {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="moveVector">digitized movement direction</param>
+        /// <param name="doNotFlip">Hack for witch, which is oriented the other way</param>
+        public void ActivateWalking(Vector2 moveVector, bool doNotFlip = false) {
             IsWalking = true;
             _walkingDirection = moveVector;
             _animator.SetBool(Walking, true);
 
             // face the right direction
-            Vector3 scale = transform.localScale;
-            if (Math.Sign(scale.x) != Math.Sign(moveVector.x)) {
-                scale.x *= -1;
-                transform.localScale = scale;
+            if (!doNotFlip) {
+                Vector3 scale = transform.localScale;
+                if (Math.Sign(scale.x) != Math.Sign(moveVector.x)) {
+                    scale.x *= -1;
+                    transform.localScale = scale;
+                }
             }
         }
 

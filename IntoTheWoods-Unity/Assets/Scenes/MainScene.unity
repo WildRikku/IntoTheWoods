@@ -606,7 +606,7 @@ Transform:
   m_GameObject: {fileID: 170961706}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.392, y: -1.373, z: 0}
+  m_LocalPosition: {x: 81, y: -1.373, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
-  speed: 5
+  speed: 1.9
 --- !u!1 &191133544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1463,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 78.21, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2229,6 +2229,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6995599779362378837, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2042104738}
+    - targetCorrespondingSourceObject: {fileID: 6995599779362378837, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 866184336}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
 --- !u!4 &739391925 stripped
@@ -2382,6 +2385,76 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1001 &866184335
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 739391925}
+    m_Modifications:
+    - target: {fileID: 141246161466232801, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370759704749159458, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222035068346884182, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: m_Name
+      value: Witch
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+--- !u!4 &866184336 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+  m_PrefabInstance: {fileID: 866184335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &871158384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4053,6 +4126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d60a196f726ae126a88348c8cd28e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
+  _currentScreen: 14
   primaryCharacter: {fileID: 170961711}
   secondaryCharacter: {fileID: 296062540}
   UI: {fileID: 60425744}
