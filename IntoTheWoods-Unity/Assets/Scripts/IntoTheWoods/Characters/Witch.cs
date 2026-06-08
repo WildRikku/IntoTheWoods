@@ -6,6 +6,8 @@ using UnityEngine.Assertions;
 
 namespace IntoTheWoods.Characters {
     public class Witch : MonoBehaviour {
+        private static readonly int Magic = Animator.StringToHash("magic");
+
         private readonly Dictionary<int, Walker> _detectedWalkers = new();
         private bool Detected => _detectedWalkers.Count > 0;
         [SerializeField] private Walker myWalker;
