@@ -44,8 +44,14 @@ TagManager:
   - name: SkyAndFloor
     uniqueID: 2091645325
     locked: 0
-  - name: Background
+  - name: NoShadowBackgroundBushBehind
     uniqueID: 3113580561
+    locked: 0
+  - name: NoShadowBackgroundTrees
+    uniqueID: 3368595435
+    locked: 0
+  - name: NoShadowBackgroundBushFront
+    uniqueID: 945065119
     locked: 0
   - name: PathBack
     uniqueID: 2405963463
