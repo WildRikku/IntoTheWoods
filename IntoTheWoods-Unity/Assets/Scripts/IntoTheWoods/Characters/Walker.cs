@@ -160,10 +160,10 @@ namespace IntoTheWoods.Characters {
             BackLane = !BackLane;
             //Change the order of the layer
             if (BackLane) {
-                _sortingGroup.sortingOrder = isPlayer ? 2 : 1;
+                _sortingGroup.sortingLayerName = isPlayer ? "PlayerBack" : "FollowerBack";
             }
             else {
-                _sortingGroup.sortingOrder = isPlayer ? 12 : 11;
+                _sortingGroup.sortingLayerName = isPlayer ? "PlayerFront" : "FollowerFront";
             }
 
             ActivateWalking(_currentTransferTarget - (Vector2)transform.position);
