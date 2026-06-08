@@ -3,6 +3,7 @@ using IntoTheWoods.Characters;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 namespace IntoTheWoods {
@@ -44,6 +45,7 @@ namespace IntoTheWoods {
             Assert.IsNotNull(primaryCharacter);
             primaryCharacter.AddComponent<PlayerController>();
             _playerWalker = primaryCharacter.GetComponent<Walker>();
+            primaryCharacter.GetComponentInChildren<SortingGroup>().sortingOrder = 1; // primary player in front of secondary character
 
             Assert.IsNotNull(secondaryCharacter);
             FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();

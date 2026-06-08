@@ -83,11 +83,11 @@ TagManager:
   - name: PlayerFront
     uniqueID: 1557814033
     locked: 0
-  - name: ForegroundTreesAndBushes
-    uniqueID: 2459190495
-    locked: 0
   - name: Shadow
     uniqueID: 1691981027
+    locked: 0
+  - name: ForegroundTreesAndBushes
+    uniqueID: 2459190495
     locked: 0
   - name: UI
     uniqueID: 1805211089

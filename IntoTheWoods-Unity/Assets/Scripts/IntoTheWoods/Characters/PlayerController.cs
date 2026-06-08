@@ -24,7 +24,6 @@ namespace IntoTheWoods.Characters {
             // get components dynamically since PlayerController is instantiated at runtime
             _walker = GetComponent<Walker>();
             _character = GetComponent<Character>();
-            GetComponentInChildren<SortingGroup>().sortingOrder = 12;
         }
 
         public void OnMove(InputAction.CallbackContext context) {
