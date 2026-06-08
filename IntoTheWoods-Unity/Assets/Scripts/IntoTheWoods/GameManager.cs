@@ -17,7 +17,7 @@ namespace IntoTheWoods {
 
         private Camera _mainCamera;
         private List<Screen> _screens;
-        private int _currentScreen;
+        private int _currentScreen = 3; // configure start screen here (0-based)
 
         private Walker _playerWalker;
 
