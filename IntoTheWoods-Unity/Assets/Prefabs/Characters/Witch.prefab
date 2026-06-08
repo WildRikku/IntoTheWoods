@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141246161466232801}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.32837275, y: -0.6262357, z: 0.32837293, w: 0.6262359}
-  m_LocalPosition: {x: -0.48332214, y: 0.08642301, z: 0}
-  m_LocalScale: {x: 0.121750124, y: 0.11334317, z: 0.037381843}
+  m_LocalRotation: {x: 0.38304704, y: -0.59436923, z: 0.38304725, w: 0.5943694}
+  m_LocalPosition: {x: -0.5000028, y: -0.08600049, z: 0}
+  m_LocalScale: {x: 0.121750124, y: 0.11334317, z: 0.037381846}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2370759704749159458}
+  m_Father: {fileID: 396195498184031445}
   m_LocalEulerAnglesHint: {x: 65.6, y: -90, z: 0}
 --- !u!198 &8170221191925073704
 ParticleSystem:
@@ -5090,7 +5090,6 @@ Transform:
   - {fileID: 3350214175122740129}
   - {fileID: 2640406819221703970}
   - {fileID: 396195498184031445}
-  - {fileID: 80271769974157639}
   - {fileID: 7064413465904700488}
   - {fileID: 8947073747190552163}
   m_Father: {fileID: 2640962027047503204}
@@ -5189,6 +5188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Witch
   myWalker: {fileID: 444470622589607088}
+  animator: {fileID: 0}
 --- !u!1 &4222035068346884182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5477,7 +5477,8 @@ Transform:
   m_LocalPosition: {x: 0.024000168, y: 0.08200002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 80271769974157639}
   m_Father: {fileID: 2370759704749159458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.259}
 --- !u!212 &2591647136243830360

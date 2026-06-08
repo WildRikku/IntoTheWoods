@@ -181,6 +181,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1160261970079544701, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
   m_PrefabInstance: {fileID: 4284145}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &15568572 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3242082527861842630, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+  m_PrefabInstance: {fileID: 866184335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &56236856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2407,7 +2412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.17
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2445,6 +2450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Witch
       objectReference: {fileID: 0}
+    - target: {fileID: 9033886655979276177, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 15568572}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

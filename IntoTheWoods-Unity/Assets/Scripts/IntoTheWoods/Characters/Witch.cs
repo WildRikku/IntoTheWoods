@@ -10,6 +10,8 @@ namespace IntoTheWoods.Characters {
         private bool Detected => _detectedWalkers.Count > 0;
         [SerializeField] private Walker myWalker;
 
+        [SerializeField] private Animator animator;
+
         private void Awake() {
             Assert.IsNotNull(myWalker);
         }
@@ -54,8 +56,8 @@ namespace IntoTheWoods.Characters {
 
         private void MyWalkerOnMoved(Vector2 newPosition, bool ignoreDistance, bool inTransferZone) {
             if (Math.Abs(newPosition.x - _detectedWalkers.Values.First().transform.position.x) < 1.1f) {
-                Debug.Log("GOTCHA");
                 myWalker.StopWalking();
+                animator.SetBool(Magic, true);
             }
         }
     }
