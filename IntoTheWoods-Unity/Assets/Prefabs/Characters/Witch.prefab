@@ -224,8 +224,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.6462872, g: 0.9807843, b: 0.9519884, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minColor: {r: 0.6392157, g: 0, b: 0.10980392, a: 1}
+      maxColor: {r: 0.85882354, g: 0.7254902, b: 0.5058824, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1489,7 +1489,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - sprite: {fileID: 4404202361452085733, guid: 6a10ae70dd7eb686986d93b298e51eec, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -5100,8 +5100,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4222035068346884182}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1557814033
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
