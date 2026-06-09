@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
-  speed: 4
+  speed: 1.7
 --- !u!1 &191133544
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
@@ -1752,7 +1752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
@@ -3526,7 +3526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
@@ -5287,7 +5287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -5
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
@@ -5630,6 +5630,7 @@ MonoBehaviour:
   - {fileID: -6561814019891611672, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
   - {fileID: 5475166737216776937, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
   - {fileID: -2693916250688638604, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  hasNet: 0
 --- !u!1001 &1728017834
 PrefabInstance:
   m_ObjectHideFlags: 0
