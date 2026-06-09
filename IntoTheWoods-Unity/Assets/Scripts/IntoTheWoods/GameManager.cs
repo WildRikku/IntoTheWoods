@@ -47,6 +47,7 @@ namespace IntoTheWoods {
             primaryCharacter.AddComponent<PlayerController>();
             _playerWalker = primaryCharacter.GetComponent<Walker>();
             primaryCharacter.GetComponentInChildren<SortingGroup>().sortingOrder = 1; // primary player in front of secondary character
+            primaryCharacter.AddComponent<AudioListener>();
 
             Assert.IsNotNull(secondaryCharacter);
             FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();
