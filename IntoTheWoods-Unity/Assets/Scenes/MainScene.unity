@@ -1818,7 +1818,8 @@ Transform:
   m_LocalPosition: {x: 78.21, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 247777644}]
+  m_Children:
+  - {fileID: 247777644}
   m_Father: {fileID: 346312011}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &522946120
@@ -4735,6 +4736,7 @@ MonoBehaviour:
   - {fileID: -4375611562936488269, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
   - {fileID: 7177532305288283000, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
   - {fileID: 7928358586247172495, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: -2580669190715436351, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
   stoneSprites:
   - {fileID: 4622151875478157621, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
   - {fileID: -6561814019891611672, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
