@@ -46,7 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669668245580603715}
   - component: {fileID: 1832323737732867412}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 2466828280808078170}
   - component: {fileID: 636356683540216357}
   - component: {fileID: 8391297208886941015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Falcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6620370093478454868}
   - component: {fileID: 6394456840379857586}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Falcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,6 +428,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58548ff25f4c4b18931e2d870c82fc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Falcon
+  isActive: 1
+  currentMouse: {fileID: 0}
+  debug: 0
+  speed: 3
+  _walkingDirection: {x: -1, y: 0}
+  animator: {fileID: 8391297208886941015}
 --- !u!1 &3271063630618416914
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7298505403046717603}
   - component: {fileID: 6017237477863311853}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5837078638843324854}
   - component: {fileID: 7489791378713872286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187455983173838595}
   - component: {fileID: 271440701389502764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WingUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -894,7 +900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4131446617557185908}
   - component: {fileID: 6674793804897210249}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3033279273578954011}
   - component: {fileID: 5520420124555754046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WingDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
