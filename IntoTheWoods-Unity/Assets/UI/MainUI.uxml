@@ -2,7 +2,7 @@
     <ui:GroupBox name="Border" style="flex-grow: 1; align-items: center; justify-content: center; margin-left: 0; margin-bottom: 3px; margin-right: 0; margin-top: 0; padding-left: 0; padding-top: 0; padding-bottom: 0;">
         <ui:GroupBox name="StretchBox" style="align-content: auto; flex-grow: 1; justify-content: space-between; aspect-ratio: 1.777778; margin-bottom: 0; margin-left: 0; margin-right: 3px; margin-top: 0; padding-left: 0; padding-top: 0; padding-bottom: 0; -unity-font-style: bold;">
             <ui:GroupBox name="BreadBox" style="flex-direction: row; margin-left: 0; padding-left: 0; padding-bottom: 0; margin-bottom: 0; margin-top: 0; padding-top: 5px; height: 45px; width: 107px; justify-content: space-between; align-content: stretch;">
-                <ui:Image source="project://database/Assets/Sprites/ui.png?fileID=5707218116961789024&amp;guid=e93682a38f2ac12d1aa87d1b2c77221e&amp;type=3#ui_0" style="left: 0; top: 0; position: absolute; scale: 1.2 1; transform-origin: left top;"/>
+                <ui:Image source="project://database/Assets/Sprites/ui.png?fileID=5707218116961789024&amp;guid=e93682a38f2ac12d1aa87d1b2c77221e&amp;type=3#ui_0" style="left: 0; top: 0; position: absolute; scale: 1.5 1; transform-origin: left top;"/>
                 <ui:Label text="bread" data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" name="BreadCount" style="color: rgb(0, 0, 0);">
                     <Bindings>
                         <ui:DataBinding property="text" data-source-path="BreadCount" binding-mode="ToTarget"/>
@@ -21,6 +21,11 @@
                 <ui:Image data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" name="Image" style="scale: 2 2;">
                     <Bindings>
                         <ui:DataBinding property="source" data-source-path="stoneSprites[0]" binding-mode="ToTarget"/>
+                    </Bindings>
+                </ui:Image>
+                <ui:Image data-source-type="IntoTheWoods.Inventory, Assembly-CSharp" name="Image" source="project://database/Assets/Sprites/collectible_net.png?fileID=8182877775693398744&amp;guid=6f11d44c974ac763a8eed6e945cccbe5&amp;type=3#Hexenhaus_layer5_net_0" style="scale: 1.5 1.5; display: flex; visibility: hidden; margin-left: 10px; padding-left: 5px;">
+                    <Bindings>
+                        <ui:DataBinding property="style.visibility" binding-mode="ToTarget" data-source-path="HasNet"/>
                     </Bindings>
                 </ui:Image>
             </ui:GroupBox>

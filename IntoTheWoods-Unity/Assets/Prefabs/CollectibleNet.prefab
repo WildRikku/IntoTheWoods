@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 382607425424776613}
   - component: {fileID: 8499215351382932782}
   - component: {fileID: 697194996624113078}
-  - component: {fileID: 6726867064516410493}
+  - component: {fileID: -6846385979741797707}
   m_Layer: 0
   m_Name: CollectibleNet
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.91713667}
   m_EdgeRadius: 0
---- !u!114 &6726867064516410493
+--- !u!114 &-6846385979741797707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,6 +148,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3876480580190712591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100533745b465a8bb98570211bba7b28, type: 3}
+  m_Script: {fileID: 11500000, guid: bbe6828cbad14c558ea6aefb5f814a5b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collectible
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.NetCollectible

@@ -17,6 +17,8 @@ namespace IntoTheWoods {
         // ReSharper disable once MemberCanBePrivate.Global - used in UI
         public int BreadCount { get; private set; } = 4;
 
+        public bool hasNet;
+
         private void Awake() {
             _stones = new();
         }
@@ -30,6 +32,7 @@ namespace IntoTheWoods {
                 }
             }
             else if (collectible is NetCollectible) {
+                hasNet = true;
             }
         }
 
@@ -48,5 +51,8 @@ namespace IntoTheWoods {
 
         [CreateProperty]
         public StyleEnum<Visibility> HasStones => StoneCount > 0 ? Visibility.Visible : Visibility.Hidden;
+        
+        [CreateProperty]
+        public StyleEnum<Visibility> HasNet => hasNet ? Visibility.Visible : Visibility.Hidden;
     }
 }

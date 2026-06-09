@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1221297858163201350}
   - component: {fileID: 6288326942338247602}
   - component: {fileID: 3538108177024239695}
-  - component: {fileID: -3933872213908108933}
+  - component: {fileID: 3375458640664555516}
   m_Layer: 9
   m_Name: collectible_stone
   m_TagString: Collectible
@@ -139,7 +139,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.62157154}
   m_EdgeRadius: 0
---- !u!114 &-3933872213908108933
+--- !u!114 &3375458640664555516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,6 +148,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6700362936456837498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100533745b465a8bb98570211bba7b28, type: 3}
+  m_Script: {fileID: 11500000, guid: c2cd91bda6e244fcbf715474d8d57361, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collectible
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.StoneCollectible
