@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Vector2 = UnityEngine.Vector2;
 
 namespace IntoTheWoods.Characters {
