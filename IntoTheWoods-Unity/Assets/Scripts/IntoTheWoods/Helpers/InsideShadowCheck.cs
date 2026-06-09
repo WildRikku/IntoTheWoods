@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace IntoTheWoods.Helpers {
@@ -7,7 +8,7 @@ namespace IntoTheWoods.Helpers {
     /// if collider is inside <see cref="InsideShadow"/> but not in this, it's truly inside
     /// </summary>
     public class InsideShadowCheck : MonoBehaviour {
-        private Dictionary<string, bool> captured = new();
+        [ShowInInspector] private Dictionary<string, bool> captured = new();
         [SerializeField] private InsideShadow partner;
 
         private bool _success;

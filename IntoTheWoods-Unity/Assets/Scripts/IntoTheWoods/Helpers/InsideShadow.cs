@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace IntoTheWoods.Helpers {
     public class InsideShadow : MonoBehaviour {
-        public Dictionary<string, bool> captured = new();
+        [ShowInInspector] public Dictionary<string, bool> captured = new();
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (!other.CompareTag("Player")) {

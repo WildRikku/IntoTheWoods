@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
@@ -25,9 +26,9 @@ namespace IntoTheWoods.Characters {
         private SortingGroup _sortingGroup;
 
         // states
-        public bool IsWalking { get; private set; }
-        private Vector2 _walkingDirection;
-        private readonly Dictionary<int, Collider2D> _inTransferZones = new();
+        [ShowInInspector] public bool IsWalking { get; private set; }
+        [ShowInInspector] private Vector2 _walkingDirection;
+        [ShowInInspector] private readonly Dictionary<int, Collider2D> _inTransferZones = new();
 
         public bool CanTransfer => _inTransferZones.Count > 0;
 

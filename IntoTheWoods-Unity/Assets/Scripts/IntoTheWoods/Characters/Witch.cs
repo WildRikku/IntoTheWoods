@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -8,7 +9,7 @@ namespace IntoTheWoods.Characters {
     public class Witch : MonoBehaviour {
         private static readonly int Magic = Animator.StringToHash("magic");
 
-        private readonly Dictionary<int, Walker> _detectedWalkers = new();
+        [ShowInInspector] private readonly Dictionary<int, Walker> _detectedWalkers = new();
         private bool Detected => _detectedWalkers.Count > 0;
         [SerializeField] private Walker myWalker;
 
