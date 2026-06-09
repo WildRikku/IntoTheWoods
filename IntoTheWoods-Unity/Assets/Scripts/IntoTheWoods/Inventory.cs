@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DefaultNamespace;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -21,10 +22,14 @@ namespace IntoTheWoods {
         }
 
         public void AddCollectible(Collectible collectible) {
-            _stones.Add(collectible);
-            if (_stones.Count > 1) {
-                // make next one come to top for UI - from 2nd one, first one is show at all
-                stoneSprites.RemoveAt(0);
+            if (collectible is StoneCollectible) {
+                _stones.Add(collectible);
+                if (_stones.Count > 1) {
+                    // make next one come to top for UI - from 2nd one, first one is show at all
+                    stoneSprites.RemoveAt(0);
+                }
+            }
+            else if (collectible is NetCollectible) {
             }
         }
 
