@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 1452086508758565419}
   - component: {fileID: 6815667405419862542}
   - component: {fileID: 1656644470814995924}
+  - component: {fileID: 1810518259468543977}
   m_Layer: 6
   m_Name: Gretel
   m_TagString: Player
@@ -290,6 +291,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d4c4eeb34e4bd9ab22b710898f1d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Pickup
+--- !u!114 &1810518259468543977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305309544855369176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26229f2ee07c05054b807b90f4132681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StepAudio
 --- !u!1 &3223605391526796309
 GameObject:
   m_ObjectHideFlags: 0
