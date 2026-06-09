@@ -1,3 +1,5 @@
+using System;
+using IntoTheWoods.Helpers;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
@@ -9,6 +11,8 @@ public class Screen : MonoBehaviour {
         IllegalRight,
         None
     }
+
+    public event Action<bool> InsideShadowChanged;
 
     /// <summary>
     /// Value chosen based on what looks good and also so that it's a little asymmetrical to avoid jumping back and forth between screens
@@ -28,6 +32,12 @@ public class Screen : MonoBehaviour {
     public float backRightThreshold;
     [Tooltip("y above this value will be considered back lane")]
     public float heightThreshold = -0.56f;
+
+    private void Awake() {
+        foreach (InsideShadowCheck check in GetComponentsInChildren<InsideShadowCheck>()) {
+            check.InsideShadowChanged += OnInsideShadowChanged;
+        }
+    }
 
     /// <summary>
     /// Check if 
@@ -71,5 +81,9 @@ public class Screen : MonoBehaviour {
         }
 
         return ScreenEdgeResult.None;
+    }
+
+    protected virtual void OnInsideShadowChanged(bool obj) {
+        InsideShadowChanged?.Invoke(obj);
     }
 }

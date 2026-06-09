@@ -5548,6 +5548,7 @@ MonoBehaviour:
   primaryCharacter: {fileID: 170961711}
   secondaryCharacter: {fileID: 296062540}
   UI: {fileID: 60425744}
+  characterLight: {fileID: 446973692}
 --- !u!114 &1727744963
 MonoBehaviour:
   m_ObjectHideFlags: 0

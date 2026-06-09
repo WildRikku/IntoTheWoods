@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 namespace IntoTheWoods {
@@ -25,6 +26,7 @@ namespace IntoTheWoods {
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
         [SerializeField] private UIDocument UI;
+        [SerializeField] private Light2D characterLight;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -41,6 +43,10 @@ namespace IntoTheWoods {
 
             // Get all screens
             _screens = new(GetComponentsInChildren<Screen>());
+            foreach (Screen screen in _screens) {
+                screen.InsideShadowChanged += ScreenOnInsideShadowChanged;
+            }
+
             Assert.IsTrue(_screens.Count > 0);
 
             Assert.IsNotNull(primaryCharacter);
@@ -67,6 +73,10 @@ namespace IntoTheWoods {
 
         private void OnDisable() {
             _playerWalker.WillMove -= OnPlayerWillMove;
+        }
+
+        private void ScreenOnInsideShadowChanged(bool obj) {
+            characterLight.intensity = obj ? 0.15f : 0.3f;
         }
 
         /// <summary>

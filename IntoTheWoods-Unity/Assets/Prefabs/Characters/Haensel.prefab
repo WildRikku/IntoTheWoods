@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 3484340038798308469}
   m_Layer: 6
   m_Name: TransferContactCollider
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 1555132152662592793}
   m_Layer: 0
   m_Name: Spawnpoint
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
