@@ -191,7 +191,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6672108057853162229}
-  - component: {fileID: 4222153748174353831}
   - component: {fileID: 1568572357937631180}
   - component: {fileID: 4376724322402443844}
   m_Layer: 14
@@ -217,19 +216,6 @@ Transform:
   - {fileID: 2692131845303836881}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &4222153748174353831
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2650655458671705491}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
-  m_Sort3DAs2D: 0
 --- !u!114 &1568572357937631180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +233,7 @@ MonoBehaviour:
   head: {fileID: 4795009083524240805}
   animator: {fileID: 2423156346406769569}
   animatorSignal: {fileID: 7708882104923035054}
+  actualMouse: {fileID: 8097784045237138724}
 --- !u!61 &4376724322402443844
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -568,13 +555,14 @@ GameObject:
   - component: {fileID: 2692131845303836881}
   - component: {fileID: 2423156346406769569}
   - component: {fileID: 7708882104923035054}
+  - component: {fileID: 1374817091186254829}
   m_Layer: 14
   m_Name: Mouse
   m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2692131845303836881
 Transform:
   m_ObjectHideFlags: 0
@@ -629,6 +617,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d4c4eeb34e4bd9ab22b710898f1d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.AnimatorSignal
+--- !u!210 &1374817091186254829
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097784045237138724}
+  m_Enabled: 1
+  m_SortingLayerID: 527743675
+  m_SortingLayer: -5
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &8380676182493229682
 GameObject:
   m_ObjectHideFlags: 0

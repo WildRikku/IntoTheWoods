@@ -14,6 +14,7 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Transform head;
         [SerializeField] private Animator animator;
         [SerializeField] private AnimatorSignal animatorSignal;
+        [SerializeField] private GameObject actualMouse;
         private Vector2 _target;
         private Vector2 _direction;
         private bool _moving;
@@ -53,6 +54,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void Call(Vector2 position, Action afterEating) {
+            actualMouse.SetActive(true);
             // TODO: if already eating, delay until done eating
             _target = position;
             Vector3 scale = transform.localScale;
