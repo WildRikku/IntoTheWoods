@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 1254857725700223511}
   - component: {fileID: 7017557263990355823}
   - component: {fileID: 197550015497740456}
+  - component: {fileID: 498370061808138132}
   m_Layer: 0
   m_Name: Haensel
   m_TagString: Player
@@ -488,6 +489,18 @@ MonoBehaviour:
   breadPrefabBackLane: {fileID: 0}
   parent: {fileID: 0}
   walker: {fileID: 0}
+--- !u!114 &498370061808138132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2163598600656941176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26229f2ee07c05054b807b90f4132681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StepAudio
 --- !u!1 &2451404033819794763
 GameObject:
   m_ObjectHideFlags: 0
