@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2118419845395840836}
   - component: {fileID: 5778521926280958441}
   - component: {fileID: 7983605938868614118}
+  - component: {fileID: 2326652147841923184}
   m_Layer: 0
   m_Name: treetrunkBackPath
   m_TagString: Untagged
@@ -122,11 +123,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.7555385, y: -0.3070382}
+  m_Offset: {x: 2.7294521, y: 0.2358915}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -136,5 +137,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6728089, y: 1.2223632}
+  m_Size: {x: 1.3594074, y: 0.30077872}
   m_EdgeRadius: 0
+--- !u!114 &2326652147841923184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4825158713990402839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 567f629a6e9b471e8a96391d8fbd0f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Helpers.DoNotCross

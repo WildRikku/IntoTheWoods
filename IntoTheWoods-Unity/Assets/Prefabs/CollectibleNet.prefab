@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &505942602109302285
+--- !u!1 &3876480580190712591
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1258366110460864159}
-  - component: {fileID: 6845961265459052236}
-  - component: {fileID: 3229872375935435085}
-  - component: {fileID: 2142182103560265186}
+  - component: {fileID: 382607425424776613}
+  - component: {fileID: 8499215351382932782}
+  - component: {fileID: 697194996624113078}
+  - component: {fileID: 6726867064516410493}
   m_Layer: 0
-  m_Name: treetrunkFrontPath
+  m_Name: CollectibleNet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1258366110460864159
+--- !u!4 &382607425424776613
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505942602109302285}
+  m_GameObject: {fileID: 3876480580190712591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 61.859467, y: 6.2117467, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6845961265459052236
+--- !u!212 &8499215351382932782
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505942602109302285}
+  m_GameObject: {fileID: 3876480580190712591}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -81,25 +81,25 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 50fbf1daa6b86e99ab64f43169b6fe85, type: 3}
+  m_Sprite: {fileID: 8182877775693398744, guid: 6f11d44c974ac763a8eed6e945cccbe5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.111111, y: 4}
+  m_Size: {x: 0.9870371, y: 1.0814815}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &3229872375935435085
+--- !u!61 &697194996624113078
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505942602109302285}
+  m_GameObject: {fileID: 3876480580190712591}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -127,27 +127,27 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.012278, y: -1.3727099}
+  m_Offset: {x: 0, y: -0.11902642}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.111111, y: 4}
-    newSize: {x: 7.111111, y: 4}
+    oldSize: {x: 0.533, y: 0.584}
+    newSize: {x: 0.9870371, y: 1.0814815}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8055267, y: 1.2545803}
+  m_Size: {x: 0.8, y: 0.91713667}
   m_EdgeRadius: 0
---- !u!114 &2142182103560265186
+--- !u!114 &6726867064516410493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505942602109302285}
+  m_GameObject: {fileID: 3876480580190712591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 567f629a6e9b471e8a96391d8fbd0f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 100533745b465a8bb98570211bba7b28, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Helpers.DoNotCross
+  m_EditorClassIdentifier: Assembly-CSharp::Collectible
