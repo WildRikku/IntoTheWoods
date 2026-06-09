@@ -6,24 +6,25 @@ namespace IntoTheWoods.Characters {
         private static readonly int Attacking = Animator.StringToHash("attacking");
         private static readonly int Captured = Animator.StringToHash("captured");
         private const float DefaultHeight = 1.495f;
+        [Header("Patrouille")]
+        public float leftEnd;
+        public float rightEnd;
 
         public bool isActive = true;
         public Mouse currentMouse;
-        public bool debug = true;
         public float speed = 3f;
         public Vector2 _walkingDirection = new(-1, 0);
         [SerializeField] private Animator animator;
-        public bool flyingToTarget = true;
+        public bool flyingToTarget;
         public Vector3 currentTarget;
         public bool targetIsMouse = true;
 
         private void Awake() {
-            currentTarget = currentMouse.transform.position;
         }
 
         private void Update() {
             Vector3 posDelta;
-            if (debug && flyingToTarget) {
+            if (flyingToTarget) {
                 Vector3 distance = currentTarget - transform.position;
                 if (Math.Abs(distance.magnitude) < 0.1f) {
                     // reached target
@@ -43,20 +44,57 @@ namespace IntoTheWoods.Characters {
                 }
             }
             else {
-                // normal flying
+                // Patrouille
+                if (transform.position.x < leftEnd) {
+                    _walkingDirection = new(1, 0);
+                    Vector3 scale = transform.localScale;
+                    scale.x *= -1;
+                    transform.localScale = scale;
+                }
+                else if (transform.position.x > rightEnd) {
+                    _walkingDirection = new(-1, 0);
+                    Vector3 scale = transform.localScale;
+                    scale.x *= -1;
+                    transform.localScale = scale;
+                }
+
                 posDelta = new(speed * Time.deltaTime * _walkingDirection.x, 0);
             }
 
             transform.position += posDelta;
         }
 
+        /// <summary>
+        /// Find things
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Mouse")) {
-                Debug.Log("MAMPF");
-                animator.SetBool(Attacking, false);
-                animator.SetBool(Captured, true);
-                currentTarget = new(transform.position.x - 5f, DefaultHeight, 0);
-            }
+            // if (other.CompareTag("Mouse")) {
+            //     Mouse mouse = other.GetComponent<Mouse>();
+            //     if (mouse == null) {
+            //         mouse = other.GetComponentInParent<Mouse>();
+            //     }
+            //
+            //     if (mouse != null && mouse.mouseActive && !mouse._moving) {
+            //         Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
+            //         // animator.SetBool(Attacking, false);
+            //         // animator.SetBool(Captured, true);
+            //         // currentTarget = new(transform.position.x - 5f, DefaultHeight, 0);
+            //         currentTarget = mouse.gameObject.transform.position;
+            //         flyingToTarget = true;
+            //     }
+            // }
+            // else if (other.CompareTag("Player")) {
+            //     Character character = other.GetComponent<Character>();
+            //     if (character == null) {
+            //         character = other.transform.parent.parent.GetComponent<Character>();
+            //     }
+            //     Debug.Log("Found " + character.gameObject.name);
+            // }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other) {
+            // Debug.Log(other.gameObject.tag);
         }
     }
 }
