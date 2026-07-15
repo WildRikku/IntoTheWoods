@@ -577,10 +577,6 @@ PrefabInstance:
       value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: backRightThreshold
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
       value: 0
       objectReference: {fileID: 0}
@@ -5601,7 +5597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d60a196f726ae126a88348c8cd28e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
-  _currentScreen: 3
   primaryCharacter: {fileID: 170961711}
   secondaryCharacter: {fileID: 296062540}
   UI: {fileID: 60425744}

@@ -1,7 +1,6 @@
 using System;
 using IntoTheWoods.Helpers;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class Screen : MonoBehaviour {
     public enum ScreenEdgeResult {
@@ -85,5 +84,9 @@ public class Screen : MonoBehaviour {
 
     protected virtual void OnInsideShadowChanged(bool obj) {
         InsideShadowChanged?.Invoke(obj);
+    }
+
+    public override string ToString() {
+        return gameObject.name;
     }
 }
