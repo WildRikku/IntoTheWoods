@@ -69,32 +69,29 @@ namespace IntoTheWoods.Characters {
         /// </summary>
         /// <param name="other"></param>
         private void OnTriggerEnter2D(Collider2D other) {
-            // if (other.CompareTag("Mouse")) {
-            //     Mouse mouse = other.GetComponent<Mouse>();
-            //     if (mouse == null) {
-            //         mouse = other.GetComponentInParent<Mouse>();
-            //     }
-            //
-            //     if (mouse != null && mouse.mouseActive && !mouse._moving) {
-            //         Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
-            //         // animator.SetBool(Attacking, false);
-            //         // animator.SetBool(Captured, true);
-            //         // currentTarget = new(transform.position.x - 5f, DefaultHeight, 0);
-            //         currentTarget = mouse.gameObject.transform.position;
-            //         flyingToTarget = true;
-            //     }
-            // }
-            // else if (other.CompareTag("Player")) {
-            //     Character character = other.GetComponent<Character>();
-            //     if (character == null) {
-            //         character = other.transform.parent.parent.GetComponent<Character>();
-            //     }
-            //     Debug.Log("Found " + character.gameObject.name);
-            // }
-        }
+            if (other.CompareTag("Mouse")) {
+                Mouse mouse = other.GetComponent<Mouse>();
+                if (mouse == null) {
+                    mouse = other.GetComponentInParent<Mouse>();
+                }
 
-        private void OnCollisionEnter2D(Collision2D other) {
-            // Debug.Log(other.gameObject.tag);
+                if (mouse != null && mouse.mouseActive && !mouse._moving) {
+                    Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
+                    // animator.SetBool(Attacking, false);
+                    // animator.SetBool(Captured, true);
+                    // currentTarget = new(transform.position.x - 5f, DefaultHeight, 0);
+                    currentTarget = mouse.gameObject.transform.position;
+                    flyingToTarget = true;
+                }
+            }
+            else if (other.CompareTag("Player")) {
+                Character character = other.GetComponent<Character>();
+                if (character == null) {
+                    character = other.transform.parent.parent.GetComponent<Character>();
+                }
+
+                Debug.Log("Found " + character.gameObject.name);
+            }
         }
     }
 }
