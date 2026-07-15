@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour {
     public GameObject Haensel;
@@ -9,8 +10,8 @@ public class Buttons : MonoBehaviour {
     public string targetScene;
     public void Play() {
         Debug.Log("Play");
-        Haensel.SetActive(true);
-        Gretel.SetActive(true);
+        Haensel.gameObject.SetActive(true);
+        Gretel.gameObject.SetActive(true);
     }
 
     public void Quit() {
@@ -19,10 +20,12 @@ public class Buttons : MonoBehaviour {
 
     public void HaenselPlayer() {
         targetScene = "MainScene";
+        LoadScene();
     }
 
     public void GretelPlayer() {
         targetScene = "MainScene";
+        LoadScene();
     }
     
     void LoadScene()

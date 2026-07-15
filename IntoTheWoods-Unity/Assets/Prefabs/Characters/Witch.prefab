@@ -1491,7 +1491,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -5102,9 +5102,9 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3413806030617109210}
   m_Enabled: 1
-  m_SortingLayerID: 527743675
+  m_SortingLayerID: 1557814033
   m_SortingLayer: -5
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
 --- !u!95 &3242082527861842630
