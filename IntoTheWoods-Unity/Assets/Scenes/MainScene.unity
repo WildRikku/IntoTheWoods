@@ -3761,7 +3761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackRight
