@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace IntoTheWoods.Characters {
@@ -13,28 +14,25 @@ namespace IntoTheWoods.Characters {
         public bool isActive = true;
         public Mouse currentMouse;
         public float speed = 3f;
-        public Vector2 _walkingDirection = new(-1, 0);
+        [ShowInInspector] private Vector2 _flyingDirection = new(-1, 0);
         [SerializeField] private Animator animator;
-        public bool flyingToTarget;
-        public Vector3 currentTarget;
-        public bool targetIsMouse = true;
-
-        private void Awake() {
-        }
+        [ShowInInspector] private bool _flyingToTarget;
+        [ShowInInspector] private Vector3 _currentTarget;
+        [ShowInInspector] private bool _targetIsMouse = true;
 
         private void Update() {
             Vector3 posDelta;
-            if (flyingToTarget) {
-                Vector3 distance = currentTarget - transform.position;
+            if (_flyingToTarget) {
+                Vector3 distance = _currentTarget - transform.position;
                 if (Math.Abs(distance.magnitude) < 0.1f) {
                     // reached target
-                    flyingToTarget = false;
-                    posDelta = new(speed * Time.deltaTime * _walkingDirection.x, 0);
+                    _flyingToTarget = false;
+                    posDelta = new(speed * Time.deltaTime * _flyingDirection.x, 0); // TODO rise again
                 }
                 else {
                     if (Math.Abs(distance.x) > 5) {
                         // normal flying until close
-                        posDelta = new(speed * Time.deltaTime * _walkingDirection.x, 0);
+                        posDelta = new(speed * Time.deltaTime * _flyingDirection.x, 0);
                     }
                     else {
                         // attack flying
@@ -46,19 +44,19 @@ namespace IntoTheWoods.Characters {
             else {
                 // Patrouille
                 if (transform.position.x < leftEnd) {
-                    _walkingDirection = new(1, 0);
+                    _flyingDirection = new(1, 0);
                     Vector3 scale = transform.localScale;
                     scale.x *= -1;
                     transform.localScale = scale;
                 }
                 else if (transform.position.x > rightEnd) {
-                    _walkingDirection = new(-1, 0);
+                    _flyingDirection = new(-1, 0);
                     Vector3 scale = transform.localScale;
                     scale.x *= -1;
                     transform.localScale = scale;
                 }
 
-                posDelta = new(speed * Time.deltaTime * _walkingDirection.x, 0);
+                posDelta = new(speed * Time.deltaTime * _flyingDirection.x, 0);
             }
 
             transform.position += posDelta;
@@ -80,8 +78,8 @@ namespace IntoTheWoods.Characters {
                     // animator.SetBool(Attacking, false);
                     // animator.SetBool(Captured, true);
                     // currentTarget = new(transform.position.x - 5f, DefaultHeight, 0);
-                    currentTarget = mouse.gameObject.transform.position;
-                    flyingToTarget = true;
+                    _currentTarget = mouse.gameObject.transform.position;
+                    _flyingToTarget = true;
                 }
             }
             else if (other.CompareTag("Player")) {
