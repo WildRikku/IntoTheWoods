@@ -9,7 +9,8 @@ namespace IntoTheWoods.Characters {
     public delegate void MoveEventHandler(Vector2 newPosition, bool ignoreDistance = false, bool inTransferZone = false);
 
     public delegate void TransferEventHandler(Vector2 moveVector);
-
+    
+    
     /// <summary>
     /// Any character that can walk, not necessarily controled by a human.
     /// </summary>
@@ -53,6 +54,9 @@ namespace IntoTheWoods.Characters {
 
         public bool IsTransfering { get; private set; }
 
+        // Step Audio
+        private FootstepController _footstepController;
+        
         // events
         public event PlayerWillMoveEventHandler WillMove;
         public event MoveEventHandler Moved;
@@ -64,6 +68,7 @@ namespace IntoTheWoods.Characters {
             _animator = GetComponentInChildren<Animator>();
             Assert.IsNotNull(_animator);
             _transferDetector = GetComponentInChildren<TransferDetector>();
+            _footstepController = GetComponentInChildren<FootstepController>();
         }
 
         private void OnEnable() {
@@ -145,6 +150,7 @@ namespace IntoTheWoods.Characters {
             IsWalking = true;
             _walkingDirection = moveVector;
             _animator.SetBool(Walking, true);
+            _footstepController.StartWalking();
 
             // face the right direction
             if (!doNotFlip) {
@@ -187,6 +193,7 @@ namespace IntoTheWoods.Characters {
         public void StopWalking() {
             IsWalking = false;
             _animator.SetBool(Walking, false);
+            _footstepController.StopWalking();
         }
 
         public bool IsBusy() {
