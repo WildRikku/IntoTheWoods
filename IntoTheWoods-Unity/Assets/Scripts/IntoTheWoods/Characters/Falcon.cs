@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -41,7 +42,7 @@ namespace IntoTheWoods.Characters {
                     animator.SetBool(Landed, true);
                     _waiting = true;
                     _waitedTime = 0;
-                    // EditorApplication.isPaused = true;
+                    StartCoroutine(KillMouseAfterFrame());
                 }
                 else {
                     if (Math.Abs(distance.x) > 5) {
@@ -63,7 +64,6 @@ namespace IntoTheWoods.Characters {
                     _rising = true;
                     animator.SetBool(Rising, true);
                     _currentTarget = new(transform.position.x + 5, DefaultHeight, 0); // TODO respect facing direction
-                    Destroy(currentMouse);
                 }
                 else {
                     posDelta = Vector3.zero;
@@ -99,6 +99,11 @@ namespace IntoTheWoods.Characters {
             transform.position += posDelta;
         }
 
+        private IEnumerator KillMouseAfterFrame() {
+            yield return new WaitForSeconds(0);
+            Destroy(currentMouse.gameObject, 0);
+        }
+
         /// <summary>
         /// Find things
         /// </summary>
@@ -112,7 +117,7 @@ namespace IntoTheWoods.Characters {
 
                 if (mouse != null && mouse.mouseActive && !mouse._moving) {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
-                    _currentTarget = mouse.gameObject.transform.position;
+                    _currentTarget = mouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0); // value determined by hand based on what looks good
                     currentMouse = mouse;
                     _flyingToTarget = true;
                     // Time.timeScale = 0.5f; // TODO DEBUG
