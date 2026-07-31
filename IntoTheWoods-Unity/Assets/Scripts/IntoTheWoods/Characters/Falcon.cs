@@ -103,6 +103,7 @@ namespace IntoTheWoods.Characters {
         private IEnumerator KillMouseAfterFrame() {
             yield return new WaitForSeconds(0);
             Destroy(currentMouse.gameObject, 0);
+            currentMouse = null;
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace IntoTheWoods.Characters {
                     mouse = other.GetComponentInParent<Mouse>();
                 }
 
-                if (mouse != null && mouse.mouseActive && !mouse._moving) {
+                if (mouse != null && mouse.mouseActive && !mouse._moving && currentMouse == null) {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
                     _currentTarget = mouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0); // value determined by hand based on what looks good
                     currentMouse = mouse;
