@@ -683,7 +683,6 @@ MonoBehaviour:
   leftEnd: -24
   rightEnd: 95
   isActive: 1
-  currentMouse: {fileID: 0}
   speed: 4.5
   animator: {fileID: 8391297208886941015}
 --- !u!50 &3236241159539448133
