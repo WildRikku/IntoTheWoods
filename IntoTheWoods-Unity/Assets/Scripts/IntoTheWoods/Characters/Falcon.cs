@@ -59,7 +59,7 @@ namespace IntoTheWoods.Characters {
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
-                return (Math.Abs((currentTarget - falcon.transform.position).x) <= ApproachDistance);
+                return Math.Abs((currentTarget - falcon.transform.position).x) <= ApproachDistance;
             }
 
             public override void Exit() {
@@ -74,7 +74,7 @@ namespace IntoTheWoods.Characters {
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 deltaPos = (currentTarget - falcon.transform.position).normalized * (falcon.speed * Time.deltaTime);
-                return (Math.Abs((currentTarget - falcon.transform.position).magnitude) < 0.1f);
+                return Math.Abs((currentTarget - falcon.transform.position).magnitude) < 0.1f;
             }
 
             public override void Exit() {
@@ -111,7 +111,7 @@ namespace IntoTheWoods.Characters {
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 deltaPos = (currentTarget - falcon.transform.position).normalized * (falcon.speed * Time.deltaTime);
-                return (Math.Abs((currentTarget - falcon.transform.position).magnitude) < 0.1f);
+                return Math.Abs((currentTarget - falcon.transform.position).magnitude) < 0.1f;
             }
 
             public override void Exit() {
@@ -181,7 +181,6 @@ namespace IntoTheWoods.Characters {
 
         private void Start() {
             _currentState = new IdleState {
-                animator = animator,
                 leftEnd = leftEnd,
                 rightEnd = rightEnd
             };
@@ -217,7 +216,6 @@ namespace IntoTheWoods.Characters {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
                     _currentState.Exit();
                     _currentState = new ApproachingState {
-                        animator = animator,
                         currentTarget = mouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0), // value determined by hand based on what looks good
                         Done = OnMouseApproached
                     }.Enter(this);
