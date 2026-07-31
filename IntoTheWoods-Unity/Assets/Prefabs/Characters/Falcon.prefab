@@ -684,12 +684,8 @@ MonoBehaviour:
   rightEnd: 95
   isActive: 1
   currentMouse: {fileID: 0}
-  speed: 3
-  _walkingDirection: {x: -1, y: 0}
+  speed: 4.5
   animator: {fileID: 8391297208886941015}
-  flyingToTarget: 0
-  currentTarget: {x: 0, y: 0, z: 0}
-  targetIsMouse: 1
 --- !u!50 &3236241159539448133
 Rigidbody2D:
   serializedVersion: 5

@@ -11,6 +11,7 @@ namespace IntoTheWoods.Characters {
         private static readonly int Rising = Animator.StringToHash("rising");
         private const float DefaultHeight = 1.495f;
         private const float WaitOnGroundTime = 1.5f;
+        private const float ApproachDistance = 2f;
         [Header("Patrouille")]
         public float leftEnd;
         public float rightEnd;
@@ -45,7 +46,7 @@ namespace IntoTheWoods.Characters {
                     StartCoroutine(KillMouseAfterFrame());
                 }
                 else {
-                    if (Math.Abs(distance.x) > 5) {
+                    if (Math.Abs(distance.x) > ApproachDistance) {
                         // normal flying until close
                         posDelta = new(speed * Time.deltaTime * _flyingDirection.x, 0);
                     }
@@ -63,7 +64,7 @@ namespace IntoTheWoods.Characters {
                     _waiting = false;
                     _rising = true;
                     animator.SetBool(Rising, true);
-                    _currentTarget = new(transform.position.x + 5, DefaultHeight, 0); // TODO respect facing direction
+                    _currentTarget = new(transform.position.x + 5, DefaultHeight, 0); // TODO respect facing direction, do not hardcode x distance (use approach distance?)
                 }
                 else {
                     posDelta = Vector3.zero;
