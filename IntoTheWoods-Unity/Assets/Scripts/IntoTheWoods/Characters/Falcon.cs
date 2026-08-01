@@ -24,10 +24,6 @@ namespace IntoTheWoods.Characters {
             public float leftEnd;
             public float rightEnd;
 
-            public override MoveState Enter(Falcon falcon) {
-                return this;
-            }
-
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 if (falcon.transform.position.x < leftEnd) {
                     _flyingDirection = new(1, 0);
@@ -44,9 +40,6 @@ namespace IntoTheWoods.Characters {
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
                 return false; // hacky since this is the only state that does not have an end
             }
-
-            public override void Exit() {
-            }
         }
 
         public class ApproachingState : MoveState {
@@ -60,9 +53,6 @@ namespace IntoTheWoods.Characters {
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
                 return Math.Abs((currentTarget - falcon.transform.position).x) <= ApproachDistance;
-            }
-
-            public override void Exit() {
             }
         }
 
@@ -88,7 +78,6 @@ namespace IntoTheWoods.Characters {
             public override PassiveState Enter() {
                 animator.SetBool(Landed, true);
                 _waitedTime = 0;
-                // StartCoroutine(KillMouseAfterFrame()); // TODO only possible in monobehaviour
                 return this;
             }
 
@@ -130,9 +119,6 @@ namespace IntoTheWoods.Characters {
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
                 return false; // TODO
-            }
-
-            public override void Exit() {
             }
         }
 

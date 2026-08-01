@@ -6,7 +6,9 @@ namespace IntoTheWoods {
     public abstract class State {
         public Action Done;
         public Animator animator;
-        public abstract void Exit();
+
+        public virtual void Exit() {
+        }
     }
 
     public abstract class PassiveState : State {
@@ -17,7 +19,10 @@ namespace IntoTheWoods {
     public abstract class MoveState : State {
         public Vector3 currentTarget;
 
-        public abstract MoveState Enter(Falcon falcon);
+        public virtual MoveState Enter(Falcon falcon) {
+            return this;
+        }
+
         public abstract bool UpdateState(Falcon falcon, out Vector3 deltaPos);
     }
 }
