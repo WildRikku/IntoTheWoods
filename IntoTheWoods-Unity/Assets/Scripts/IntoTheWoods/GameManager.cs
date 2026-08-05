@@ -9,17 +9,9 @@ using UnityEngine.UIElements;
 
 namespace IntoTheWoods {
     [RequireComponent(typeof(Inventory))]
+    [DisallowMultipleComponent]
     public class GameManager : MonoBehaviour {
-        private const float FullHDratio = 0.5625f;
-        /// <summary>
-        /// // 4 high and 16:9
-        /// </summary>
-        private const float ScreenWidth = 7.11f;
-
         private Camera _mainCamera;
-        private List<Screen> _screens;
-        [Header("Startscreen")]
-        private int _currentScreen = 3; // configure start screen here (0-based)
 
         private Walker _playerWalker;
 
@@ -36,20 +28,20 @@ namespace IntoTheWoods {
 
             // Scale camera to show black borders and keep 16:9 aspect ratio
             float aspect = (float)UnityEngine.Screen.height / UnityEngine.Screen.width; // do not use currentResolution, it returns the total resolution for all screens on multi-screen setups
-            if (aspect > FullHDratio) {
+            if (aspect > Screen.FullHDratio) {
                 Rect rect = Camera.main.rect;
-                rect.height = FullHDratio * UnityEngine.Screen.width / UnityEngine.Screen.height;
+                rect.height = Screen.FullHDratio * UnityEngine.Screen.width / UnityEngine.Screen.height;
                 rect.y = (1 - rect.height) / 2;
                 Camera.main.rect = rect;
             }
 
             // Get all screens
-            _screens = new(GetComponentsInChildren<Screen>());
-            foreach (Screen screen in _screens) {
+            List<Screen> screens = new(GetComponentsInChildren<Screen>());
+            foreach (Screen screen in screens) {
                 screen.InsideShadowChanged += ScreenOnInsideShadowChanged;
             }
-
-            Assert.IsTrue(_screens.Count > 0);
+            Assert.IsTrue(screens.Count > 0);
+            GameState.Instance.InitializeScreens(screens);
 
             Assert.IsNotNull(primaryCharacter);
             primaryCharacter.AddComponent<PlayerController>();
@@ -89,7 +81,7 @@ namespace IntoTheWoods {
         /// <param name="walkingDirection"></param>
         /// <returns>true if movement was done, false if movement was not allowed because it was at a map edge</returns>
         private bool OnPlayerWillMove(Vector2 nextPosition, Vector2 walkingDirection) {
-            Screen.ScreenEdgeResult edgeStatus = _screens[_currentScreen].CheckPosition(nextPosition);
+            Screen.ScreenEdgeResult edgeStatus = GameState.Instance.GetCurrentScreen().CheckPosition(nextPosition);
             switch (edgeStatus) {
                 case Screen.ScreenEdgeResult.IllegalLeft:
                 case Screen.ScreenEdgeResult.IllegalRight:
@@ -97,12 +89,12 @@ namespace IntoTheWoods {
                     return false;
                 case Screen.ScreenEdgeResult.LeavingRight when walkingDirection.x > 0:
                     // going right close to the edge
-                    if (_currentScreen < _screens.Count - 1) {
+                    if (!GameState.Instance.PlayerIsAtRightMostScreen()) {
                         // scroll right
                         Vector3 pos = _mainCamera.transform.position;
-                        pos.x += ScreenWidth;
+                        pos.x += Screen.ScreenWidth;
                         _mainCamera.transform.position = pos;
-                        _currentScreen++;
+                        GameState.Instance.NextScreen();
                     }
                     else {
                         // player would leave the game
@@ -112,12 +104,12 @@ namespace IntoTheWoods {
                     break;
                 case Screen.ScreenEdgeResult.LeavingLeft when walkingDirection.x < 0:
                     // going left close to the edge
-                    if (_currentScreen > 0) {
+                    if (!GameState.Instance.PlayerIsAtLeftMostScreen()) {
                         // scroll left
                         Vector3 pos = _mainCamera.transform.position;
-                        pos.x -= ScreenWidth;
+                        pos.x -= Screen.ScreenWidth;
                         _mainCamera.transform.position = pos;
-                        _currentScreen--;
+                        GameState.Instance.PreviousScreen();
                     }
                     else {
                         // player would leave the game

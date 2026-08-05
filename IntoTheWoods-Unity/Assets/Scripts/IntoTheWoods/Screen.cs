@@ -11,6 +11,13 @@ public class Screen : MonoBehaviour {
         None
     }
 
+    /// <summary>
+    /// // 4 high and 16:9
+    /// </summary>
+    public const float ScreenWidth = 7.11f;
+    public const float FullHDratio = 0.5625f;
+    public const float ScreenHeight = ScreenWidth * FullHDratio;
+
     public event Action<bool> InsideShadowChanged;
 
     /// <summary>
@@ -80,6 +87,13 @@ public class Screen : MonoBehaviour {
         }
 
         return ScreenEdgeResult.None;
+    }
+
+    public bool PositionInScreen(Vector3 position) {
+        return transform.position.x - ScreenWidth / 2f < position.x
+               && position.x < transform.position.x + ScreenWidth / 2f
+               && transform.position.y - ScreenHeight / 2f < position.y
+               && position.y < transform.position.y + ScreenHeight / 2f;
     }
 
     protected virtual void OnInsideShadowChanged(bool obj) {

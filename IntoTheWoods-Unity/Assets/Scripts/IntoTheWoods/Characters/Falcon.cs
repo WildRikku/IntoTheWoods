@@ -118,7 +118,12 @@ namespace IntoTheWoods.Characters {
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
-                return false; // TODO
+                // only check one end since we know in which direction we are flying.
+                bool onScreen = _flyingDirection.x > 0
+                    ? GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x - falcon.extentBack, falcon.transform.position.y, 0))
+                    : GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x + falcon.extentBack, falcon.transform.position.y, 0));
+
+                return !onScreen;
             }
         }
 
@@ -158,6 +163,9 @@ namespace IntoTheWoods.Characters {
         public float leftEnd;
         public float rightEnd;
         public float speed = 3f;
+
+        public float extentBack;
+        public float extendFront;
 
         [SerializeField] private Animator animator;
         [ShowInInspector] private State _currentState;
@@ -237,7 +245,11 @@ namespace IntoTheWoods.Characters {
                                 animator = animator,
                                 Done = () => {
                                     _currentState = new ReturnBaseState {
-                                        animator = animator
+                                        animator = animator,
+                                        Done = () => {
+                                            print("I'm gone");
+                                            Destroy(gameObject); // TODO respawn at witch's house
+                                        }
                                     }.Enter(this);
                                 }
                             }.Enter(this);
