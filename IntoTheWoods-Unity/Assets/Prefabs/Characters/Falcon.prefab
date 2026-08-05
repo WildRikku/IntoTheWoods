@@ -682,8 +682,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Falcon
   leftEnd: -24
   rightEnd: 95
-  isActive: 1
   speed: 4.5
+  <SafeTimeAfterCapture>k__BackingField: 4
+  <RespawnPoint>k__BackingField: {x: 91.35, y: 1.495, z: 0}
+  extentBack: 0.4
+  extendFront: 0.8
+  subFalcon: {fileID: 2458438580895601012}
   animator: {fileID: 8391297208886941015}
 --- !u!50 &3236241159539448133
 Rigidbody2D:

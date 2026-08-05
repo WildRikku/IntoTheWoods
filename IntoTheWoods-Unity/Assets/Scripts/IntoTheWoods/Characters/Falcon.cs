@@ -19,12 +19,14 @@ namespace IntoTheWoods.Characters {
 
         #region State Machine
 
-        public class IdleState : MoveState {
+        public class PatrolState : MoveState {
             private Vector2 _flyingDirection = new(-1, 0);
             public float leftEnd;
             public float rightEnd;
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
+                // Change flying and facing direction (scale) according to bounds
+                // This also fixes things when falcon is spawned out of bounds
                 if (falcon.transform.position.x < leftEnd) {
                     _flyingDirection = new(1, 0);
                     Vector3 scale = falcon.transform.localScale;
@@ -108,8 +110,14 @@ namespace IntoTheWoods.Characters {
             }
         }
 
+        /// <summary>
+        /// Fake Falcon returning to base with a captured mouse.
+        /// It will fly until it is out of sight, then continue for <see cref="Screen.ScreenWidth"/>/<see cref="Falcon.speed"/>.
+        /// </summary>
         public class ReturnBaseState : MoveState {
             private Vector2 _flyingDirection;
+            private bool _hasLeftScreen;
+            private float _timeOutOfSight;
 
             public override MoveState Enter(Falcon falcon) {
                 _flyingDirection = new(-Math.Sign(falcon.transform.localScale.x), 0); // keep direction
@@ -123,7 +131,32 @@ namespace IntoTheWoods.Characters {
                     ? GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x - falcon.extentBack, falcon.transform.position.y, 0))
                     : GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x + falcon.extentBack, falcon.transform.position.y, 0));
 
-                return !onScreen;
+                if (!onScreen && !_hasLeftScreen) {
+                    _hasLeftScreen = true;
+                    _timeOutOfSight = 0;
+                }
+                else if (!onScreen) {
+                    _timeOutOfSight += Time.deltaTime;
+                }
+                else {
+                    _hasLeftScreen = false;
+                }
+
+                return _timeOutOfSight > Screen.ScreenWidth / falcon.speed;
+            }
+        }
+
+        public class DeactivatedState : PassiveState {
+            private float _waitedTime;
+            public float waitTime { get; set; }
+
+            public override PassiveState Enter() {
+                return this;
+            }
+
+            public override bool UpdateState() {
+                _waitedTime += Time.deltaTime;
+                return _waitedTime > waitTime;
             }
         }
 
@@ -164,8 +197,17 @@ namespace IntoTheWoods.Characters {
         public float rightEnd;
         public float speed = 3f;
 
+        [field: SerializeField]
+        public float SafeTimeAfterCapture { get; private set; }
+
+        [field: SerializeField]
+        public Vector3 RespawnPoint { get; private set; }
+
+        [Header("Config")]
         public float extentBack;
         public float extendFront;
+        [Tooltip("Child object that contains the colliders and sprites")]
+        public GameObject subFalcon;
 
         [SerializeField] private Animator animator;
         [ShowInInspector] private State _currentState;
@@ -174,7 +216,7 @@ namespace IntoTheWoods.Characters {
         #endregion
 
         private void Start() {
-            _currentState = new IdleState {
+            _currentState = new PatrolState {
                 leftEnd = leftEnd,
                 rightEnd = rightEnd
             };
@@ -248,7 +290,20 @@ namespace IntoTheWoods.Characters {
                                         animator = animator,
                                         Done = () => {
                                             print("I'm gone");
-                                            Destroy(gameObject); // TODO respawn at witch's house
+                                            subFalcon.SetActive(false);
+                                            _currentState = new DeactivatedState {
+                                                waitTime = SafeTimeAfterCapture - Screen.ScreenWidth / speed,
+                                                Done = () => {
+                                                    print("respawn falcon");
+                                                    transform.position = RespawnPoint;
+                                                    subFalcon.SetActive(true);
+                                                    animator.ResetControllerState();
+                                                    _currentState = new PatrolState {
+                                                        leftEnd = leftEnd,
+                                                        rightEnd = rightEnd
+                                                    };
+                                                }
+                                            }.Enter();
                                         }
                                     }.Enter(this);
                                 }
