@@ -9,8 +9,13 @@ namespace IntoTheWoods {
         [ShowInInspector] private List<Screen> _screens = new();
         [ShowInInspector] private int _currentScreen = StartScreen; // configure start screen here (0-based)
 
+        public bool kidsAreSafe;
+
         public void InitializeScreens(List<Screen> screens) {
             _screens = screens;
+            foreach (Screen screen in _screens) {
+                screen.InsideShadowChanged += ScreenOnInsideShadowChanged;
+            }
             _currentScreen = StartScreen;
         }
 
@@ -40,6 +45,10 @@ namespace IntoTheWoods {
                 return true;
             }
             return false;
+        }
+
+        private void ScreenOnInsideShadowChanged(bool safe) {
+            kidsAreSafe = safe;
         }
 
         #region Singleton management

@@ -20,8 +20,6 @@ namespace IntoTheWoods {
         [SerializeField] private UIDocument UI;
         [SerializeField] private Light2D characterLight;
 
-        public bool kidsAreSafe;
-
         private void Awake() {
             Assert.IsNotNull(Camera.main);
             _mainCamera = Camera.main;
@@ -69,9 +67,8 @@ namespace IntoTheWoods {
             _playerWalker.WillMove -= OnPlayerWillMove;
         }
 
-        private void ScreenOnInsideShadowChanged(bool obj) {
-            characterLight.intensity = obj ? 0.15f : 0.3f;
-            kidsAreSafe = obj;
+        private void ScreenOnInsideShadowChanged(bool safe) {
+            characterLight.intensity = safe ? 0.15f : 0.3f;
         }
 
         /// <summary>
