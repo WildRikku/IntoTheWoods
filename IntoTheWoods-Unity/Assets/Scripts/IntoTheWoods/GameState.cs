@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace IntoTheWoods {
     public class GameState {
-        private List<Screen> _screens = new();
-        private int _currentScreen = 3; // configure start screen here (0-based)
+        private const int StartScreen = 3;
+        [ShowInInspector] private List<Screen> _screens = new();
+        [ShowInInspector] private int _currentScreen = StartScreen; // configure start screen here (0-based)
 
         public void InitializeScreens(List<Screen> screens) {
             _screens = screens;
+            _currentScreen = StartScreen;
         }
 
         public Screen GetCurrentScreen() {
