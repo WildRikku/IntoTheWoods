@@ -17,12 +17,18 @@ namespace IntoTheWoods {
     }
 
     public abstract class MoveState : State {
-        public Vector3 currentTarget;
-
         public virtual MoveState Enter(Falcon falcon) {
-            return this;
+            return this; // TODO why?
         }
 
         public abstract bool UpdateState(Falcon falcon, out Vector3 deltaPos);
+    }
+
+    public abstract class MoveToTargetState : MoveState {
+        protected Vector3 currentTarget;
+
+        protected MoveToTargetState(Vector3 currentTarget) {
+            this.currentTarget = currentTarget;
+        }
     }
 }
