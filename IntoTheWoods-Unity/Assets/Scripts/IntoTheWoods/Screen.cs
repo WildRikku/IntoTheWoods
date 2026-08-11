@@ -1,5 +1,7 @@
 using System;
 using IntoTheWoods.Helpers;
+using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 public class Screen : MonoBehaviour {
@@ -17,8 +19,6 @@ public class Screen : MonoBehaviour {
     public const float ScreenWidth = 7.11f;
     public const float FullHDratio = 0.5625f;
     public const float ScreenHeight = ScreenWidth * FullHDratio;
-
-    public event Action<bool> InsideShadowChanged;
 
     /// <summary>
     /// Value chosen based on what looks good and also so that it's a little asymmetrical to avoid jumping back and forth between screens
@@ -38,6 +38,32 @@ public class Screen : MonoBehaviour {
     public float backRightThreshold;
     [Tooltip("y above this value will be considered back lane")]
     public float heightThreshold = -0.56f;
+
+#if ODIN_INSPECTOR && UNITY_EDITOR
+    [Button]
+    public void MakeThresholdsRelative() {
+        Undo.RecordObject(this, "Make thresholds relative");
+        float x = transform.position.x;
+        if (Math.Abs(frontLeftThreshold) > ScreenWidth) {
+            // not relative
+            frontLeftThreshold -= x;
+        }
+        if (Math.Abs(frontRightThreshold) > ScreenWidth) {
+            // not relative
+            frontRightThreshold -= x;
+        }
+        if (Math.Abs(backLeftThreshold) > ScreenWidth) {
+            // not relative
+            backLeftThreshold -= x;
+        }
+        if (Math.Abs(backRightThreshold) > ScreenWidth) {
+            // not relative
+            backRightThreshold -= x;
+        }
+    }
+#endif
+
+    public event Action<bool> InsideShadowChanged;
 
     private void Awake() {
         foreach (InsideShadowCheck check in GetComponentsInChildren<InsideShadowCheck>()) {

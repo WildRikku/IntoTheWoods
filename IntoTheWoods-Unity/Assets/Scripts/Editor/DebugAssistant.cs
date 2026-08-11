@@ -1,4 +1,5 @@
 #if ODIN_INSPECTOR
+using System.Collections.Generic;
 using IntoTheWoods;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
@@ -9,6 +10,15 @@ using UnityEngine.SceneManagement;
 
 public class DebugAssistant : OdinEditorWindow {
     [ShowInInspector] public GameState gameState;
+
+    [HorizontalGroup("screens")]
+    [ListDrawerSettings(DraggableItems = false, ShowFoldout = false, NumberOfItemsPerPage = 25)]
+    public List<Screen> screens;
+    [ListDrawerSettings(DraggableItems = false, ShowFoldout = false, NumberOfItemsPerPage = 25)]
+    [HorizontalGroup("screens")]
+    public List<Vector3> screenPositions;
+
+    private bool _inGame;
 
     [MenuItem("Tools/Debugging Assistant & Cheat Tools")]
     private static void OpenWindow() {
@@ -27,16 +37,28 @@ public class DebugAssistant : OdinEditorWindow {
 
     private void FindDebugObjects() {
         gameState = GameState.Instance;
+        screens = new();
+        screenPositions = new();
+        GameObject[] rootGOs = SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (GameObject gameObject in rootGOs) {
+            foreach (Screen screen in gameObject.GetComponentsInChildren<Screen>()) {
+                screens.Add(screen);
+                screenPositions.Add(screen.transform.position);
+            }
+        }
     }
 
     private void OnPlayModeChange(PlayModeStateChange state) {
         switch (state) {
             case PlayModeStateChange.ExitingEditMode:
                 break;
-            case PlayModeStateChange.EnteredPlayMode: {
+            case PlayModeStateChange.EnteredPlayMode:
+                _inGame = true;
                 FindDebugObjects();
                 break;
-            }
+            case PlayModeStateChange.ExitingPlayMode:
+                _inGame = false;
+                break;
         }
     }
 
@@ -51,7 +73,7 @@ public class DebugAssistant : OdinEditorWindow {
         FindDebugObjects();
     }
 
-    [Button(ButtonSizes.Large), HorizontalGroup("Always")]
+    [Button(ButtonSizes.Large), ShowIfGroup("InGame", Condition = "_inGame")]
     public void JumpToActiveScreen() {
         if (!EditorApplication.isPlaying) {
             return;
