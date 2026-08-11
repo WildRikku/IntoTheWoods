@@ -44,8 +44,17 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class ApproachingState : MoveState {
+        /// <summary>
+        /// Fly towards target until reaching <see cref="Falcon.ApproachDistance"/> on x axis.
+        /// Target will not be updated once state is initialized.
+        /// If you want to change the target, you need to update <see cref="MoveToTargetState.currentTarget"/> yourself.
+        /// </summary>
+        /// <seealso cref="ObserveState"/>
+        public class ApproachingState : MoveToTargetState {
             private Vector2 _flyingDirection;
+
+            public ApproachingState(Vector3 currentTarget) : base(currentTarget) {
+            }
 
             public override MoveState Enter(Falcon falcon) {
                 _flyingDirection = new(-Math.Sign(falcon.transform.localScale.x), 0); // keep direction
@@ -58,7 +67,10 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class AttackLandingState : MoveState {
+        public class AttackLandingState : MoveToTargetState {
+            public AttackLandingState(Vector3 currentTarget) : base(currentTarget) {
+            }
+
             public override MoveState Enter(Falcon falcon) {
                 animator.SetBool(Attacking, true);
                 return this;
@@ -93,10 +105,14 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class RisingState : MoveState {
+        public class RisingState : MoveToTargetState {
+            public RisingState(Falcon falcon) : base(
+                new(falcon.transform.position.x + 5 * -Math.Sign(falcon.transform.localScale.x), DefaultHeight, 0)) {
+                // TODO do not hardcode x distance (use approach distance?)
+            }
+
             public override MoveState Enter(Falcon falcon) {
                 animator.SetBool(Rising, true);
-                currentTarget = new(falcon.transform.position.x + 5 * -Math.Sign(falcon.transform.localScale.x), DefaultHeight, 0); // TODO do not hardcode x distance (use approach distance?)
                 return this;
             }
 
@@ -160,17 +176,47 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class ObserveState : MoveState {
+        /// <summary>
+        /// Fly towards target and follow target around / wait above target.
+        /// </summary>
+        public class ObserveState : MoveToTargetState {
+            private const float ShortTriggerDistance = 0.2f; // value determined manually by testing what avoids glitching best
+            private const float LongTriggerDistance = 4f;
+
+            private readonly GameObject _targetObject;
+            private Vector2 _flyingDirection;
+            private bool _close;
+
+            public ObserveState(GameObject target) : base(target.transform.position) {
+                _targetObject = target;
+            }
+
             public override MoveState Enter(Falcon falcon) {
-                throw new NotImplementedException();
+                _flyingDirection = new(Math.Sign(currentTarget.x - falcon.transform.position.x), 0);
+                return this;
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
-                throw new NotImplementedException();
-            }
+                float distance = _targetObject.transform.position.x - falcon.transform.position.x;
 
-            public override void Exit() {
-                throw new NotImplementedException();
+                if (Math.Abs(distance) <= ShortTriggerDistance) {
+                    // if we are inside ShortTriggerDistance, stop
+                    _close = true;
+                }
+                else if (Math.Abs(distance) > LongTriggerDistance) {
+                    // if we are not even inside LongTriggerDistance, start moving
+                    _close = false;
+                }
+                if (!_close) {
+                    currentTarget = _targetObject.transform.position;
+                }
+
+                _flyingDirection = new(Math.Sign(distance), 0);
+                deltaPos = _close ? Vector3.zero : new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
+
+                // TODO change facing direction
+                // TODO timer and angry craaah craaah here
+                return false;
             }
         }
 
@@ -212,6 +258,7 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Animator animator;
         [ShowInInspector] private State _currentState;
         private Mouse _currentMouse;
+        private Character _currentCharacter;
 
         #endregion
 
@@ -233,14 +280,14 @@ namespace IntoTheWoods.Characters {
             }
 
             if (stateDone) {
-                _currentState.Done.Invoke();
+                _currentState.Done?.Invoke();
             }
         }
 
         /// <summary>
-        /// Find things
+        /// Find things. Detect mouse and children (player) colliders and start chains of states. 
         /// </summary>
-        /// <param name="other"></param>
+        /// <seealso cref="OnMouseApproached"/>
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Mouse")) {
                 Mouse mouse = other.GetComponent<Mouse>();
@@ -251,8 +298,8 @@ namespace IntoTheWoods.Characters {
                 if (mouse != null && mouse.mouseActive && !mouse._moving && _currentMouse == null) {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
                     _currentState.Exit();
-                    _currentState = new ApproachingState {
-                        currentTarget = mouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0), // value determined by hand based on what looks good
+                    _currentState = new ApproachingState(mouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0)) {
+                        // value determined by hand based on what looks good {
                         Done = OnMouseApproached
                     }.Enter(this);
                     _currentMouse = mouse;
@@ -263,8 +310,18 @@ namespace IntoTheWoods.Characters {
                 if (character == null) {
                     character = other.transform.parent.parent.GetComponent<Character>();
                 }
+                if (character == null) {
+                    return; // TODO error handling
+                }
+                if (_currentCharacter == null) {
+                    _currentCharacter = character;
 
-                Debug.Log("Found " + character.gameObject.name);
+                    Debug.Log("Found " + character.gameObject.name);
+
+                    _currentState.Exit();
+                    _currentState = new ObserveState(character.gameObject) {
+                    }.Enter(this);
+                }
             }
         }
 
@@ -273,9 +330,8 @@ namespace IntoTheWoods.Characters {
         /// </summary>
         private void OnMouseApproached() {
             _currentState.Exit();
-            _currentState = new AttackLandingState {
+            _currentState = new AttackLandingState(_currentMouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0)) {
                 animator = animator,
-                currentTarget = _currentMouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0),
                 Done = () => {
                     _currentState.Exit();
                     StartCoroutine(KillMouseAfterFrame());
@@ -283,7 +339,7 @@ namespace IntoTheWoods.Characters {
                         animator = animator,
                         Done = () => {
                             _currentState.Exit();
-                            _currentState = new RisingState {
+                            _currentState = new RisingState(this) {
                                 animator = animator,
                                 Done = () => {
                                     _currentState = new ReturnBaseState {
