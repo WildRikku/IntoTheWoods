@@ -59,7 +59,7 @@ namespace IntoTheWoods {
 
         private GameState() {
 #if UNITY_EDITOR
-            Debug.Log("<color=orange>QUEST Singleton instantiated :)</color>");
+            Debug.Log("<color=orange>Singleton instantiated :)</color>");
 #endif
         }
 
