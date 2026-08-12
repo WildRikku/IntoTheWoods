@@ -573,10 +573,6 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
       value: 0
       objectReference: {fileID: 0}
@@ -1383,10 +1379,6 @@ PrefabInstance:
       value: 301
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
       value: 1
       objectReference: {fileID: 0}
@@ -2174,10 +2166,6 @@ PrefabInstance:
       value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backLeftThreshold
       value: 4.39
       objectReference: {fileID: 0}
@@ -2710,10 +2698,6 @@ PrefabInstance:
     - target: {fileID: 998869507865846245, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: m_Name
       value: 102
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backRightThreshold
@@ -4206,10 +4190,6 @@ PrefabInstance:
       value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backRightThreshold
       value: 31.23
       objectReference: {fileID: 0}
@@ -5042,10 +5022,6 @@ PrefabInstance:
     - target: {fileID: 998869507865846245, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: m_Name
       value: 201
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
@@ -6178,10 +6154,6 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backLeftThreshold
       value: 47.05
       objectReference: {fileID: 0}
@@ -7219,10 +7191,6 @@ PrefabInstance:
       value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
       value: 1
       objectReference: {fileID: 0}
@@ -7322,10 +7290,6 @@ PrefabInstance:
     - target: {fileID: 998869507865846245, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
-      propertyPath: heightThreshold
-      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backLeftThreshold

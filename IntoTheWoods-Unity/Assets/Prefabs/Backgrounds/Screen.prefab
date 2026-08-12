@@ -53,7 +53,7 @@ MonoBehaviour:
   frontRightThreshold: 0
   backLeftThreshold: 0
   backRightThreshold: 0
-  heightThreshold: -0.56
+  heightThreshold: -0.8
 --- !u!1 &5230421645227483600
 GameObject:
   m_ObjectHideFlags: 0
