@@ -1633,7 +1633,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 94d9da6c1e94cc1bebff390c56233587, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1652,9 +1652,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 413596857
-  m_SortingLayer: -13
-  m_SortingOrder: -4
+  m_SortingLayerID: -1889003833
+  m_SortingLayer: -14
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7cb173b3c8c9a10fba4137d380601c3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2244,6 +2244,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6189041700209412243}
     m_Modifications:
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_SortingLayer
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413596857
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b15a28a5c100a9436b2874bfab08c8c4, type: 2}
     - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_Name
       value: MiniMapShadowMarker

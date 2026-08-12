@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 7386882121783620109}
   - component: {fileID: 9031358003155703539}
   m_Layer: 28
-  m_Name: Hexenhaus_layer0 (1)
+  m_Name: MiniMapPath
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1199,7 +1199,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 94d9da6c1e94cc1bebff390c56233587, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
