@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
@@ -109,6 +110,7 @@ namespace IntoTheWoods.Characters {
                     // if y is != 0, the animation was turned on for the move to foreground / background animation
                     transform.position += new Vector3(speed * Time.deltaTime * _walkingDirection.x, speed * Time.deltaTime * _walkingDirection.y, 0);
                     float distance = new Vector2(transform.position.x - _currentTransferTarget.x, transform.position.y - _currentTransferTarget.y).magnitude;
+                    Debug.Log(distance);
                     float scaleScalar;
 
                     if (distance < 0.05f) {
@@ -123,6 +125,9 @@ namespace IntoTheWoods.Characters {
                         if (_walkingDirection.y > 0) {
                             // walking towards the back, become smaller
                             // (1f - distance) * BackLaneScaleReduction is what reduces up to BackLaneScaleReduction the further back the position is
+                            // (1f - distance) assumes that distance goes from 0 to 1, which it doesn't,
+                            // but the animation is so fast and the differences are so small that it doesn't matter.
+                            // This will break though should we ever create transfer zones that are further away than 1.
                             scaleScalar = FrontLaneScale - (1f - distance) * BackLaneScaleReduction;
                         }
                         else {
@@ -193,6 +198,7 @@ namespace IntoTheWoods.Characters {
             }
 
             Transfering?.Invoke(inputVector);
+            EditorApplication.isPaused = true;
         }
 
         public void StopWalking() {
