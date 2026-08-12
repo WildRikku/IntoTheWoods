@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Vector2 = UnityEngine.Vector2;
@@ -50,7 +51,7 @@ namespace IntoTheWoods.Characters {
 
         public float maxDistance = 0.7f;
 
-        private readonly List<IFollowerAction> _actionList = new();
+        [ShowInInspector] private readonly List<IFollowerAction> _actionList = new();
 
         private void Start() {
             // get components dynamically since FollowerController is instantiated at runtime
