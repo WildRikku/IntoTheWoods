@@ -9,12 +9,17 @@ namespace IntoTheWoods.Characters {
     public delegate void MoveEventHandler(Vector2 newPosition, bool ignoreDistance = false, bool inTransferZone = false);
 
     public delegate void TransferEventHandler(Vector2 moveVector);
-    
-    
+
+
     /// <summary>
     /// Any character that can walk, not necessarily controled by a human.
     /// </summary>
     public class Walker : MonoBehaviour {
+        // Hand-crafted constants
+        private const float BackLaneScaleReduction = 0.2f;
+        private const float FrontLaneScale = 1f;
+        private const float BackLaneScale = FrontLaneScale - BackLaneScaleReduction;
+
         // Cached property indices for animator for efficiency
         private static readonly int Walking = Animator.StringToHash("walking");
 
@@ -56,7 +61,7 @@ namespace IntoTheWoods.Characters {
 
         // Step Audio
         private FootstepController _footstepController;
-        
+
         // events
         public event PlayerWillMoveEventHandler WillMove;
         public event MoveEventHandler Moved;
@@ -111,17 +116,17 @@ namespace IntoTheWoods.Characters {
                         StopWalking();
                         IsTransfering = false;
                         // determine final scale
-                        scaleScalar = _walkingDirection.y > 0 ? 0.8f : 1f;
+                        scaleScalar = _walkingDirection.y > 0 ? BackLaneScale : FrontLaneScale;
                     }
                     else {
                         // calculate scale
                         if (_walkingDirection.y > 0) {
                             // walking towards the back, become smaller
-                            // (1f - distance) * 0.2f is what reduces up to 0.2 the further back the position is
-                            scaleScalar = 1f - (1f - distance) * 0.2f;
+                            // (1f - distance) * BackLaneScaleReduction is what reduces up to BackLaneScaleReduction the further back the position is
+                            scaleScalar = FrontLaneScale - (1f - distance) * BackLaneScaleReduction;
                         }
                         else {
-                            scaleScalar = 0.8f + (1f - distance) * 0.2f;
+                            scaleScalar = BackLaneScale + (1f - distance) * BackLaneScaleReduction;
                         }
                     }
 
