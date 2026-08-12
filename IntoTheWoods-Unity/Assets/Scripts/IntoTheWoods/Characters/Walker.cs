@@ -198,7 +198,6 @@ namespace IntoTheWoods.Characters {
             }
 
             Transfering?.Invoke(inputVector);
-            EditorApplication.isPaused = true;
         }
 
         public void StopWalking() {
