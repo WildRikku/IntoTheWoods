@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
@@ -110,11 +109,16 @@ namespace IntoTheWoods.Characters {
                     // if y is != 0, the animation was turned on for the move to foreground / background animation
                     transform.position += new Vector3(speed * Time.deltaTime * _walkingDirection.x, speed * Time.deltaTime * _walkingDirection.y, 0);
                     float distance = new Vector2(transform.position.x - _currentTransferTarget.x, transform.position.y - _currentTransferTarget.y).magnitude;
-                    Debug.Log(distance);
                     float scaleScalar;
-
-                    if (distance < 0.05f) {
+                    if ((_currentTransferTarget.y > TransferZone.BackFrontThreshold // back lane transfer zone 
+                         && transform.position.y >= _currentTransferTarget.y) // going up
+                        || (_currentTransferTarget.y < TransferZone.BackFrontThreshold
+                            && transform.position.y <= _currentTransferTarget.y)
+                       ) {
                         // close enough
+                        Vector3 pos = transform.position;
+                        pos.y = _currentTransferTarget.y;
+                        transform.position = pos;
                         StopWalking();
                         IsTransfering = false;
                         // determine final scale
