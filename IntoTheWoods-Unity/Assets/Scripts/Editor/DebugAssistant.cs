@@ -51,9 +51,9 @@ public class DebugAssistant : OdinEditorWindow {
     private void OnPlayModeChange(PlayModeStateChange state) {
         switch (state) {
             case PlayModeStateChange.ExitingEditMode:
+                _inGame = true;
                 break;
             case PlayModeStateChange.EnteredPlayMode:
-                _inGame = true;
                 FindDebugObjects();
                 break;
             case PlayModeStateChange.ExitingPlayMode:
