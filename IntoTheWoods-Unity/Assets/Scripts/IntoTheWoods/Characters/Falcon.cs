@@ -19,7 +19,36 @@ namespace IntoTheWoods.Characters {
 
         #region State Machine
 
-        public class PatrolState : MoveState {
+        private abstract class State {
+            public Action Done { get; set; }
+            public Animator animator;
+
+            public virtual void Exit() {
+            }
+        }
+
+        private abstract class PassiveState : State {
+            public abstract PassiveState Enter();
+            public abstract bool UpdateState();
+        }
+
+        private abstract class MoveState : State {
+            public virtual MoveState Enter(Falcon falcon) {
+                return this; // TODO why?
+            }
+
+            public abstract bool UpdateState(Falcon falcon, out Vector3 deltaPos);
+        }
+
+        private abstract class MoveToTargetState : MoveState {
+            protected Vector3 currentTarget;
+
+            protected MoveToTargetState(Vector3 currentTarget) {
+                this.currentTarget = currentTarget;
+            }
+        }
+
+        private class PatrolState : MoveState {
             private Vector2 _flyingDirection = new(-1, 0);
             public float leftEnd;
             public float rightEnd;
@@ -50,7 +79,7 @@ namespace IntoTheWoods.Characters {
         /// If you want to change the target, you need to update <see cref="MoveToTargetState.currentTarget"/> yourself.
         /// </summary>
         /// <seealso cref="ObserveState"/>
-        public class ApproachingState : MoveToTargetState {
+        private class ApproachingState : MoveToTargetState {
             private Vector2 _flyingDirection;
 
             public ApproachingState(Vector3 currentTarget) : base(currentTarget) {
@@ -67,7 +96,7 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class AttackLandingState : MoveToTargetState {
+        private class AttackLandingState : MoveToTargetState {
             public AttackLandingState(Vector3 currentTarget) : base(currentTarget) {
             }
 
@@ -86,7 +115,7 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class OnFloorState : PassiveState {
+        private class OnFloorState : PassiveState {
             private float _waitedTime;
 
             public override PassiveState Enter() {
@@ -105,7 +134,7 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class RisingState : MoveToTargetState {
+        private class RisingState : MoveToTargetState {
             public RisingState(Falcon falcon) : base(
                 new(falcon.transform.position.x + 5 * -Math.Sign(falcon.transform.localScale.x), DefaultHeight, 0)) {
                 // TODO do not hardcode x distance (use approach distance?)
@@ -130,7 +159,7 @@ namespace IntoTheWoods.Characters {
         /// Fake Falcon returning to base with a captured mouse.
         /// It will fly until it is out of sight, then continue for <see cref="Screen.ScreenWidth"/>/<see cref="Falcon.speed"/>.
         /// </summary>
-        public class ReturnBaseState : MoveState {
+        private class ReturnBaseState : MoveState {
             private Vector2 _flyingDirection;
             private bool _hasLeftScreen;
             private float _timeOutOfSight;
@@ -162,9 +191,9 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class DeactivatedState : PassiveState {
+        private class DeactivatedState : PassiveState {
             private float _waitedTime;
-            public float waitTime { get; set; }
+            public float WaitTime { get; set; }
 
             public override PassiveState Enter() {
                 return this;
@@ -172,14 +201,14 @@ namespace IntoTheWoods.Characters {
 
             public override bool UpdateState() {
                 _waitedTime += Time.deltaTime;
-                return _waitedTime > waitTime;
+                return _waitedTime > WaitTime;
             }
         }
 
         /// <summary>
         /// Fly towards target and follow target around / wait above target.
         /// </summary>
-        public class ObserveState : MoveToTargetState {
+        private class ObserveState : MoveToTargetState {
             private const float ShortTriggerDistance = 0.2f; // value determined manually by testing what avoids glitching best
             private const float LongTriggerDistance = 4f;
 
@@ -220,7 +249,7 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public class TellWitchState : MoveState {
+        private class TellWitchState : MoveState {
             public override MoveState Enter(Falcon falcon) {
                 throw new NotImplementedException();
             }
@@ -319,8 +348,7 @@ namespace IntoTheWoods.Characters {
                     Debug.Log("Found " + character.gameObject.name);
 
                     _currentState.Exit();
-                    _currentState = new ObserveState(character.gameObject) {
-                    }.Enter(this);
+                    _currentState = new ObserveState(character.gameObject).Enter(this);
                 }
             }
         }
@@ -348,7 +376,7 @@ namespace IntoTheWoods.Characters {
                                             print("I'm gone");
                                             subFalcon.SetActive(false);
                                             _currentState = new DeactivatedState {
-                                                waitTime = SafeTimeAfterCapture - Screen.ScreenWidth / speed,
+                                                WaitTime = SafeTimeAfterCapture - Screen.ScreenWidth / speed,
                                                 Done = () => {
                                                     print("respawn falcon");
                                                     transform.position = RespawnPoint;
