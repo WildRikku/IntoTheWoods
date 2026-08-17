@@ -102,45 +102,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Crouch"",
-                    ""type"": ""Button"",
-                    ""id"": ""27c5f898-bc57-4ee1-8800-db469aca5fe3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Previous"",
-                    ""type"": ""Button"",
-                    ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Next"",
-                    ""type"": ""Button"",
-                    ""id"": ""b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -247,61 +211,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cbac6039-9c09-46a1-b5f2-4e5124ccb5ed"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Next"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e15ca19d-e649-4852-97d5-7fe8ccc44e94"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Next"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8cbb2f4b-a784-49cc-8d5e-c010b8c7f4e6"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d8bf24bf-3f2f-4160-a97c-38ec1eb520ba"",
-                    ""path"": ""<XRController>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""eb40bb66-4559-4dfa-9a2f-820438abb426"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -330,50 +239,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1534dc16-a6aa-499d-9c3a-22b47347b52a"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Previous"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""25060bbd-a3a6-476e-8fba-45ae484aad05"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Previous"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4f4649ac-64a8-4a73-af11-b3faef356a4d"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""36e52cba-0905-478e-a818-f4bfcb9f3b9a"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -977,7 +842,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""821ae268-8420-4f03-8754-6e5fd49e59f7"",
             ""actions"": [
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""ThrowBread"",
                     ""type"": ""Button"",
                     ""id"": ""528ce8d7-a3aa-4a5f-a8ac-b1529db2bf7d"",
                     ""expectedControlType"": """",
@@ -994,7 +859,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Attack"",
+                    ""action"": ""ThrowBread"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1005,7 +870,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Attack"",
+                    ""action"": ""ThrowBread"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1016,7 +881,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Attack"",
+                    ""action"": ""ThrowBread"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1027,7 +892,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Attack"",
+                    ""action"": ""ThrowBread"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1038,7 +903,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""959839ce-e2a4-47f3-9037-4396721a9572"",
             ""actions"": [
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Pickup"",
                     ""type"": ""Button"",
                     ""id"": ""77f9cf7b-764d-4220-a076-61da167e9990"",
                     ""expectedControlType"": """",
@@ -1055,7 +920,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Pickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1066,7 +931,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
+                    ""action"": ""Pickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1139,11 +1004,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // PrimaryPlayer
         m_PrimaryPlayer = asset.FindActionMap("PrimaryPlayer", throwIfNotFound: true);
         m_PrimaryPlayer_Move = m_PrimaryPlayer.FindAction("Move", throwIfNotFound: true);
-        m_PrimaryPlayer_Crouch = m_PrimaryPlayer.FindAction("Crouch", throwIfNotFound: true);
         m_PrimaryPlayer_Jump = m_PrimaryPlayer.FindAction("Jump", throwIfNotFound: true);
-        m_PrimaryPlayer_Previous = m_PrimaryPlayer.FindAction("Previous", throwIfNotFound: true);
-        m_PrimaryPlayer_Next = m_PrimaryPlayer.FindAction("Next", throwIfNotFound: true);
-        m_PrimaryPlayer_Sprint = m_PrimaryPlayer.FindAction("Sprint", throwIfNotFound: true);
         m_PrimaryPlayer_ChangeLane = m_PrimaryPlayer.FindAction("ChangeLane", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1159,10 +1020,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // Haensel
         m_Haensel = asset.FindActionMap("Haensel", throwIfNotFound: true);
-        m_Haensel_Attack = m_Haensel.FindAction("Attack", throwIfNotFound: true);
+        m_Haensel_ThrowBread = m_Haensel.FindAction("ThrowBread", throwIfNotFound: true);
         // Gretel
         m_Gretel = asset.FindActionMap("Gretel", throwIfNotFound: true);
-        m_Gretel_Interact = m_Gretel.FindAction("Interact", throwIfNotFound: true);
+        m_Gretel_Pickup = m_Gretel.FindAction("Pickup", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1247,11 +1108,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PrimaryPlayer;
     private List<IPrimaryPlayerActions> m_PrimaryPlayerActionsCallbackInterfaces = new List<IPrimaryPlayerActions>();
     private readonly InputAction m_PrimaryPlayer_Move;
-    private readonly InputAction m_PrimaryPlayer_Crouch;
     private readonly InputAction m_PrimaryPlayer_Jump;
-    private readonly InputAction m_PrimaryPlayer_Previous;
-    private readonly InputAction m_PrimaryPlayer_Next;
-    private readonly InputAction m_PrimaryPlayer_Sprint;
     private readonly InputAction m_PrimaryPlayer_ChangeLane;
     /// <summary>
     /// Provides access to input actions defined in input action map "PrimaryPlayer".
@@ -1269,25 +1126,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Move => m_Wrapper.m_PrimaryPlayer_Move;
         /// <summary>
-        /// Provides access to the underlying input action "PrimaryPlayer/Crouch".
-        /// </summary>
-        public InputAction @Crouch => m_Wrapper.m_PrimaryPlayer_Crouch;
-        /// <summary>
         /// Provides access to the underlying input action "PrimaryPlayer/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_PrimaryPlayer_Jump;
-        /// <summary>
-        /// Provides access to the underlying input action "PrimaryPlayer/Previous".
-        /// </summary>
-        public InputAction @Previous => m_Wrapper.m_PrimaryPlayer_Previous;
-        /// <summary>
-        /// Provides access to the underlying input action "PrimaryPlayer/Next".
-        /// </summary>
-        public InputAction @Next => m_Wrapper.m_PrimaryPlayer_Next;
-        /// <summary>
-        /// Provides access to the underlying input action "PrimaryPlayer/Sprint".
-        /// </summary>
-        public InputAction @Sprint => m_Wrapper.m_PrimaryPlayer_Sprint;
         /// <summary>
         /// Provides access to the underlying input action "PrimaryPlayer/ChangeLane".
         /// </summary>
@@ -1321,21 +1162,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Crouch.started += instance.OnCrouch;
-            @Crouch.performed += instance.OnCrouch;
-            @Crouch.canceled += instance.OnCrouch;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Previous.started += instance.OnPrevious;
-            @Previous.performed += instance.OnPrevious;
-            @Previous.canceled += instance.OnPrevious;
-            @Next.started += instance.OnNext;
-            @Next.performed += instance.OnNext;
-            @Next.canceled += instance.OnNext;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
             @ChangeLane.started += instance.OnChangeLane;
             @ChangeLane.performed += instance.OnChangeLane;
             @ChangeLane.canceled += instance.OnChangeLane;
@@ -1353,21 +1182,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Crouch.started -= instance.OnCrouch;
-            @Crouch.performed -= instance.OnCrouch;
-            @Crouch.canceled -= instance.OnCrouch;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Previous.started -= instance.OnPrevious;
-            @Previous.performed -= instance.OnPrevious;
-            @Previous.canceled -= instance.OnPrevious;
-            @Next.started -= instance.OnNext;
-            @Next.performed -= instance.OnNext;
-            @Next.canceled -= instance.OnNext;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
             @ChangeLane.started -= instance.OnChangeLane;
             @ChangeLane.performed -= instance.OnChangeLane;
             @ChangeLane.canceled -= instance.OnChangeLane;
@@ -1603,7 +1420,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // Haensel
     private readonly InputActionMap m_Haensel;
     private List<IHaenselActions> m_HaenselActionsCallbackInterfaces = new List<IHaenselActions>();
-    private readonly InputAction m_Haensel_Attack;
+    private readonly InputAction m_Haensel_ThrowBread;
     /// <summary>
     /// Provides access to input actions defined in input action map "Haensel".
     /// </summary>
@@ -1616,9 +1433,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public HaenselActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Haensel/Attack".
+        /// Provides access to the underlying input action "Haensel/ThrowBread".
         /// </summary>
-        public InputAction @Attack => m_Wrapper.m_Haensel_Attack;
+        public InputAction @ThrowBread => m_Wrapper.m_Haensel_ThrowBread;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1645,9 +1462,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_HaenselActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_HaenselActionsCallbackInterfaces.Add(instance);
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @ThrowBread.started += instance.OnThrowBread;
+            @ThrowBread.performed += instance.OnThrowBread;
+            @ThrowBread.canceled += instance.OnThrowBread;
         }
 
         /// <summary>
@@ -1659,9 +1476,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="HaenselActions" />
         private void UnregisterCallbacks(IHaenselActions instance)
         {
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @ThrowBread.started -= instance.OnThrowBread;
+            @ThrowBread.performed -= instance.OnThrowBread;
+            @ThrowBread.canceled -= instance.OnThrowBread;
         }
 
         /// <summary>
@@ -1699,7 +1516,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // Gretel
     private readonly InputActionMap m_Gretel;
     private List<IGretelActions> m_GretelActionsCallbackInterfaces = new List<IGretelActions>();
-    private readonly InputAction m_Gretel_Interact;
+    private readonly InputAction m_Gretel_Pickup;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gretel".
     /// </summary>
@@ -1712,9 +1529,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public GretelActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Gretel/Interact".
+        /// Provides access to the underlying input action "Gretel/Pickup".
         /// </summary>
-        public InputAction @Interact => m_Wrapper.m_Gretel_Interact;
+        public InputAction @Pickup => m_Wrapper.m_Gretel_Pickup;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1741,9 +1558,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GretelActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GretelActionsCallbackInterfaces.Add(instance);
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @Pickup.started += instance.OnPickup;
+            @Pickup.performed += instance.OnPickup;
+            @Pickup.canceled += instance.OnPickup;
         }
 
         /// <summary>
@@ -1755,9 +1572,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="GretelActions" />
         private void UnregisterCallbacks(IGretelActions instance)
         {
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @Pickup.started -= instance.OnPickup;
+            @Pickup.performed -= instance.OnPickup;
+            @Pickup.canceled -= instance.OnPickup;
         }
 
         /// <summary>
@@ -1871,40 +1688,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Crouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCrouch(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPrevious(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNext(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Sprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSprint(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "ChangeLane" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1999,12 +1788,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface IHaenselActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ThrowBread" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAttack(InputAction.CallbackContext context);
+        void OnThrowBread(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gretel" which allows adding and removing callbacks.
@@ -2014,11 +1803,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface IGretelActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Pickup" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteract(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
     }
 }

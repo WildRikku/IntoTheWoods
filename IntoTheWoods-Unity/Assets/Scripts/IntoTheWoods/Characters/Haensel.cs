@@ -22,7 +22,7 @@ namespace IntoTheWoods.Characters {
             Assert.IsNotNull(animator);
         }
 
-        public void OnAttack(InputAction.CallbackContext context) {
+        public void OnThrowBread(InputAction.CallbackContext context) {
             // note that the order matters because TryGetBread() will reduce bread count
             if (context.performed && inventory.TryGetBread()) {
                 animator.SetBool(Throwing, true); // will reset itself

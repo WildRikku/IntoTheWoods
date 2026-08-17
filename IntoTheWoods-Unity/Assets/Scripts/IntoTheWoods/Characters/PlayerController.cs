@@ -50,22 +50,10 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        public void OnCrouch(InputAction.CallbackContext context) {
-        }
-
         public void OnJump(InputAction.CallbackContext context) {
             if (context.started) {
                 // rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
             }
-        }
-
-        public void OnPrevious(InputAction.CallbackContext context) {
-        }
-
-        public void OnNext(InputAction.CallbackContext context) {
-        }
-
-        public void OnSprint(InputAction.CallbackContext context) {
         }
 
         public void OnChangeLane(InputAction.CallbackContext context) {
