@@ -66,6 +66,7 @@ namespace IntoTheWoods.Characters {
         public event PlayerWillMoveEventHandler WillMove;
         public event MoveEventHandler Moved;
         public event TransferEventHandler Transfering;
+        public event Action Transfered;
 
         private void Awake() {
             _sortingGroup = GetComponentInChildren<SortingGroup>();
@@ -128,6 +129,7 @@ namespace IntoTheWoods.Characters {
                         IsTransfering = false;
                         // determine final scale
                         scaleScalar = _walkingDirection.y > 0 ? BackLaneScale : FrontLaneScale;
+                        Transfered?.Invoke();
                     }
                     else {
                         // calculate scale

@@ -27,26 +27,33 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnMove(InputAction.CallbackContext context) {
-            if (_walker.IsBusy() || _character.IsBusy() || GameState.Instance.kidsAreDoomed) {
-                // walking is only allowed when not busy, so if busy, process neither starting nor stopping walking
+            void WalkerOnTransfered() {
+                _walker.Transfered -= WalkerOnTransfered;
+                ProcessMoving(context);
+            }
+
+            if (_character.IsBusy() || GameState.Instance.kidsAreDoomed) {
+                // throwing, picking up, or game is over
                 return;
             }
 
             if (context.started) {
-                // grab input
-                Vector2 moveVector = DigitizeMovement(context.ReadValue<Vector2>());
-                if (moveVector.x == 0) {
+                if (_walker.IsBusy()) {
+                    // transfering, wait
+                    _walker.Transfered += WalkerOnTransfered;
                     return;
                 }
 
-                // remove y component in case a joystick was used.
-                // This is relevant for distinguishing between player-controled movement and animated movement to background/foreground
-                moveVector.y = 0;
-
-                _walker.ActivateWalking(moveVector);
+                ProcessMoving(context);
             }
             else if (context.canceled) {
-                _walker.StopWalking();
+                if (_walker.IsBusy()) {
+                    // KeyUp while still transfering
+                    _walker.Transfered -= WalkerOnTransfered;
+                }
+                else {
+                    _walker.StopWalking();
+                }
             }
         }
 
@@ -77,6 +84,20 @@ namespace IntoTheWoods.Characters {
             float x = input.x > 0 ? 1 : input.x < 0 ? -1 : 0;
             float y = input.y > 0 ? 1 : input.y < 0 ? -1 : 0;
             return new(x, y);
+        }
+
+        private void ProcessMoving(InputAction.CallbackContext context) {
+            // grab input
+            Vector2 moveVector = DigitizeMovement(context.ReadValue<Vector2>());
+            if (moveVector.x == 0) {
+                return;
+            }
+
+            // remove y component in case a joystick was used.
+            // This is relevant for distinguishing between player-controled movement and animated movement to background/foreground
+            moveVector.y = 0;
+
+            _walker.ActivateWalking(moveVector);
         }
     }
 }
