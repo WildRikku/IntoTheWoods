@@ -10,6 +10,7 @@ namespace IntoTheWoods {
         [ShowInInspector] private int _currentScreen = StartScreen; // configure start screen here (0-based)
 
         public bool kidsAreSafe;
+        public bool kidsAreDoomed;
 
         public void InitializeScreens(List<Screen> screens) {
             _screens = screens;

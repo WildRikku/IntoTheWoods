@@ -17,6 +17,8 @@ namespace IntoTheWoods {
 
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
+        [SerializeField] private Falcon falcon;
+        [SerializeField] private Walker witchWalker;
         [SerializeField] private UIDocument UI;
         [SerializeField] private Light2D characterLight;
 
@@ -40,6 +42,8 @@ namespace IntoTheWoods {
             }
             Assert.IsTrue(screens.Count > 0);
             GameState.Instance.InitializeScreens(screens);
+            GameState.Instance.kidsAreDoomed = false;
+            GameState.Instance.kidsAreSafe = false;
 
             Assert.IsNotNull(primaryCharacter);
             primaryCharacter.AddComponent<PlayerController>();
@@ -61,10 +65,12 @@ namespace IntoTheWoods {
 
         private void OnEnable() {
             _playerWalker.WillMove += OnPlayerWillMove;
+            falcon.NotifiedWitch += FalconOnNotifiedWitch;
         }
 
         private void OnDisable() {
             _playerWalker.WillMove -= OnPlayerWillMove;
+            falcon.NotifiedWitch -= FalconOnNotifiedWitch;
         }
 
         private void ScreenOnInsideShadowChanged(bool safe) {
@@ -117,6 +123,15 @@ namespace IntoTheWoods {
             }
 
             return true;
+        }
+
+        private void FalconOnNotifiedWitch() {
+            GameState.Instance.kidsAreDoomed = true;
+            // TODO witch teleport poof
+            witchWalker.transform.position = new(_playerWalker.transform.position.x - 2, -0.57f, 0);
+            Vector3 scale = witchWalker.transform.localScale;
+            scale.x = -1;
+            witchWalker.transform.localScale = scale;
         }
     }
 }

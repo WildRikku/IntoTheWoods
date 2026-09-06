@@ -27,7 +27,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnMove(InputAction.CallbackContext context) {
-            if (_walker.IsBusy() || _character.IsBusy()) {
+            if (_walker.IsBusy() || _character.IsBusy() || GameState.Instance.kidsAreDoomed) {
                 // walking is only allowed when not busy, so if busy, process neither starting nor stopping walking
                 return;
             }

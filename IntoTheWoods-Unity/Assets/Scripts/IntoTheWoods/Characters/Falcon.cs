@@ -160,37 +160,46 @@ namespace IntoTheWoods.Characters {
         /// It will fly until it is out of sight, then continue for <see cref="Screen.ScreenWidth"/>/<see cref="Falcon.speed"/>.
         /// </summary>
         private class ReturnBaseState : MoveState {
-            private Vector2 _flyingDirection;
-            private bool _hasLeftScreen;
-            private float _timeOutOfSight;
+            protected Vector2 _FlyingDirection;
+            protected bool _HasLeftScreen;
+            protected float _TimeOutOfSight;
+
+            protected float _TimeOutOfSightMax;
+
+            public ReturnBaseState(Falcon falcon) {
+                _TimeOutOfSightMax = Screen.ScreenWidth / falcon.speed;
+            }
 
             public override MoveState Enter(Falcon falcon) {
-                _flyingDirection = new(-Math.Sign(falcon.transform.localScale.x), 0); // keep direction
+                _FlyingDirection = new(-Math.Sign(falcon.transform.localScale.x), 0); // keep direction
                 return this;
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
-                deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
+                deltaPos = new(falcon.speed * Time.deltaTime * _FlyingDirection.x, 0);
                 // only check one end since we know in which direction we are flying.
-                bool onScreen = _flyingDirection.x > 0
+                bool onScreen = _FlyingDirection.x > 0
                     ? GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x - falcon.extentBack, falcon.transform.position.y, 0))
                     : GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x + falcon.extentBack, falcon.transform.position.y, 0));
 
-                if (!onScreen && !_hasLeftScreen) {
-                    _hasLeftScreen = true;
-                    _timeOutOfSight = 0;
+                if (!onScreen && !_HasLeftScreen) {
+                    _HasLeftScreen = true;
+                    _TimeOutOfSight = 0;
                 }
                 else if (!onScreen) {
-                    _timeOutOfSight += Time.deltaTime;
+                    _TimeOutOfSight += Time.deltaTime;
                 }
                 else {
-                    _hasLeftScreen = false;
+                    _HasLeftScreen = false;
                 }
 
-                return _timeOutOfSight > Screen.ScreenWidth / falcon.speed;
+                return _TimeOutOfSight > _TimeOutOfSightMax;
             }
         }
 
+        /// <summary>
+        /// State of safety for children while Falcon is busy eating the mouse or whatever
+        /// </summary>
         private class DeactivatedState : PassiveState {
             private float _waitedTime;
             public float WaitTime { get; set; }
@@ -207,6 +216,7 @@ namespace IntoTheWoods.Characters {
 
         /// <summary>
         /// Fly towards target and follow target around / wait above target.
+        /// Only moves until target reached, then waits until target has reached some distance, to avoid glitching around. 
         /// </summary>
         private class ObserveState : MoveToTargetState {
             private const float ShortTriggerDistance = 0.2f; // value determined manually by testing what avoids glitching best
@@ -215,9 +225,18 @@ namespace IntoTheWoods.Characters {
             private readonly GameObject _targetObject;
             private Vector2 _flyingDirection;
             private bool _close;
+            private bool _wasCloseOnce;
+            private float _waitedTime;
+            private readonly float _waitTime;
 
-            public ObserveState(GameObject target) : base(target.transform.position) {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="target"></param>
+            /// <param name="waitTime">Time to wait after reaching the target (as determined by <see cref="ShortTriggerDistance"/>)</param>
+            public ObserveState(GameObject target, float waitTime) : base(target.transform.position) {
                 _targetObject = target;
+                _waitTime = waitTime;
             }
 
             public override MoveState Enter(Falcon falcon) {
@@ -231,6 +250,7 @@ namespace IntoTheWoods.Characters {
                 if (Math.Abs(distance) <= ShortTriggerDistance) {
                     // if we are inside ShortTriggerDistance, stop
                     _close = true;
+                    _wasCloseOnce = true; // _close will probably never be set to false again but who knows. Start timer
                 }
                 else if (Math.Abs(distance) > LongTriggerDistance) {
                     // if we are not even inside LongTriggerDistance, start moving
@@ -244,22 +264,46 @@ namespace IntoTheWoods.Characters {
                 deltaPos = _close ? Vector3.zero : new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
 
                 // TODO change facing direction
-                // TODO timer and angry craaah craaah here
+                // TODO angry craaah craaah here
+
+                if (_wasCloseOnce) {
+                    _waitedTime += Time.deltaTime;
+                    return _waitedTime > _waitTime;
+                }
+
                 return false;
             }
         }
 
-        private class TellWitchState : MoveState {
+        /// <summary>
+        /// Fly off super fast until witch is reached.
+        /// Needs to be fast enough to always reach witch before children leave (or fake it because bird is magical).
+        /// Very similar to <see cref="ReturnBaseState"/> but with higher speed and always flying towards witch house.
+        /// </summary>
+        private class TellWitchState : ReturnBaseState {
+            public TellWitchState(Falcon falcon) : base(falcon) {
+                _TimeOutOfSightMax = 7; // the kids have to walk at least 2 screens of 7.11 m at 1.7 m/s, that takes 8.4 s
+            }
+
             public override MoveState Enter(Falcon falcon) {
-                throw new NotImplementedException();
+                _FlyingDirection = new(1, 0); // towards with house
+                Vector3 scale = falcon.transform.localScale;
+                scale.x = -1; // make Falcon look the right way
+                falcon.transform.localScale = scale;
+                return this;
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
-                throw new NotImplementedException();
+                // First get return value from base function
+                bool timeUp = base.UpdateState(falcon, out deltaPos);
+                // Then override out value to be able to override speed
+                deltaPos = new(falcon.speed * 2 * Time.deltaTime * _FlyingDirection.x, 0);
+
+                return timeUp;
+                // TODO: Also fulfull condition when the witch hut was reached before the time was up. It's dangerous being close to the witch!
             }
 
             public override void Exit() {
-                throw new NotImplementedException();
             }
         }
 
@@ -290,6 +334,8 @@ namespace IntoTheWoods.Characters {
         private Character _currentCharacter;
 
         #endregion
+
+        public event Action NotifiedWitch;
 
         private void Start() {
             _currentState = new PatrolState {
@@ -348,7 +394,18 @@ namespace IntoTheWoods.Characters {
                     Debug.Log("Found " + character.gameObject.name);
 
                     _currentState.Exit();
-                    _currentState = new ObserveState(character.gameObject).Enter(this);
+                    _currentState = new ObserveState(character.gameObject, 1) {
+                        Done = () => {
+                            _currentState.Exit();
+                            _currentState = new TellWitchState(this) {
+                                Done = () => {
+                                    Debug.Log("NOW THE WITCH KNOWS");
+                                    _currentState = null;
+                                    NotifiedWitch?.Invoke();
+                                }
+                            }.Enter(this);
+                        }
+                    }.Enter(this);
                 }
             }
         }
@@ -370,13 +427,13 @@ namespace IntoTheWoods.Characters {
                             _currentState = new RisingState(this) {
                                 animator = animator,
                                 Done = () => {
-                                    _currentState = new ReturnBaseState {
+                                    _currentState = new ReturnBaseState(this) {
                                         animator = animator,
                                         Done = () => {
                                             print("I'm gone");
                                             subFalcon.SetActive(false);
                                             _currentState = new DeactivatedState {
-                                                WaitTime = SafeTimeAfterCapture - Screen.ScreenWidth / speed,
+                                                WaitTime = SafeTimeAfterCapture - Screen.ScreenWidth / speed, // reduce by time Falcon continues to fly out of sight in ReturnBaseState
                                                 Done = () => {
                                                     print("respawn falcon");
                                                     transform.position = RespawnPoint;

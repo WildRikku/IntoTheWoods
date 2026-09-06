@@ -24,7 +24,7 @@ namespace IntoTheWoods.Characters {
 
         public void OnThrowBread(InputAction.CallbackContext context) {
             // note that the order matters because TryGetBread() will reduce bread count
-            if (context.performed && inventory.TryGetBread()) {
+            if (context.performed && inventory.TryGetBread() && !GameState.Instance.kidsAreDoomed) {
                 animator.SetBool(Throwing, true); // will reset itself
             }
         }

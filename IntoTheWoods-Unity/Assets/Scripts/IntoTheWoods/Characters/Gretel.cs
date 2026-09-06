@@ -57,7 +57,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnPickup(InputAction.CallbackContext context) {
-            if (!walker.IsTransfering && _nearbyCollectibles.Count > 0 && context.performed) {
+            if (!walker.IsTransfering && _nearbyCollectibles.Count > 0 && context.performed && !GameState.Instance.kidsAreDoomed) {
                 walker.StopWalking();
                 // animation resets itself
                 // animation also triggers the actual pickup via event

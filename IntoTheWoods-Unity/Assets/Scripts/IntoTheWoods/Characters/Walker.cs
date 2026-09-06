@@ -92,6 +92,10 @@ namespace IntoTheWoods.Characters {
 
         private void Update() {
             if (IsWalking) {
+                if (GameState.Instance.kidsAreDoomed) {
+                    StopWalking();
+                    return;
+                }
                 // By sending the event before moving, we have the game manager check if we are going out of bounds
                 // the order is relevant to prevent glitching outside
                 Vector3 posDelta = new(speed * Time.deltaTime * _walkingDirection.x, 0);

@@ -67,7 +67,7 @@ namespace IntoTheWoods.Characters {
         }
 
         private void Update() {
-            if (_actionList.Count == 0) {
+            if (_actionList.Count == 0 || GameState.Instance.kidsAreDoomed) {
                 return;
             }
 

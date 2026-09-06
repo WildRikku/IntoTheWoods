@@ -3375,6 +3375,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2640962027047503204, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
   m_PrefabInstance: {fileID: 866184335}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &866184337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 444470622589607088, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+  m_PrefabInstance: {fileID: 866184335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
 --- !u!1001 &871158384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3842,6 +3853,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1053391996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6394456840379857586, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
+  m_PrefabInstance: {fileID: 1129207788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053391990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58548ff25f4c4b18931e2d870c82fc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Falcon
 --- !u!1001 &1111113878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5956,6 +5978,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.GameManager
   primaryCharacter: {fileID: 170961711}
   secondaryCharacter: {fileID: 296062540}
+  falcon: {fileID: 1053391996}
+  witchWalker: {fileID: 866184337}
   UI: {fileID: 60425744}
   characterLight: {fileID: 446973692}
 --- !u!114 &1727744963
