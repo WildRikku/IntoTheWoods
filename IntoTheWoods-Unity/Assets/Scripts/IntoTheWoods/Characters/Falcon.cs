@@ -334,7 +334,7 @@ namespace IntoTheWoods.Characters {
                     _currentMouse = mouse;
                 }
             }
-            else if (other.CompareTag("Player")) {
+            else if (other.CompareTag("Player") && !GameState.Instance.kidsAreSafe) {
                 Character character = other.GetComponent<Character>();
                 if (character == null) {
                     character = other.transform.parent.parent.GetComponent<Character>();
