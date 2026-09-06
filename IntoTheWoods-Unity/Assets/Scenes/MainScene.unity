@@ -669,7 +669,6 @@ GameObject:
   - component: {fileID: 170961709}
   - component: {fileID: 170961711}
   - component: {fileID: 170961712}
-  - component: {fileID: 170961713}
   m_Layer: 6
   m_Name: HaenselPlayer
   m_TagString: Player
@@ -748,19 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
-  speed: 6
---- !u!114 &170961713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170961706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b3fd1b7ff54394a7fbb05122778fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.CharacterStateMachine
+  speed: 1.7
 --- !u!1 &191133544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1100,6 @@ GameObject:
   - component: {fileID: 296062538}
   - component: {fileID: 296062540}
   - component: {fileID: 296062541}
-  - component: {fileID: 296062542}
   m_Layer: 6
   m_Name: GretelPlayer
   m_TagString: Player
@@ -1192,19 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
-  speed: 6
---- !u!114 &296062542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296062536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b3fd1b7ff54394a7fbb05122778fd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.CharacterStateMachine
+  speed: 1.65
 --- !u!1001 &299229787
 PrefabInstance:
   m_ObjectHideFlags: 0
