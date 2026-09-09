@@ -3,6 +3,7 @@ using IntoTheWoods.Helpers;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Screen : MonoBehaviour {
     public enum ScreenEdgeResult {
@@ -26,9 +27,12 @@ public class Screen : MonoBehaviour {
     private const float CrossScreenThreshold = 3.6f;
 
     [Header("Define where the next screen can be reached (independent of whether there actually is a screen")]
+    public bool hasBackLane;
     public bool canLeaveScreenFrontLeft;
     public bool canLeaveScreenFrontRight;
+    [ShowIf("hasBackLane")]
     public bool canLeaveScreenBackLeft;
+    [ShowIf("hasBackLane")]
     public bool canLeaveScreenBackRight;
 
     [Header("For those corners where no screen crossing is allowed, define the edges (others are ignored).")]
@@ -69,6 +73,11 @@ public class Screen : MonoBehaviour {
         foreach (InsideShadowCheck check in GetComponentsInChildren<InsideShadowCheck>()) {
             check.InsideShadowChanged += OnInsideShadowChanged;
         }
+
+        Assert.IsTrue(canLeaveScreenFrontLeft || frontLeftThreshold != 0, gameObject.name);
+        Assert.IsTrue(canLeaveScreenFrontRight || frontRightThreshold != 0, gameObject.name);
+        Assert.IsTrue(!hasBackLane || canLeaveScreenBackLeft || backLeftThreshold != 0, gameObject.name);
+        Assert.IsTrue(!hasBackLane || canLeaveScreenBackRight || backRightThreshold != 0, gameObject.name);
     }
 
     /// <summary>
