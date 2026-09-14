@@ -26,15 +26,6 @@ namespace IntoTheWoods {
             Assert.IsNotNull(Camera.main);
             _mainCamera = Camera.main;
 
-            // Scale camera to show black borders and keep 16:9 aspect ratio
-            float aspect = (float)UnityEngine.Screen.height / UnityEngine.Screen.width; // do not use currentResolution, it returns the total resolution for all screens on multi-screen setups
-            if (aspect > Screen.FullHDratio) {
-                Rect rect = Camera.main.rect;
-                rect.height = Screen.FullHDratio * UnityEngine.Screen.width / UnityEngine.Screen.height;
-                rect.y = (1 - rect.height) / 2;
-                Camera.main.rect = rect;
-            }
-
             // Get all screens
             List<Screen> screens = new(GetComponentsInChildren<Screen>());
             foreach (Screen screen in screens) {
