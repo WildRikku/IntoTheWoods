@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 945065119
-  m_SortingLayer: -15
+  m_SortingLayer: -16
   m_SortingOrder: -7
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 8372a99d561db7c52b980b05f1cd48ee, type: 3}
@@ -481,7 +481,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1027825590218285680}
+  - {fileID: 1351824593526589233}
   m_Father: {fileID: 4946604233922500115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &6983573229818067218
@@ -682,7 +682,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 36262273
-  m_SortingLayer: -11
+  m_SortingLayer: -12
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: efc17b666fde311a88f7194989e7bf0b, type: 3}
@@ -773,7 +773,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 413596857
-  m_SortingLayer: -13
+  m_SortingLayer: -14
   m_SortingOrder: -4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7cb173b3c8c9a10fba4137d380601c3e, type: 3}
@@ -990,7 +990,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -762014057
-  m_SortingLayer: -12
+  m_SortingLayer: -13
   m_SortingOrder: -5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 2952342eb4e341a669280b944f9d3a0c, type: 3}
@@ -1359,7 +1359,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2091645325
-  m_SortingLayer: -18
+  m_SortingLayer: -19
   m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2055272812071125615, guid: 4e24758e9d92242c19727b291ed6fab7, type: 3}
@@ -1562,7 +1562,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -762014057
-  m_SortingLayer: -12
+  m_SortingLayer: -13
   m_SortingOrder: -6
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 0158f26e9409d5469ae7270bc982ed87, type: 3}
@@ -1653,7 +1653,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1889003833
-  m_SortingLayer: -14
+  m_SortingLayer: -15
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 7cb173b3c8c9a10fba4137d380601c3e, type: 3}
@@ -1835,7 +1835,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 36262273
-  m_SortingLayer: -11
+  m_SortingLayer: -12
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 594d57e60f8f7305186a34f4f4e17242, type: 3}
@@ -1926,7 +1926,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1181386735
-  m_SortingLayer: -17
+  m_SortingLayer: -18
   m_SortingOrder: -9
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: f48a9a6a51c4c7a1f814961a9ef6f0bc, type: 3}
@@ -2095,7 +2095,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -926371861
-  m_SortingLayer: -16
+  m_SortingLayer: -17
   m_SortingOrder: -8
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 71d4f0027e1bbe8dc84f7633ea5a7a38, type: 3}
@@ -2182,9 +2182,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9190456227187748969}
     m_Modifications:
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.a
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_Name
       value: MiniMapShadowMarker
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_TagString
+      value: EditorOnly
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2236,7 +2256,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
   m_PrefabInstance: {fileID: 2768750398065395506}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5433396020260027920
+--- !u!1001 &6333882172622035793
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2245,28 +2265,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 6189041700209412243}
     m_Modifications:
     - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
-      propertyPath: m_SortingLayer
-      value: -13
+      propertyPath: m_Color.a
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 413596857
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b15a28a5c100a9436b2874bfab08c8c4, type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_Name
       value: MiniMapShadowMarker
       objectReference: {fileID: 0}
+    - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_TagString
+      value: EditorOnly
+      objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.048
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.721
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2278,15 +2306,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2305,10 +2333,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b1537bd74148635886444a763c43922, type: 3}
---- !u!4 &1027825590218285680 stripped
+--- !u!4 &1351824593526589233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
-  m_PrefabInstance: {fileID: 5433396020260027920}
+  m_PrefabInstance: {fileID: 6333882172622035793}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8122672139118441914
 PrefabInstance:
@@ -2318,9 +2346,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1513276722297806303}
     m_Modifications:
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.a
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171344614148608189, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_Name
       value: MiniMapShadowMarker
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549852377404482089, guid: 0b1537bd74148635886444a763c43922, type: 3}
+      propertyPath: m_TagString
+      value: EditorOnly
       objectReference: {fileID: 0}
     - target: {fileID: 4982350119100406880, guid: 0b1537bd74148635886444a763c43922, type: 3}
       propertyPath: m_LocalPosition.x
