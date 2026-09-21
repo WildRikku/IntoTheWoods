@@ -886,11 +886,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
-      value: 527743675
+      value: -2109085209
       objectReference: {fileID: 0}
     - target: {fileID: 6700362936456837498, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_Name
@@ -1958,11 +1958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
-      value: 527743675
+      value: -2109085209
       objectReference: {fileID: 0}
     - target: {fileID: 6700362936456837498, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_Name
@@ -3958,11 +3958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
-      value: 527743675
+      value: -2109085209
       objectReference: {fileID: 0}
     - target: {fileID: 6700362936456837498, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_Name
@@ -4064,9 +4064,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Falcon
       objectReference: {fileID: 0}
+    - target: {fileID: 3257998002414316072, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6620370093478454868, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.29
+      value: 6.419
       objectReference: {fileID: 0}
     - target: {fileID: 6620370093478454868, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5811,11 +5815,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayer
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6288326942338247602, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_SortingLayerID
-      value: 527743675
+      value: -2109085209
       objectReference: {fileID: 0}
     - target: {fileID: 6700362936456837498, guid: 19f229982f1fa585fad6c0ed6eb82311, type: 3}
       propertyPath: m_Name
@@ -6660,7 +6664,7 @@ GameObject:
   - component: {fileID: 1818432538}
   - component: {fileID: 1818432539}
   m_Layer: 0
-  m_Name: GlobalLight2D Falcon
+  m_Name: GlobalLight2D Falcon and collectibles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6701,7 +6705,7 @@ MonoBehaviour:
   m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 991eb0b6
+  m_ApplyToSortingLayers: 991eb0b6e7e94982
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

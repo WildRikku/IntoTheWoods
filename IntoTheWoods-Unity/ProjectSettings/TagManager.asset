@@ -84,6 +84,9 @@ TagManager:
   - name: PlayerFront
     uniqueID: 1557814033
     locked: 0
+  - name: Collectible
+    uniqueID: 2185882087
+    locked: 0
   - name: Falcon
     uniqueID: 3064995481
     locked: 0
