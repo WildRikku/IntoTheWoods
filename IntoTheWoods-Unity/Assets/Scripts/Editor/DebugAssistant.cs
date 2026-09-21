@@ -70,6 +70,7 @@ public class DebugAssistant : OdinEditorWindow {
         SceneManager.activeSceneChanged += OnSceneChanged;
         EditorApplication.playModeStateChanged -= OnPlayModeChange;
         EditorApplication.playModeStateChanged += OnPlayModeChange;
+        _inGame = EditorApplication.isPlaying;
         FindDebugObjects();
     }
 
