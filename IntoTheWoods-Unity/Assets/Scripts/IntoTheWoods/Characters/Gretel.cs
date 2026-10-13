@@ -10,7 +10,6 @@ namespace IntoTheWoods.Characters {
 
         // setup fields
         [SerializeField] private Animator animator;
-        [SerializeField] private Inventory inventory;
 
         // internal setup fields
         private @InputSystem_Actions _wrapper;

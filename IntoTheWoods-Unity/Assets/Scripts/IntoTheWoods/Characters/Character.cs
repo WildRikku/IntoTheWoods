@@ -4,6 +4,7 @@ using UnityEngine.Assertions;
 namespace IntoTheWoods.Characters {
     public abstract class Character : MonoBehaviour {
         [SerializeField] protected Walker walker;
+        public Inventory inventory;
 
         private void Start() {
             Assert.IsNotNull(walker);
