@@ -38,6 +38,8 @@ namespace IntoTheWoods.Characters {
 
         public bool CanTransfer => _inTransferZones.Count > 0;
 
+        [ShowInInspector] private Vector2 _blockedDirection;
+
         /// <summary>
         /// true = back lane, false = front lane
         /// </summary>
@@ -81,6 +83,8 @@ namespace IntoTheWoods.Characters {
             if (_transferDetector != null) {
                 _transferDetector.TransferZoneEntered += OnTransferZoneEntered;
                 _transferDetector.TransferZoneLeft += OnTransferZoneLeft;
+                _transferDetector.ObstacleEntered += OnObstacleEntered;
+                _transferDetector.ObstacleLeft += OnObstacleLeft;
             }
         }
 
@@ -88,6 +92,8 @@ namespace IntoTheWoods.Characters {
             if (_transferDetector != null) {
                 _transferDetector.TransferZoneEntered -= OnTransferZoneEntered;
                 _transferDetector.TransferZoneLeft -= OnTransferZoneLeft;
+                _transferDetector.ObstacleEntered -= OnObstacleEntered;
+                _transferDetector.ObstacleLeft -= OnObstacleLeft;
             }
         }
 
@@ -162,12 +168,25 @@ namespace IntoTheWoods.Characters {
             _inTransferZones.Remove(obj.GetInstanceID());
         }
 
+        private void OnObstacleEntered(Collider2D other) {
+            _blockedDirection = new(_walkingDirection.x, 0);
+            StopWalking();
+        }
+
+        private void OnObstacleLeft(Collider2D other) {
+            _blockedDirection = Vector2.zero;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="moveVector">digitized movement direction</param>
         /// <param name="doNotFlip">Hack for witch, which is oriented the other way</param>
         public void ActivateWalking(Vector2 moveVector, bool doNotFlip = false) {
+            if (Mathf.Approximately(moveVector.x, _blockedDirection.x)) {
+                return;
+            }
+
             IsWalking = true;
             _walkingDirection = moveVector;
             _animator.SetBool(Walking, true);

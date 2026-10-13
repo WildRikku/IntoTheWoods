@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1258366110460864159}
   - component: {fileID: 6845961265459052236}
-  - component: {fileID: 3229872375935435085}
-  - component: {fileID: 2142182103560265186}
+  - component: {fileID: 1425901778475777857}
   m_Layer: 0
   m_Name: treetrunkFrontPath
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,8 +92,8 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &3229872375935435085
-BoxCollider2D:
+--- !u!60 &1425901778475777857
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,7 +126,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.012278, y: -1.3727099}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -137,17 +136,66 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8055267, y: 1.2545803}
-  m_EdgeRadius: 0
---- !u!114 &2142182103560265186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505942602109302285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 567f629a6e9b471e8a96391d8fbd0f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Helpers.DoNotCross
+  m_Points:
+    m_Paths:
+    - - {x: -1.701389, y: -1.7361112}
+      - {x: -1.6493056, y: -1.6770834}
+      - {x: -1.5347222, y: -1.5833334}
+      - {x: -1.4583334, y: -1.5625}
+      - {x: -1.2986112, y: -1.5590278}
+      - {x: -1.295139, y: -1.5625}
+      - {x: -1.2430556, y: -1.5729166}
+      - {x: -1.2083334, y: -1.5625}
+      - {x: -1.1597222, y: -1.5347222}
+      - {x: -1.125, y: -1.5}
+      - {x: -1.1180556, y: -1.4791666}
+      - {x: -1.1180556, y: -1.4375}
+      - {x: -1.1215278, y: -1.4166666}
+      - {x: -1.1458334, y: -1.4027778}
+      - {x: -1.2743056, y: -1.3784722}
+      - {x: -1.3506944, y: -1.3715278}
+      - {x: -1.3958334, y: -1.3680556}
+      - {x: -1.3784722, y: -1.3368056}
+      - {x: -1.2881944, y: -1.2569444}
+      - {x: -1.2673612, y: -1.2222222}
+      - {x: -1.2083334, y: -1.1527778}
+      - {x: -1.2083334, y: -1.013889}
+      - {x: -1.2048612, y: -0.9652778}
+      - {x: -1.2256944, y: -0.9201389}
+      - {x: -1.2708334, y: -0.8506945}
+      - {x: -1.3680556, y: -0.7777778}
+      - {x: -1.4097222, y: -0.7569445}
+      - {x: -1.4548612, y: -0.7534722}
+      - {x: -1.5104166, y: -0.7395833}
+      - {x: -1.6215278, y: -0.7395833}
+      - {x: -1.6736112, y: -0.7569445}
+      - {x: -1.7083334, y: -0.78125}
+      - {x: -1.7430556, y: -0.8194445}
+      - {x: -1.7743056, y: -0.8611111}
+      - {x: -1.8125, y: -0.8888889}
+      - {x: -1.8541666, y: -0.9270833}
+      - {x: -1.90625, y: -1}
+      - {x: -1.9548612, y: -1.0486112}
+      - {x: -2.0347223, y: -1.1180556}
+      - {x: -2.1076388, y: -1.1736112}
+      - {x: -2.1631944, y: -1.2083334}
+      - {x: -2.2083333, y: -1.2430556}
+      - {x: -2.2569444, y: -1.2847222}
+      - {x: -2.3020833, y: -1.326389}
+      - {x: -2.3159723, y: -1.34375}
+      - {x: -2.3923612, y: -1.4652778}
+      - {x: -2.4097223, y: -1.5069444}
+      - {x: -2.4305556, y: -1.5555556}
+      - {x: -2.4791667, y: -1.6284722}
+      - {x: -2.5208333, y: -1.670139}
+      - {x: -2.6388888, y: -1.7604166}
+      - {x: -2.6736112, y: -1.7881944}
+      - {x: -2.7291667, y: -1.84375}
+      - {x: -2.8159723, y: -1.9375}
+      - {x: -2.8368056, y: -1.9791666}
+      - {x: -2.84375, y: -2}
+      - {x: -1.9166666, y: -2}
+      - {x: -1.8993056, y: -1.9895834}
+      - {x: -1.857639, y: -1.9479166}
+      - {x: -1.7986112, y: -1.8784722}
+  m_UseDelaunayMesh: 1

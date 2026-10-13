@@ -447,7 +447,7 @@ SortingGroup:
   m_GameObject: {fileID: 2163598600656941176}
   m_Enabled: 1
   m_SortingLayerID: 1557814033
-  m_SortingLayer: -5
+  m_SortingLayer: -6
   m_SortingOrder: 0
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
@@ -1162,7 +1162,7 @@ Transform:
   m_GameObject: {fileID: 5428214888480200426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.023956783, y: -0.06250626, z: 0}
+  m_LocalPosition: {x: 0.118, y: 0.007, z: 0}
   m_LocalScale: {x: 1.0840001, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

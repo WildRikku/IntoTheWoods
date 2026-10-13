@@ -8,6 +8,7 @@ TagManager:
   - Collectible
   - Mouse
   - Witch
+  - Obstacle
   layers:
   - Default
   - TransparentFX
