@@ -14,6 +14,11 @@ namespace IntoTheWoods.Characters {
         private const float DefaultHeight = 1.495f;
         private const float WaitOnGroundTime = 1.5f;
         private const float ApproachDistance = 2f;
+        /// <summary>
+        /// Shift value to position Falcon when attacking mouse (instead of exactly on mouse position)
+        /// determined by what looks good
+        /// </summary>
+        private static readonly Vector3 mouseShift = new(0.155f, 0.431f, 0);
 
         #endregion
 
@@ -81,8 +86,10 @@ namespace IntoTheWoods.Characters {
         /// <seealso cref="ObserveState"/>
         private class ApproachingState : MoveToTargetState {
             private Vector2 _flyingDirection;
+            private readonly Mouse _mouse;
 
-            public ApproachingState(Vector3 currentTarget) : base(currentTarget) {
+            public ApproachingState(Mouse mouse) : base(mouse.transform.position + mouseShift) {
+                _mouse = mouse;
             }
 
             public override MoveState Enter(Falcon falcon) {
@@ -91,6 +98,7 @@ namespace IntoTheWoods.Characters {
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
+                currentTarget = _mouse.transform.position + mouseShift;
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
                 return Math.Abs((currentTarget - falcon.transform.position).x) <= ApproachDistance;
             }
@@ -338,10 +346,10 @@ namespace IntoTheWoods.Characters {
         public event Action NotifiedWitch;
 
         private void Start() {
-            _currentState = new PatrolState {
-                leftEnd = leftEnd,
-                rightEnd = rightEnd
-            };
+            // _currentState = new PatrolState {
+            //     leftEnd = leftEnd,
+            //     rightEnd = rightEnd
+            // };
         }
 
         private void Update() {
@@ -370,10 +378,10 @@ namespace IntoTheWoods.Characters {
                     mouse = other.GetComponentInParent<Mouse>();
                 }
 
-                if (mouse != null && mouse.mouseActive && !mouse._moving && _currentMouse == null) {
+                if (mouse != null && mouse.mouseActive && _currentMouse == null) {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
-                    _currentState.Exit();
-                    _currentState = new ApproachingState(mouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0)) {
+                    _currentState?.Exit();
+                    _currentState = new ApproachingState(mouse) {
                         // value determined by hand based on what looks good {
                         Done = OnMouseApproached
                     }.Enter(this);
@@ -393,7 +401,7 @@ namespace IntoTheWoods.Characters {
 
                     Debug.Log("Found " + character.gameObject.name);
 
-                    _currentState.Exit();
+                    _currentState?.Exit();
                     _currentState = new ObserveState(character.gameObject, 1) {
                         Done = () => {
                             _currentState.Exit();
@@ -415,7 +423,7 @@ namespace IntoTheWoods.Characters {
         /// </summary>
         private void OnMouseApproached() {
             _currentState.Exit();
-            _currentState = new AttackLandingState(_currentMouse.gameObject.transform.position + new Vector3(0.155f, 0.431f, 0)) {
+            _currentState = new AttackLandingState(_currentMouse.gameObject.transform.position + mouseShift) {
                 animator = animator,
                 Done = () => {
                     _currentState.Exit();
