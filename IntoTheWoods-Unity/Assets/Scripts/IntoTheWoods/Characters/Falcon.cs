@@ -142,6 +142,25 @@ namespace IntoTheWoods.Characters {
             }
         }
 
+        /// <summary>
+        /// When the falcon is captured, nothing needs to happen anymore
+        /// </summary>
+        private class CapturedState : State {
+        }
+
+        /// <summary>
+        /// When attempting to capture falcon with a net with too few stones, it will escape with the net
+        /// </summary>
+        private class FailedCaptureState : PassiveState {
+            public override PassiveState Enter() {
+                throw new NotImplementedException();
+            }
+
+            public override bool UpdateState() {
+                throw new NotImplementedException();
+            }
+        }
+
         private class RisingState : MoveToTargetState {
             public RisingState(Falcon falcon) : base(
                 new(falcon.transform.position.x + 5 * -Math.Sign(falcon.transform.localScale.x), DefaultHeight, 0)) {
@@ -388,7 +407,10 @@ namespace IntoTheWoods.Characters {
                     _currentMouse = mouse;
                 }
             }
-            else if (other.CompareTag("Player") && !GameState.Instance.kidsAreSafe) {
+            else if (other.CompareTag("Player") && !GameState.Instance.kidsAreSafe && _currentState is not ApproachingState &&
+                     _currentState is not AttackLandingState && _currentState is not OnFloorState && _currentState is not RisingState &&
+                     _currentState is not ReturnBaseState && _currentState is not CapturedState) {
+                // TODO replace all these "is not" with matching "is"
                 Character character = other.GetComponent<Character>();
                 if (character == null) {
                     character = other.transform.parent.parent.GetComponent<Character>();
@@ -461,6 +483,16 @@ namespace IntoTheWoods.Characters {
                     }.Enter();
                 }
             }.Enter(this);
+        }
+
+        public bool TryCapture(int stoneCount) {
+            if (_currentState is OnFloorState && stoneCount >= 4) {
+                _currentState = new CapturedState();
+                animator.SetBool(Captured, true);
+                return true;
+            }
+
+            return false;
         }
 
         private IEnumerator KillMouseAfterFrame() {

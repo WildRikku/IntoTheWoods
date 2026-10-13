@@ -118,6 +118,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseNet"",
+                    ""type"": ""Button"",
+                    ""id"": ""26ab10ed-17a6-453b-95d9-d4f0d41617c8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -318,6 +327,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeLane"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""582bec39-e199-49ad-992b-7b1cf840b83a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""UseNet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0988aeb8-8904-4836-a563-ae40c5aec185"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""UseNet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1006,6 +1037,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_PrimaryPlayer_Move = m_PrimaryPlayer.FindAction("Move", throwIfNotFound: true);
         m_PrimaryPlayer_Jump = m_PrimaryPlayer.FindAction("Jump", throwIfNotFound: true);
         m_PrimaryPlayer_ChangeLane = m_PrimaryPlayer.FindAction("ChangeLane", throwIfNotFound: true);
+        m_PrimaryPlayer_UseNet = m_PrimaryPlayer.FindAction("UseNet", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1110,6 +1142,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PrimaryPlayer_Move;
     private readonly InputAction m_PrimaryPlayer_Jump;
     private readonly InputAction m_PrimaryPlayer_ChangeLane;
+    private readonly InputAction m_PrimaryPlayer_UseNet;
     /// <summary>
     /// Provides access to input actions defined in input action map "PrimaryPlayer".
     /// </summary>
@@ -1133,6 +1166,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PrimaryPlayer/ChangeLane".
         /// </summary>
         public InputAction @ChangeLane => m_Wrapper.m_PrimaryPlayer_ChangeLane;
+        /// <summary>
+        /// Provides access to the underlying input action "PrimaryPlayer/UseNet".
+        /// </summary>
+        public InputAction @UseNet => m_Wrapper.m_PrimaryPlayer_UseNet;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1168,6 +1205,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ChangeLane.started += instance.OnChangeLane;
             @ChangeLane.performed += instance.OnChangeLane;
             @ChangeLane.canceled += instance.OnChangeLane;
+            @UseNet.started += instance.OnUseNet;
+            @UseNet.performed += instance.OnUseNet;
+            @UseNet.canceled += instance.OnUseNet;
         }
 
         /// <summary>
@@ -1188,6 +1228,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ChangeLane.started -= instance.OnChangeLane;
             @ChangeLane.performed -= instance.OnChangeLane;
             @ChangeLane.canceled -= instance.OnChangeLane;
+            @UseNet.started -= instance.OnUseNet;
+            @UseNet.performed -= instance.OnUseNet;
+            @UseNet.canceled -= instance.OnUseNet;
         }
 
         /// <summary>
@@ -1701,6 +1744,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeLane(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UseNet" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUseNet(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

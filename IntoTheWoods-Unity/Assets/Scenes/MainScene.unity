@@ -821,8 +821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Haensel
   walker: {fileID: 170961712}
-  animator: {fileID: 648596925}
   inventory: {fileID: 1727744963}
+  animator: {fileID: 648596925}
 --- !u!114 &170961712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,8 +1252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Gretel
   walker: {fileID: 296062541}
-  animator: {fileID: 1959801605}
   inventory: {fileID: 1727744963}
+  animator: {fileID: 1959801605}
 --- !u!114 &296062541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4148,7 +4148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3257998002414316072, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6620370093478454868, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
-using UnityEngine.Rendering;
+
+// ReSharper disable Unity.PreferNonAllocApi
 
 namespace IntoTheWoods.Characters {
     public delegate bool PlayerWillMoveEventHandler(Vector2 nextPosition, Vector2 direction);
@@ -72,6 +73,31 @@ namespace IntoTheWoods.Characters {
                 }
 
                 _walker.ActivateTransfer(inputVector, true);
+            }
+        }
+
+        public void OnUseNet(InputAction.CallbackContext context) {
+            if (context.started && _character.inventory.hasNet) {
+                RaycastHit2D hit = Physics2D.CircleCast(transform.position, 2.5f, Vector2.down, 0.5f, LayerMask.GetMask("Falcon"));
+                if (!hit) {
+                    Debug.Log("no hit");
+                    return;
+                }
+                Falcon falcon = hit.collider.GetComponent<Falcon>();
+                if (falcon == null) {
+                    falcon = hit.collider.GetComponentInParent<Falcon>();
+                }
+                if (falcon != null) {
+                    if (falcon.TryCapture(_character.inventory.StonesOnNet)) {
+                        Debug.Log("gotcha falcon");
+                    }
+                    else {
+                        Debug.Log("capture attempt failed");
+                    }
+                }
+                else {
+                    Debug.Log("no falcon " + hit.collider.gameObject.name);
+                }
             }
         }
 

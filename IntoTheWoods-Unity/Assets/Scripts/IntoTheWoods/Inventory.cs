@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DefaultNamespace;
+using Sirenix.OdinInspector;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,6 +19,7 @@ namespace IntoTheWoods {
         public int BreadCount { get; private set; } = 4;
 
         public bool hasNet;
+        [field: ShowInInspector] public int StonesOnNet { get; private set; }
 
         private void Awake() {
             _stones = new();
@@ -51,7 +53,7 @@ namespace IntoTheWoods {
 
         [CreateProperty]
         public StyleEnum<Visibility> HasStones => StoneCount > 0 ? Visibility.Visible : Visibility.Hidden;
-        
+
         [CreateProperty]
         public StyleEnum<Visibility> HasNet => hasNet ? Visibility.Visible : Visibility.Hidden;
     }
