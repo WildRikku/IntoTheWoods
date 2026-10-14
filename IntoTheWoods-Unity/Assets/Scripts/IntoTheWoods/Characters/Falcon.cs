@@ -313,7 +313,7 @@ namespace IntoTheWoods.Characters {
                 deltaPos = _close ? Vector3.zero : new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
 
                 // TODO change facing direction
-                alarmedCaw.Play();
+                falcon.alarmedCaw.Play();
                 _crahWaitedTime += Time.deltaTime;
                 if (_crahWaitedTime > 1) {
                     _crahWaitedTime = 0;
