@@ -16,6 +16,8 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Animator animator;
         [SerializeField] private AnimatorSignal _animatorSignal;
 
+        public Action KidsHexed;
+
         private void Awake() {
             Assert.IsNotNull(myWalker);
             Assert.IsNotNull(_animatorSignal);
@@ -86,7 +88,7 @@ namespace IntoTheWoods.Characters {
 
         private void OnAnimationEnded() {
             animator.SetBool(Magic, false);
-            Debug.Log("pooof make mice");
+            KidsHexed?.Invoke();
         }
     }
 }

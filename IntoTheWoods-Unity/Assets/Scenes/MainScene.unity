@@ -2085,6 +2085,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2217,6 +2218,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983b72ba7f035cec685c6943847327ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!81 &519420034
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
 --- !u!1001 &522946120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3540,15 +3549,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &866184337 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 444470622589607088, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9033886655979276177, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
   m_PrefabInstance: {fileID: 866184335}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1829191497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e1f18e8a714a44a498a8fd10f8b038, type: 3}
+  m_Script: {fileID: 11500000, guid: 85950938d0ef46989009a0bccc0310ea, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Witch
 --- !u!1001 &871158384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6262,7 +6271,7 @@ MonoBehaviour:
   primaryCharacter: {fileID: 170961711}
   secondaryCharacter: {fileID: 296062540}
   falcon: {fileID: 1053391996}
-  witchWalker: {fileID: 866184337}
+  witch: {fileID: 866184337}
   UI: {fileID: 60425744}
   characterLight: {fileID: 446973692}
 --- !u!114 &1727744963

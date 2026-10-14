@@ -18,7 +18,7 @@ namespace IntoTheWoods {
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
         [SerializeField] private Falcon falcon;
-        [SerializeField] private Walker witchWalker;
+        [SerializeField] private Witch witch;
         [SerializeField] private UIDocument UI;
         [SerializeField] private Light2D characterLight;
 
@@ -40,7 +40,7 @@ namespace IntoTheWoods {
             primaryCharacter.AddComponent<PlayerController>();
             _playerWalker = primaryCharacter.GetComponent<Walker>();
             primaryCharacter.GetComponentInChildren<SortingGroup>().sortingOrder = 1; // primary player in front of secondary character
-            primaryCharacter.AddComponent<AudioListener>();
+            // primaryCharacter.AddComponent<AudioListener>();
 
             Assert.IsNotNull(secondaryCharacter);
             FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();
@@ -57,11 +57,13 @@ namespace IntoTheWoods {
         private void OnEnable() {
             _playerWalker.WillMove += OnPlayerWillMove;
             falcon.NotifiedWitch += FalconOnNotifiedWitch;
+            witch.KidsHexed += WitchOnKidsHexed;
         }
 
         private void OnDisable() {
             _playerWalker.WillMove -= OnPlayerWillMove;
             falcon.NotifiedWitch -= FalconOnNotifiedWitch;
+            witch.KidsHexed -= WitchOnKidsHexed;
         }
 
         private void ScreenOnInsideShadowChanged(bool safe) {
@@ -116,13 +118,27 @@ namespace IntoTheWoods {
             return true;
         }
 
+        /// <summary>
+        /// "Call" witch when the falcon has "notified" her.
+        /// Teleport witch to kids, which will trigger the witch hexing the kids through physics detection 
+        /// </summary>
         private void FalconOnNotifiedWitch() {
             GameState.Instance.kidsAreDoomed = true;
             // TODO witch teleport poof
-            witchWalker.transform.position = new(_playerWalker.transform.position.x - 2, -0.57f, 0);
-            Vector3 scale = witchWalker.transform.localScale;
+            // Position witch on the side of the player with more space
+            // TODO solve the case in which the player character is on one screen and the follower character is on another (which is not trivial since the follower character might be far away)
+            GameState.Instance.GetCurrentScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
+            float witchXPos = percentage > 0.5f ? _playerWalker.transform.position.x - 2 : _playerWalker.transform.position.x + 2;
+            witch.transform.parent.position = new(witchXPos, -0.57f, 0);
+            Vector3 scale = witch.transform.parent.localScale;
             scale.x = -1;
-            witchWalker.transform.localScale = scale;
+            witch.transform.parent.localScale = scale;
+        }
+
+        private void WitchOnKidsHexed() {
+            Debug.Log("pooof make mice");
+            Destroy(primaryCharacter.gameObject);
+            Destroy(secondaryCharacter.gameObject);
         }
     }
 }
