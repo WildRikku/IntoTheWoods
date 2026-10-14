@@ -269,6 +269,7 @@ namespace IntoTheWoods.Characters {
             private bool _wasCloseOnce;
             private float _waitedTime;
             private readonly float _waitTime;
+            private float _crahWaitedTime;
 
             /// <summary>
             /// 
@@ -282,6 +283,7 @@ namespace IntoTheWoods.Characters {
 
             public override MoveState Enter(Falcon falcon) {
                 _flyingDirection = new(Math.Sign(currentTarget.x - falcon.transform.position.x), 0);
+                Debug.Log("KRAH KRAH");
                 return this;
             }
 
@@ -306,6 +308,11 @@ namespace IntoTheWoods.Characters {
 
                 // TODO change facing direction
                 // TODO angry craaah craaah here
+                _crahWaitedTime += Time.deltaTime;
+                if (_crahWaitedTime > 1) {
+                    _crahWaitedTime = 0;
+                    Debug.Log("KRAH KRAH");
+                }
 
                 if (_wasCloseOnce) {
                     _waitedTime += Time.deltaTime;
@@ -441,7 +448,7 @@ namespace IntoTheWoods.Characters {
                     Debug.Log("Found " + character.gameObject.name);
 
                     currentState?.Exit();
-                    currentState = new ObserveState(character.gameObject, 1) {
+                    currentState = new ObserveState(character.gameObject, 2) {
                         Done = () => {
                             currentState.Exit();
                             currentState = new TellWitchState(this) {
