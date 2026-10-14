@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace IntoTheWoods {
     public class GameState {
-        private const int StartScreen = 3;
+        private const int StartScreen = 4;
         [ShowInInspector] private List<Screen> _screens = new();
         [ShowInInspector] private int _currentScreen = StartScreen; // configure start screen here (0-based)
 
