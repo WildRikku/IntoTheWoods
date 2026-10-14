@@ -5,6 +5,12 @@ using UnityEngine;
 
 namespace IntoTheWoods.Characters {
     public class Falcon : MonoBehaviour {
+                
+        //Sounds
+        public AudioSource caw;
+        public AudioSource alarmedCaw;
+        public AudioSource mouseKill;
+        
         #region Hashes and constants
 
         private static readonly int Attacking = Animator.StringToHash("attacking");
@@ -307,7 +313,7 @@ namespace IntoTheWoods.Characters {
                 deltaPos = _close ? Vector3.zero : new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
 
                 // TODO change facing direction
-                // TODO angry craaah craaah here
+                falcon.alarmedCaw.Play();
                 _crahWaitedTime += Time.deltaTime;
                 if (_crahWaitedTime > 1) {
                     _crahWaitedTime = 0;
@@ -520,7 +526,8 @@ namespace IntoTheWoods.Characters {
         }
 
         private IEnumerator KillMouseAfterFrame() {
-            _currentMouse.die.Play(); // TODO 
+            //_currentMouse.die.Play(); // TODO 
+            mouseKill.Play();
             yield return new WaitForSeconds(0);
             Destroy(_currentMouse.gameObject, 0);
             _currentMouse = null;
