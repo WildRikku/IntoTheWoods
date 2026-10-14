@@ -81,7 +81,7 @@ public class Screen : MonoBehaviour {
     }
 
     /// <summary>
-    /// Check if 
+    /// Check if given position is in screen transfer area or in illegal area.
     /// </summary>
     /// <param name="characterPosition"></param>
     /// <returns></returns>
@@ -124,11 +124,32 @@ public class Screen : MonoBehaviour {
         return ScreenEdgeResult.None;
     }
 
+    /// <summary>
+    /// Checks if the given <paramref name="position"/> is within this screen on both axes.
+    /// </summary>
     public bool PositionInScreen(Vector3 position) {
         return transform.position.x - ScreenWidth / 2f < position.x
                && position.x < transform.position.x + ScreenWidth / 2f
                && transform.position.y - ScreenHeight / 2f < position.y
                && position.y < transform.position.y + ScreenHeight / 2f;
+    }
+
+    /// <summary>
+    /// Checks if the given <paramref name="position"/> is within this screen on the x axis and returns where.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="percentage">0 when the given x position is exactly on the left edge of the screen,
+    /// 1 if exactly on the right edge and linear moving in between,
+    /// or -1 if not within the screen at all.</param>
+    /// <returns>True if the position is within this screen on the x axis, false if not.</returns>
+    public bool PositionInScreen(Vector3 position, out float percentage) {
+        float x = transform.position.x;
+        float xPos = x < 0
+            ? -1 * (x - ScreenWidth / 2f - position.x)
+            : position.x - (x - ScreenWidth / 2f);
+        bool isWithin = xPos is >= 0 and <= ScreenWidth;
+        percentage = isWithin ? xPos / ScreenWidth : -1;
+        return isWithin;
     }
 
     protected virtual void OnInsideShadowChanged(bool obj) {
