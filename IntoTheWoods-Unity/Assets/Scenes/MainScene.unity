@@ -1417,7 +1417,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6995599779362378837, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1084678149}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
 --- !u!4 &340410329 stripped
@@ -3011,7 +3014,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6995599779362378837, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1790065918}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
 --- !u!4 &647214399 stripped
@@ -4036,6 +4042,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58548ff25f4c4b18931e2d870c82fc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Falcon
+--- !u!1001 &1084678148
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 340410329}
+    m_Modifications:
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652507484460424788, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_Name
+      value: ForestSinglePathBirdTree
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+--- !u!4 &1084678149 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+  m_PrefabInstance: {fileID: 1084678148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1111113878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6648,6 +6716,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4946604233922500115, guid: e08f0060609722d0eb895964b55080d2, type: 3}
   m_PrefabInstance: {fileID: 1776514833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1790065917
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 647214399}
+    m_Modifications:
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652507484460424788, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_Name
+      value: ForestSinglePathBirdTree
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+--- !u!4 &1790065918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+  m_PrefabInstance: {fileID: 1790065917}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1798596982
 GameObject:
