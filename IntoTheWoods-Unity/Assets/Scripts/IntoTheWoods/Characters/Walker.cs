@@ -25,6 +25,10 @@ namespace IntoTheWoods.Characters {
 
         // configurable fields
         [SerializeField] private float speed = 1.7f;
+        /// <summary>
+        /// When the game is lost, the kids are frozen. Deactivate this for the witch 
+        /// </summary>
+        [SerializeField] private bool isKid = true;
 
         // internal setup fields
         private Animator _animator;
@@ -99,7 +103,7 @@ namespace IntoTheWoods.Characters {
 
         private void Update() {
             if (IsWalking) {
-                if (GameState.Instance.kidsAreDoomed) {
+                if (GameState.Instance.kidsAreDoomed && isKid) {
                     StopWalking();
                     return;
                 }

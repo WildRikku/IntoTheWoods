@@ -24,16 +24,17 @@ namespace IntoTheWoods.Characters {
                 Walker otherWalker = other.gameObject.GetComponentInParent<Walker>();
                 if (otherWalker == null) {
                     // whatever the fuck happened
+                    Debug.LogError("Witch trigger was entered but doing nothing because no walker was found");
                     return;
                 }
 
-                // for turning around, we need to know if this is the very first detected walker which was detected for the first time
+                // we need to know if this is the very first detected walker which was detected for the first time
                 // it is not if there is already a walker stored, be it this one or another one
                 bool firstTime = !Detected;
                 _detectedWalkers.TryAdd(otherWalker.gameObject.GetInstanceID(), otherWalker);
 
-                Transform otherWalkerTransform = otherWalker.transform;
                 if (firstTime) {
+                    Transform otherWalkerTransform = otherWalker.transform;
                     // detect if witch has her back turned towards the player (check flip and relative position)
                     // in that case, the player has entered the shorter end of the collider and the witch turns because she "heard" them
                     if (Math.Sign(otherWalkerTransform.position.x - myWalker.transform.position.x) == Math.Sign(myWalker.transform.localScale.x)) {
@@ -48,7 +49,9 @@ namespace IntoTheWoods.Characters {
 
                     // walk towards children
                     if (!myWalker.IsWalking) {
-                        Debug.Log("I'M COMING FOR YA");
+                        Debug.Log("I'M COMING FOR YA " + otherWalker.name);
+                        // set game over - redundant in the "spotted by falcon" case, but not if the kids walked towards the witch house
+                        GameState.Instance.kidsAreDoomed = true;
                         Vector2 moveVector = new(Math.Sign(otherWalkerTransform.position.x - myWalker.transform.position.x), 0);
                         myWalker.ActivateWalking(moveVector, true);
                         myWalker.Moved += MyWalkerOnMoved;
@@ -58,9 +61,12 @@ namespace IntoTheWoods.Characters {
         }
 
         private void MyWalkerOnMoved(Vector2 newPosition, bool ignoreDistance, bool inTransferZone) {
-            if (Math.Abs(newPosition.x - _detectedWalkers.Values.First().transform.position.x) < 1.1f) {
-                myWalker.StopWalking();
-                animator.SetBool(Magic, true);
+            // no matter which walker started the moving, stop at the one that is closer
+            foreach (Walker walker in _detectedWalkers.Values) {
+                if (Math.Abs(newPosition.x - walker.transform.position.x) < 1.1f) {
+                    myWalker.StopWalking();
+                    animator.SetBool(Magic, true);
+                }
             }
         }
     }

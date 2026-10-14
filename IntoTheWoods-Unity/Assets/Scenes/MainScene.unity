@@ -844,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
   speed: 1.7
+  isKid: 1
 --- !u!1 &191133544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
   speed: 1.65
+  isKid: 1
 --- !u!1001 &299229787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3446,6 +3448,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 141246161466232801, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 444470622589607088, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
+      propertyPath: isKid
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1868794630877118982, guid: c62dae335d358fb55baa6ef3b4b80e07, type: 3}
