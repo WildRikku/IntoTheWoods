@@ -95,11 +95,11 @@ public class Screen : MonoBehaviour {
                 return ScreenEdgeResult.LeavingRight;
             }
 
-            if (frontLeftThreshold != 0 && characterPosition.x < frontLeftThreshold) {
+            if (frontLeftThreshold != 0 && characterPosition.x < transform.position.x + frontLeftThreshold) {
                 return ScreenEdgeResult.IllegalLeft;
             }
 
-            if (frontRightThreshold != 0 && characterPosition.x > frontRightThreshold) {
+            if (frontRightThreshold != 0 && characterPosition.x > transform.position.x + frontRightThreshold) {
                 return ScreenEdgeResult.IllegalRight;
             }
         }
@@ -112,11 +112,11 @@ public class Screen : MonoBehaviour {
                 return ScreenEdgeResult.LeavingRight;
             }
 
-            if (backLeftThreshold != 0 && characterPosition.x < backLeftThreshold) {
+            if (backLeftThreshold != 0 && characterPosition.x < transform.position.x + backLeftThreshold) {
                 return ScreenEdgeResult.IllegalLeft;
             }
 
-            if (backRightThreshold != 0 && characterPosition.x > backRightThreshold) {
+            if (backRightThreshold != 0 && characterPosition.x > transform.position.x + backRightThreshold) {
                 return ScreenEdgeResult.IllegalRight;
             }
         }

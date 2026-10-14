@@ -241,6 +241,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2569379408341909598, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2770172
+      objectReference: {fileID: 0}
+    - target: {fileID: 2569379408341909598, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.10009366
+      objectReference: {fileID: 0}
     - target: {fileID: 4541387643935939620, guid: 72d77dcbea5952efca782c0d046838d2, type: 3}
       propertyPath: m_Name
       value: ForestDivergingPathStart
@@ -2291,7 +2299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backLeftThreshold
-      value: 4.39
+      value: -2.72
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
@@ -2673,58 +2681,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1728017835}
     m_Modifications:
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7037613258425566954, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+    - target: {fileID: 7037613258425566954, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
       propertyPath: m_Name
-      value: ForestTwoPaths
+      value: ForestTwoPathsVariante
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
 --- !u!4 &611654856 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4530169493722380791, guid: 5bb442459d155c0c68a81fb8bcd1fb38, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4530169493722380791, guid: 418a24a0ae970c64484ede85eff8f70c, type: 3}
   m_PrefabInstance: {fileID: 611654855}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
@@ -4448,7 +4456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backRightThreshold
-      value: 31.23
+      value: 2.79
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
@@ -5674,7 +5682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backRightThreshold
-      value: 81
+      value: 2.79
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
@@ -6472,7 +6480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: backLeftThreshold
-      value: 47.05
+      value: -2.72
       objectReference: {fileID: 0}
     - target: {fileID: 3968469136106689961, guid: 1d6f50eeea620c70386d91b19f40134a, type: 3}
       propertyPath: canLeaveScreenBackLeft
