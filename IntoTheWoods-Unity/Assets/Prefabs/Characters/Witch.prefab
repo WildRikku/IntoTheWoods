@@ -5103,7 +5103,7 @@ SortingGroup:
   m_GameObject: {fileID: 3413806030617109210}
   m_Enabled: 1
   m_SortingLayerID: 1557814033
-  m_SortingLayer: -5
+  m_SortingLayer: -6
   m_SortingOrder: 2
   m_SortAtRoot: 0
   m_Sort3DAs2D: 0
@@ -5199,6 +5199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2640962027047503204}
   - component: {fileID: 444470622589607088}
+  - component: {fileID: -6810547606537842936}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Witch
@@ -5235,6 +5236,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
   speed: 1.2
+--- !u!114 &-6810547606537842936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222035068346884182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26229f2ee07c05054b807b90f4132681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.StepAudio
 --- !u!1 &4577615331949092734
 GameObject:
   m_ObjectHideFlags: 0
