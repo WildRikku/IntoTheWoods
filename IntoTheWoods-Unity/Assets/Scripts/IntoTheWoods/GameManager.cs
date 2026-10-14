@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using IntoTheWoods.Characters;
 using Unity.VisualScripting;
@@ -21,6 +22,7 @@ namespace IntoTheWoods {
         [SerializeField] private Witch witch;
         [SerializeField] private UIDocument UI;
         [SerializeField] private Light2D characterLight;
+        [SerializeField] private GameObject mousePrefab;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -137,6 +139,8 @@ namespace IntoTheWoods {
 
         private void WitchOnKidsHexed() {
             Debug.Log("pooof make mice");
+            Instantiate(mousePrefab, primaryCharacter.transform.position, Quaternion.identity);
+            Instantiate(mousePrefab, secondaryCharacter.transform.position, Quaternion.identity);
             Destroy(primaryCharacter.gameObject);
             Destroy(secondaryCharacter.gameObject);
         }

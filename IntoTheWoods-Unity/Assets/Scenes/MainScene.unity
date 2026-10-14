@@ -6274,6 +6274,7 @@ MonoBehaviour:
   witch: {fileID: 866184337}
   UI: {fileID: 60425744}
   characterLight: {fileID: 446973692}
+  mousePrefab: {fileID: 551146880755633758, guid: 92d228e408f99adff9febd11df9312f8, type: 3}
 --- !u!114 &1727744963
 MonoBehaviour:
   m_ObjectHideFlags: 0
