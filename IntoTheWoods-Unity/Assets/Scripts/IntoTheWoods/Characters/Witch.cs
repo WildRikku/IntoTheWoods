@@ -14,9 +14,23 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Walker myWalker;
 
         [SerializeField] private Animator animator;
+        [SerializeField] private AnimatorSignal _animatorSignal;
 
         private void Awake() {
             Assert.IsNotNull(myWalker);
+            Assert.IsNotNull(_animatorSignal);
+        }
+
+        private void OnEnable() {
+            if (_animatorSignal != null) {
+                _animatorSignal.AnimationEnded += OnAnimationEnded;
+            }
+        }
+
+        private void OnDisable() {
+            if (_animatorSignal != null) {
+                _animatorSignal.AnimationEnded -= OnAnimationEnded;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -68,6 +82,11 @@ namespace IntoTheWoods.Characters {
                     animator.SetBool(Magic, true);
                 }
             }
+        }
+
+        private void OnAnimationEnded() {
+            animator.SetBool(Magic, false);
+            Debug.Log("pooof make mice");
         }
     }
 }
