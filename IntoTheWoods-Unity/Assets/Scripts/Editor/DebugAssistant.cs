@@ -82,5 +82,46 @@ public class DebugAssistant : OdinEditorWindow {
         SceneView win = GetWindow<SceneView>();
         win.LookAt(GameState.Instance.GetCurrentScreen().transform.position);
     }
+
+    private void StartPlayActions() {
+        // SerializedProperty serializedPropertyMyInt = FindProperty("myInt");
+    }
+
+    private void EndPlayActions() {
+    }
+
+    [Button(ButtonSizes.Large), HideIfGroup("NotInGame", Condition = "_inGame")]
+    public void RenameScreens() {
+        Reload();
+    }
+
+    [Button(ButtonSizes.Large), HideIfGroup("NotInGame", Condition = "_inGame")]
+    public void RepositionScreens() {
+        Reload();
+        // pick any screen to get its parent for undo recording
+        Undo.RecordObject(screens[0].transform.parent.gameObject, "Reposition screens");
+
+        // find start screen, expect it to be named 100_xxx
+        int startIndex = -1;
+        for (int i = 0; i < screens.Count; i++) {
+            if (screens[i].gameObject.name.StartsWith("100")) {
+                startIndex = i;
+                break;
+            }
+        }
+
+        // fix positions
+        for (int i = 0; i < screens.Count; i++) {
+            Vector3 pos = screens[i].transform.position;
+            if (i < startIndex) {
+                pos.x = (startIndex - i) * -1 * Screen.ScreenWidth;
+            }
+            else {
+                // condition is correct for i == startIndex, too
+                pos.x = (i - startIndex) * Screen.ScreenWidth;
+            }
+            screens[i].transform.position = pos;
+        }
+    }
 }
 #endif
