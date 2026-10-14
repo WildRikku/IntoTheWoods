@@ -496,6 +496,7 @@ namespace IntoTheWoods.Characters {
         }
 
         private IEnumerator KillMouseAfterFrame() {
+            _currentMouse.die.Play(); // TODO 
             yield return new WaitForSeconds(0);
             Destroy(_currentMouse.gameObject, 0);
             _currentMouse = null;

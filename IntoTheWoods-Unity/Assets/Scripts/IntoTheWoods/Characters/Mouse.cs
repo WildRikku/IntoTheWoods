@@ -20,6 +20,11 @@ namespace IntoTheWoods.Characters {
         public bool _moving;
         private Action _afterEatingAction;
         public bool mouseActive;
+        
+        //Sounds
+        public AudioSource footsteps;
+        public AudioSource munch;
+        public AudioSource die;
 
         private void Start() {
             Assert.IsNotNull(head);
@@ -46,12 +51,15 @@ namespace IntoTheWoods.Characters {
                 // close enough
                 _moving = false;
                 animator.SetBool(Running, false);
+                footsteps.Stop();
                 animator.SetBool(Eating, true);
+                munch.Play();
             }
         }
 
         private void OnAnimationEnded() {
             _afterEatingAction?.Invoke();
+            munch.Stop();
         }
 
         public void Call(Vector2 position, Action afterEating) {
@@ -77,6 +85,7 @@ namespace IntoTheWoods.Characters {
 
             _moving = true;
             animator.SetBool(Running, true);
+            footsteps.Play();
             _afterEatingAction = afterEating;
         }
     }
