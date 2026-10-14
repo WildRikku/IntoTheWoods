@@ -24,7 +24,8 @@ namespace IntoTheWoods.Characters {
 
         #region State Machine
 
-        private abstract class State {
+        [Serializable]
+        public abstract class State {
             public Action Done { get; set; }
             public Animator animator;
 
@@ -32,12 +33,14 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        private abstract class PassiveState : State {
+        [Serializable]
+        public abstract class PassiveState : State {
             public abstract PassiveState Enter();
             public abstract bool UpdateState();
         }
 
-        private abstract class MoveState : State {
+        [Serializable]
+        public abstract class MoveState : State {
             public virtual MoveState Enter(Falcon falcon) {
                 return this; // TODO why?
             }
@@ -45,7 +48,8 @@ namespace IntoTheWoods.Characters {
             public abstract bool UpdateState(Falcon falcon, out Vector3 deltaPos);
         }
 
-        private abstract class MoveToTargetState : MoveState {
+        [Serializable]
+        public abstract class MoveToTargetState : MoveState {
             protected Vector3 currentTarget;
 
             protected MoveToTargetState(Vector3 currentTarget) {
@@ -53,7 +57,8 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        private class PatrolState : MoveState {
+        [Serializable]
+        public class PatrolState : MoveState {
             private Vector2 _flyingDirection = new(-1, 0);
             public float leftEnd;
             public float rightEnd;
@@ -84,7 +89,8 @@ namespace IntoTheWoods.Characters {
         /// If you want to change the target, you need to update <see cref="MoveToTargetState.currentTarget"/> yourself.
         /// </summary>
         /// <seealso cref="ObserveState"/>
-        private class ApproachingState : MoveToTargetState {
+        [Serializable]
+        public class ApproachingState : MoveToTargetState {
             private Vector2 _flyingDirection;
             private readonly Mouse _mouse;
 
@@ -104,7 +110,8 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        private class AttackLandingState : MoveToTargetState {
+        [Serializable]
+        public class AttackLandingState : MoveToTargetState {
             public AttackLandingState(Vector3 currentTarget) : base(currentTarget) {
             }
 
@@ -123,7 +130,8 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        private class OnFloorState : PassiveState {
+        [Serializable]
+        public class OnFloorState : PassiveState {
             private float _waitedTime;
 
             public override PassiveState Enter() {
@@ -145,13 +153,15 @@ namespace IntoTheWoods.Characters {
         /// <summary>
         /// When the falcon is captured, nothing needs to happen anymore
         /// </summary>
-        private class CapturedState : State {
+        [Serializable]
+        public class CapturedState : State {
         }
 
         /// <summary>
         /// When attempting to capture falcon with a net with too few stones, it will escape with the net
         /// </summary>
-        private class FailedCaptureState : PassiveState {
+        [Serializable]
+        public class FailedCaptureState : PassiveState {
             public override PassiveState Enter() {
                 throw new NotImplementedException();
             }
@@ -161,7 +171,8 @@ namespace IntoTheWoods.Characters {
             }
         }
 
-        private class RisingState : MoveToTargetState {
+        [Serializable]
+        public class RisingState : MoveToTargetState {
             public RisingState(Falcon falcon) : base(
                 new(falcon.transform.position.x + 5 * -Math.Sign(falcon.transform.localScale.x), DefaultHeight, 0)) {
                 // TODO do not hardcode x distance (use approach distance?)
@@ -186,7 +197,8 @@ namespace IntoTheWoods.Characters {
         /// Fake Falcon returning to base with a captured mouse.
         /// It will fly until it is out of sight, then continue for <see cref="Screen.ScreenWidth"/>/<see cref="Falcon.speed"/>.
         /// </summary>
-        private class ReturnBaseState : MoveState {
+        [Serializable]
+        public class ReturnBaseState : MoveState {
             protected Vector2 _FlyingDirection;
             protected bool _HasLeftScreen;
             protected float _TimeOutOfSight;
@@ -227,7 +239,8 @@ namespace IntoTheWoods.Characters {
         /// <summary>
         /// State of safety for children while Falcon is busy eating the mouse or whatever
         /// </summary>
-        private class DeactivatedState : PassiveState {
+        [Serializable]
+        public class DeactivatedState : PassiveState {
             private float _waitedTime;
             public float WaitTime { get; set; }
 
@@ -245,7 +258,8 @@ namespace IntoTheWoods.Characters {
         /// Fly towards target and follow target around / wait above target.
         /// Only moves until target reached, then waits until target has reached some distance, to avoid glitching around. 
         /// </summary>
-        private class ObserveState : MoveToTargetState {
+        [Serializable]
+        public class ObserveState : MoveToTargetState {
             private const float ShortTriggerDistance = 0.2f; // value determined manually by testing what avoids glitching best
             private const float LongTriggerDistance = 4f;
 
@@ -307,7 +321,8 @@ namespace IntoTheWoods.Characters {
         /// Needs to be fast enough to always reach witch before children leave (or fake it because bird is magical).
         /// Very similar to <see cref="ReturnBaseState"/> but with higher speed and always flying towards witch house.
         /// </summary>
-        private class TellWitchState : ReturnBaseState {
+        [Serializable]
+        public class TellWitchState : ReturnBaseState {
             public TellWitchState(Falcon falcon) : base(falcon) {
                 _TimeOutOfSightMax = 7; // the kids have to walk at least 2 screens of 7.11 m at 1.7 m/s, that takes 8.4 s
             }
@@ -356,7 +371,7 @@ namespace IntoTheWoods.Characters {
         public GameObject subFalcon;
 
         [SerializeField] private Animator animator;
-        [ShowInInspector] private State _currentState;
+        [SerializeReference] public State currentState;
         private Mouse _currentMouse;
         private Character _currentCharacter;
 
@@ -365,24 +380,26 @@ namespace IntoTheWoods.Characters {
         public event Action NotifiedWitch;
 
         private void Start() {
-            // _currentState = new PatrolState {
-            //     leftEnd = leftEnd,
-            //     rightEnd = rightEnd
-            // };
+            if (currentState is MoveState moveState) {
+                moveState.Enter(this);
+            }
+            else if (currentState is PassiveState passiveState) {
+                passiveState.Enter();
+            }
         }
 
         private void Update() {
             bool stateDone = false;
-            if (_currentState is MoveState moveState) {
+            if (currentState is MoveState moveState) {
                 stateDone = moveState.UpdateState(this, out Vector3 deltaPos);
                 transform.position += deltaPos;
             }
-            else if (_currentState is PassiveState passiveState) {
+            else if (currentState is PassiveState passiveState) {
                 stateDone = passiveState.UpdateState();
             }
 
             if (stateDone) {
-                _currentState.Done?.Invoke();
+                currentState.Done?.Invoke();
             }
         }
 
@@ -399,17 +416,17 @@ namespace IntoTheWoods.Characters {
 
                 if (mouse != null && mouse.mouseActive && _currentMouse == null) {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
-                    _currentState?.Exit();
-                    _currentState = new ApproachingState(mouse) {
+                    currentState?.Exit();
+                    currentState = new ApproachingState(mouse) {
                         // value determined by hand based on what looks good {
                         Done = OnMouseApproached
                     }.Enter(this);
                     _currentMouse = mouse;
                 }
             }
-            else if (other.CompareTag("Player") && !GameState.Instance.kidsAreSafe && _currentState is not ApproachingState &&
-                     _currentState is not AttackLandingState && _currentState is not OnFloorState && _currentState is not RisingState &&
-                     _currentState is not ReturnBaseState && _currentState is not CapturedState) {
+            else if (other.CompareTag("Player") && !GameState.Instance.kidsAreSafe && currentState is not ApproachingState &&
+                     currentState is not AttackLandingState && currentState is not OnFloorState && currentState is not RisingState &&
+                     currentState is not ReturnBaseState && currentState is not CapturedState) {
                 // TODO replace all these "is not" with matching "is"
                 Character character = other.GetComponent<Character>();
                 if (character == null) {
@@ -423,14 +440,14 @@ namespace IntoTheWoods.Characters {
 
                     Debug.Log("Found " + character.gameObject.name);
 
-                    _currentState?.Exit();
-                    _currentState = new ObserveState(character.gameObject, 1) {
+                    currentState?.Exit();
+                    currentState = new ObserveState(character.gameObject, 1) {
                         Done = () => {
-                            _currentState.Exit();
-                            _currentState = new TellWitchState(this) {
+                            currentState.Exit();
+                            currentState = new TellWitchState(this) {
                                 Done = () => {
                                     Debug.Log("NOW THE WITCH KNOWS");
-                                    _currentState = null;
+                                    currentState = null;
                                     NotifiedWitch?.Invoke();
                                 }
                             }.Enter(this);
@@ -444,32 +461,32 @@ namespace IntoTheWoods.Characters {
         /// Initiate mouse chain
         /// </summary>
         private void OnMouseApproached() {
-            _currentState.Exit();
-            _currentState = new AttackLandingState(_currentMouse.gameObject.transform.position + mouseShift) {
+            currentState.Exit();
+            currentState = new AttackLandingState(_currentMouse.gameObject.transform.position + mouseShift) {
                 animator = animator,
                 Done = () => {
-                    _currentState.Exit();
+                    currentState.Exit();
                     StartCoroutine(KillMouseAfterFrame());
-                    _currentState = new OnFloorState {
+                    currentState = new OnFloorState {
                         animator = animator,
                         Done = () => {
-                            _currentState.Exit();
-                            _currentState = new RisingState(this) {
+                            currentState.Exit();
+                            currentState = new RisingState(this) {
                                 animator = animator,
                                 Done = () => {
-                                    _currentState = new ReturnBaseState(this) {
+                                    currentState = new ReturnBaseState(this) {
                                         animator = animator,
                                         Done = () => {
                                             print("I'm gone");
                                             subFalcon.SetActive(false);
-                                            _currentState = new DeactivatedState {
+                                            currentState = new DeactivatedState {
                                                 WaitTime = SafeTimeAfterCapture - Screen.ScreenWidth / speed, // reduce by time Falcon continues to fly out of sight in ReturnBaseState
                                                 Done = () => {
                                                     print("respawn falcon");
                                                     transform.position = RespawnPoint;
                                                     subFalcon.SetActive(true);
                                                     animator.ResetControllerState();
-                                                    _currentState = new PatrolState {
+                                                    currentState = new PatrolState {
                                                         leftEnd = leftEnd,
                                                         rightEnd = rightEnd
                                                     };
@@ -486,8 +503,8 @@ namespace IntoTheWoods.Characters {
         }
 
         public bool TryCapture(int stoneCount) {
-            if (_currentState is OnFloorState && stoneCount >= 4) {
-                _currentState = new CapturedState();
+            if (currentState is OnFloorState && stoneCount >= 4) {
+                currentState = new CapturedState();
                 animator.SetBool(Captured, true);
                 return true;
             }
