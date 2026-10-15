@@ -1487,7 +1487,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 4404202361452085733, guid: 6a10ae70dd7eb686986d93b298e51eec, type: 3}
+    - sprite: {fileID: -4757438814414362135, guid: cabe77c4bd10cc8cc98194effd8584c3, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -5189,6 +5189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Witch
   myWalker: {fileID: 444470622589607088}
   animator: {fileID: 0}
+  _animatorSignal: {fileID: 0}
 --- !u!1 &4222035068346884182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5236,6 +5237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Walker
   speed: 1.2
+  isKid: 1
 --- !u!114 &-6810547606537842936
 MonoBehaviour:
   m_ObjectHideFlags: 0
