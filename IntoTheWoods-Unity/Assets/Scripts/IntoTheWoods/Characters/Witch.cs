@@ -16,7 +16,8 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Animator animator;
         [SerializeField] private AnimatorSignal _animatorSignal;
 
-        public Action KidsHexed;
+        public event Action HexingKids;
+        public event Action KidsHexed;
 
         private void Awake() {
             Assert.IsNotNull(myWalker);
@@ -82,6 +83,7 @@ namespace IntoTheWoods.Characters {
                 if (Math.Abs(newPosition.x - walker.transform.position.x) < 1.1f) {
                     myWalker.StopWalking();
                     animator.SetBool(Magic, true);
+                    HexingKids?.Invoke();
                 }
             }
         }

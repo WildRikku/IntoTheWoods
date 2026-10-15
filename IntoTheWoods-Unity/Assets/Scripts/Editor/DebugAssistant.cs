@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class DebugAssistant : OdinEditorWindow {
     [ShowInInspector] public GameState gameState;
+    [ShowInInspector] public GameManager gameManager;
 
     [HorizontalGroup("screens")]
     [ListDrawerSettings(DraggableItems = false, ShowFoldout = false, NumberOfItemsPerPage = 25)]
@@ -44,6 +45,10 @@ public class DebugAssistant : OdinEditorWindow {
             foreach (Screen screen in gameObject.GetComponentsInChildren<Screen>()) {
                 screens.Add(screen);
                 screenPositions.Add(screen.transform.position);
+            }
+            GameManager gm = gameObject.GetComponent<GameManager>();
+            if (gm != null) {
+                gameManager = gm;
             }
         }
     }
@@ -81,6 +86,12 @@ public class DebugAssistant : OdinEditorWindow {
         }
         SceneView win = GetWindow<SceneView>();
         win.LookAt(GameState.Instance.GetCurrentScreen().transform.position);
+    }
+
+    [Button(ButtonSizes.Large), ShowIfGroup("InGame", Condition = "_inGame")]
+    public void SpawnWitch() {
+        Reload();
+        gameManager.SpawnWitch();
     }
 
     private void StartPlayActions() {

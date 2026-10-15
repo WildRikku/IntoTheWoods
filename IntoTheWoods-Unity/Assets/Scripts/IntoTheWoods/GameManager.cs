@@ -60,13 +60,17 @@ namespace IntoTheWoods {
         private void OnEnable() {
             _playerWalker.WillMove += OnPlayerWillMove;
             falcon.NotifiedWitch += FalconOnNotifiedWitch;
+            witch.HexingKids += WitchOnHexingKids;
             witch.KidsHexed += WitchOnKidsHexed;
+            witchParticleSystem.GetComponent<ParticleSystemEndedNotifier>().ParticleSystemDone += OnWitchParticleSystemDone;
         }
 
         private void OnDisable() {
             _playerWalker.WillMove -= OnPlayerWillMove;
             falcon.NotifiedWitch -= FalconOnNotifiedWitch;
+            witch.HexingKids -= WitchOnHexingKids;
             witch.KidsHexed -= WitchOnKidsHexed;
+            witchParticleSystem.GetComponent<ParticleSystemEndedNotifier>().ParticleSystemDone -= OnWitchParticleSystemDone;
         }
 
         private void ScreenOnInsideShadowChanged(bool safe) {
@@ -127,16 +131,24 @@ namespace IntoTheWoods {
         /// </summary>
         private void FalconOnNotifiedWitch() {
             GameState.Instance.kidsAreDoomed = true;
-            // TODO witch teleport poof
             // Position witch on the side of the player with more space
             // TODO solve the case in which the player character is on one screen and the follower character is on another (which is not trivial since the follower character might be far away)
             GameState.Instance.GetCurrentScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
             float witchXPos = percentage > 0.5f ? _playerWalker.transform.position.x - 2 : _playerWalker.transform.position.x + 2;
+            witch.gameObject.SetActive(false);
             witch.transform.parent.position = new(witchXPos, -0.57f, 0);
             Vector3 scale = witch.transform.parent.localScale;
             scale.x = -1;
             witch.transform.parent.localScale = scale;
             witchParticleSystem.SetActive(true);
+        }
+
+        private void OnWitchParticleSystemDone() {
+            witch.gameObject.SetActive(true);
+        }
+
+        private void WitchOnHexingKids() {
+            Debug.Log("let's begin muhahaha");
         }
 
         private void WitchOnKidsHexed() {
@@ -146,5 +158,22 @@ namespace IntoTheWoods {
             Destroy(primaryCharacter.gameObject);
             Destroy(secondaryCharacter.gameObject);
         }
+
+        #region Debug helper functions
+
+#if UNITY_EDITOR
+        public void SpawnWitch() {
+            GameState.Instance.GetCurrentScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
+            float witchXPos = percentage > 0.5f ? _playerWalker.transform.position.x - 2 : _playerWalker.transform.position.x + 2;
+            witch.gameObject.SetActive(false);
+            witch.transform.parent.position = new(witchXPos, -0.57f, 0);
+            Vector3 scale = witch.transform.parent.localScale;
+            scale.x = -1;
+            witch.transform.parent.localScale = scale;
+            witchParticleSystem.SetActive(true);
+        }
+#endif
+
+        #endregion
     }
 }
