@@ -585,6 +585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58548ff25f4c4b18931e2d870c82fc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Characters.Falcon
+  caw: {fileID: 7018200910489274500}
+  alarmedCaw: {fileID: 3160218834185123190}
+  mouseKill: {fileID: 1978782030363939778}
   leftEnd: -24
   rightEnd: 95
   speed: 4.5
@@ -596,9 +599,6 @@ MonoBehaviour:
   animator: {fileID: 8391297208886941015}
   currentState:
     rid: -2
-  caw: {fileID: 7018200910489274500}
-  alarmedCaw: {fileID: 3160218834185123190}
-  mouseKill: {fileID: 1978782030363939778}
   references:
     version: 2
     RefIds:
