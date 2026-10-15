@@ -80,10 +80,11 @@ namespace IntoTheWoods.Characters {
         private void MyWalkerOnMoved(Vector2 newPosition, bool ignoreDistance, bool inTransferZone) {
             // no matter which walker started the moving, stop at the one that is closer
             foreach (Walker walker in _detectedWalkers.Values) {
-                if (Math.Abs(newPosition.x - walker.transform.position.x) < 1.1f) {
+                if (Math.Abs(newPosition.x - walker.transform.position.x) < 1.5f) {
                     myWalker.StopWalking();
                     animator.SetBool(Magic, true);
                     HexingKids?.Invoke();
+                    return;
                 }
             }
         }

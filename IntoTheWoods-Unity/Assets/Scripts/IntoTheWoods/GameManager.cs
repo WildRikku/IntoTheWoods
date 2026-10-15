@@ -148,15 +148,18 @@ namespace IntoTheWoods {
         }
 
         private void WitchOnHexingKids() {
-            Debug.Log("let's begin muhahaha");
+            primaryCharacter.particleSystem.SetActive(true);
+            secondaryCharacter.particleSystem.SetActive(true);
         }
 
         private void WitchOnKidsHexed() {
             Debug.Log("pooof make mice");
             Instantiate(mousePrefab, primaryCharacter.transform.position, Quaternion.identity);
             Instantiate(mousePrefab, secondaryCharacter.transform.position, Quaternion.identity);
-            Destroy(primaryCharacter.gameObject);
-            Destroy(secondaryCharacter.gameObject);
+            Destroy(primaryCharacter.characterContainer);
+            Destroy(secondaryCharacter.characterContainer);
+            primaryCharacter.particleSystem.GetComponent<ParticleSystem>().Stop();
+            secondaryCharacter.particleSystem.GetComponent<ParticleSystem>().Stop();
         }
 
         #region Debug helper functions
