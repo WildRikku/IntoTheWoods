@@ -24,7 +24,6 @@ namespace IntoTheWoods.Characters {
         //Sounds
         public AudioSource footsteps;
         public AudioSource munch;
-        public AudioSource die;
 
         private void Start() {
             Assert.IsNotNull(head);
