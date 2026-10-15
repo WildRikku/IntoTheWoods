@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using IntoTheWoods.Characters;
@@ -24,6 +25,8 @@ namespace IntoTheWoods {
         [SerializeField] private UIDocument UI;
         [SerializeField] private Light2D characterLight;
         [SerializeField] private GameObject mousePrefab;
+        [SerializeField] private Light2D globalLight;
+        [SerializeField] private GameObject gameOverSign;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -36,8 +39,11 @@ namespace IntoTheWoods {
             }
             Assert.IsTrue(screens.Count > 0);
             GameState.Instance.InitializeScreens(screens);
+
+            // reset globals
             GameState.Instance.kidsAreDoomed = false;
             GameState.Instance.kidsAreSafe = false;
+            GameState.Instance.gameOver = false;
 
             Assert.IsNotNull(primaryCharacter);
             primaryCharacter.AddComponent<PlayerController>();
@@ -63,6 +69,22 @@ namespace IntoTheWoods {
             witch.HexingKids += WitchOnHexingKids;
             witch.KidsHexed += WitchOnKidsHexed;
             witchParticleSystem.GetComponent<ParticleSystemEndedNotifier>().ParticleSystemDone += OnWitchParticleSystemDone;
+        }
+
+        private void Update() {
+            if (!GameState.Instance.gameOver) {
+                return;
+            }
+
+            if (globalLight.intensity > Time.deltaTime) {
+                // dim light, since it should happen within 1 second and starts at 1, no factor is needed
+                globalLight.intensity -= Time.deltaTime;
+            }
+            else {
+                globalLight.intensity = 0;
+                gameOverSign.transform.position = GameState.Instance.GetCurrentScreen().transform.position;
+                gameOverSign.SetActive(true);
+            }
         }
 
         private void OnDisable() {
@@ -160,6 +182,7 @@ namespace IntoTheWoods {
             Destroy(secondaryCharacter.characterContainer);
             primaryCharacter.particleSystem.GetComponent<ParticleSystem>().Stop();
             secondaryCharacter.particleSystem.GetComponent<ParticleSystem>().Stop();
+            GameState.Instance.gameOver = true;
         }
 
         #region Debug helper functions
