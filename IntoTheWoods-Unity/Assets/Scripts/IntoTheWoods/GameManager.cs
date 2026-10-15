@@ -20,6 +20,7 @@ namespace IntoTheWoods {
         [SerializeField] private Character secondaryCharacter;
         [SerializeField] private Falcon falcon;
         [SerializeField] private Witch witch;
+        [SerializeField] private GameObject witchParticleSystem;
         [SerializeField] private UIDocument UI;
         [SerializeField] private Light2D characterLight;
         [SerializeField] private GameObject mousePrefab;
@@ -135,6 +136,7 @@ namespace IntoTheWoods {
             Vector3 scale = witch.transform.parent.localScale;
             scale.x = -1;
             witch.transform.parent.localScale = scale;
+            witchParticleSystem.SetActive(true);
         }
 
         private void WitchOnKidsHexed() {

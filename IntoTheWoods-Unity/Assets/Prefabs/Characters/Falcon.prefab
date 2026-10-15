@@ -530,11 +530,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.5284381, y: 0.1231935}
-      - {x: -3.8986473, y: -3.3704283}
-      - {x: -0.81218004, y: -3.3675213}
-      - {x: 0.53092825, y: -0.14739156}
-      - {x: 0.62282944, y: 0.07124573}
+    - - {x: -4.526686, y: 0.06019676}
+      - {x: -6.5280495, y: -3.3284647}
+      - {x: -0.81218004, y: -3.328465}
+      - {x: 0.6244484, y: 0.060196757}
   m_UseDelaunayMesh: 1
 --- !u!1 &3257998002414316072
 GameObject:
@@ -603,7 +602,7 @@ MonoBehaviour:
     version: 2
     RefIds:
     - rid: -2
-      type: {class: , ns: , asm: }
+      type: {class: '', ns: '', asm: ''}
 --- !u!50 &3236241159539448133
 Rigidbody2D:
   serializedVersion: 5
