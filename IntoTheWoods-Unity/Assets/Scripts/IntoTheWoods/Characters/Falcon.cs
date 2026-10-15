@@ -5,12 +5,11 @@ using UnityEngine;
 
 namespace IntoTheWoods.Characters {
     public class Falcon : MonoBehaviour {
-                
         //Sounds
         public AudioSource caw;
         public AudioSource alarmedCaw;
         public AudioSource mouseKill;
-        
+
         #region Hashes and constants
 
         private static readonly int Attacking = Animator.StringToHash("attacking");
@@ -45,6 +44,10 @@ namespace IntoTheWoods.Characters {
             public abstract bool UpdateState();
         }
 
+        /// <summary>
+        /// Base for all states that make the falcon go somewhere. <see cref="UpdateState"/> will return if the target has been reached
+        /// and pass necessary shift in position as a parameter.
+        /// </summary>
         [Serializable]
         public abstract class MoveState : State {
             public virtual MoveState Enter(Falcon falcon) {
@@ -90,9 +93,7 @@ namespace IntoTheWoods.Characters {
         }
 
         /// <summary>
-        /// Fly towards target until reaching <see cref="Falcon.ApproachDistance"/> on x axis.
-        /// Target will not be updated once state is initialized.
-        /// If you want to change the target, you need to update <see cref="MoveToTargetState.currentTarget"/> yourself.
+        /// Fly towards mouse target until reaching <see cref="Falcon.ApproachDistance"/> on x axis. Tracks mouse if moving.
         /// </summary>
         /// <seealso cref="ObserveState"/>
         [Serializable]
@@ -116,6 +117,9 @@ namespace IntoTheWoods.Characters {
             }
         }
 
+        /// <summary>
+        /// Move falcon to ground as if attacking a mouse on the ground.
+        /// </summary>
         [Serializable]
         public class AttackLandingState : MoveToTargetState {
             public AttackLandingState(Vector3 currentTarget) : base(currentTarget) {
@@ -431,7 +435,6 @@ namespace IntoTheWoods.Characters {
                     Debug.Log("SPOTTED MOUSE " + mouse.gameObject.name + " in " + mouse.transform.parent.gameObject.name);
                     currentState?.Exit();
                     currentState = new ApproachingState(mouse) {
-                        // value determined by hand based on what looks good {
                         Done = OnMouseApproached
                     }.Enter(this);
                     _currentMouse = mouse;
