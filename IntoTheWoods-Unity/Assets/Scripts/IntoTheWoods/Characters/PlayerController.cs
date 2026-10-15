@@ -65,7 +65,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnChangeLane(InputAction.CallbackContext context) {
-            if (!_walker.IsBusy() && !_character.IsBusy() && _walker.CanTransfer && context.started) {
+            if (!_walker.IsBusy() && !_character.IsBusy() && _walker.CanTransfer && context.started && !GameState.Instance.kidsAreDoomed) {
                 // grab input
                 Vector2 inputVector = DigitizeMovement(context.ReadValue<Vector2>());
                 if (inputVector.y == 0) {
@@ -77,7 +77,7 @@ namespace IntoTheWoods.Characters {
         }
 
         public void OnUseNet(InputAction.CallbackContext context) {
-            if (context.started && _character.inventory.hasNet) {
+            if (context.started && _character.inventory.hasNet && !GameState.Instance.kidsAreDoomed) {
                 RaycastHit2D hit = Physics2D.CircleCast(transform.position, 2.5f, Vector2.down, 0.5f, LayerMask.GetMask("Falcon"));
                 if (!hit) {
                     Debug.Log("no hit");
