@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c8668cbf3d002e5888dd1a6c14aa198
+guid: 62cb19bada323aaa6bfa10a9756afff6
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: -2580669190715436351
     second: brot_steine_9
+  - first:
+      213: -3861664899410081788
+    second: brot_steine_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -123,19 +126,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -143,12 +133,12 @@ TextureImporter:
       name: brot_steine_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 321
-        width: 161
-        height: 95
+        x: 3
+        y: 320
+        width: 163
+        height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +155,12 @@ TextureImporter:
       name: brot_steine_1
       rect:
         serializedVersion: 2
-        x: 418
-        y: 353
-        width: 188
-        height: 117
+        x: 417
+        y: 352
+        width: 190
+        height: 119
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +177,12 @@ TextureImporter:
       name: brot_steine_2
       rect:
         serializedVersion: 2
-        x: 762
-        y: 352
-        width: 188
-        height: 81
+        x: 761
+        y: 351
+        width: 190
+        height: 83
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +199,12 @@ TextureImporter:
       name: brot_steine_3
       rect:
         serializedVersion: 2
-        x: 1109
-        y: 352
-        width: 153
-        height: 75
+        x: 1108
+        y: 351
+        width: 155
+        height: 77
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +221,12 @@ TextureImporter:
       name: brot_steine_4
       rect:
         serializedVersion: 2
-        x: 1418
-        y: 349
-        width: 95
-        height: 62
+        x: 1417
+        y: 348
+        width: 97
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +243,12 @@ TextureImporter:
       name: brot_steine_5
       rect:
         serializedVersion: 2
-        x: 27
-        y: 178
-        width: 75
-        height: 56
+        x: 25
+        y: 177
+        width: 79
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +265,12 @@ TextureImporter:
       name: brot_steine_6
       rect:
         serializedVersion: 2
-        x: 741
-        y: 19
-        width: 236
-        height: 159
+        x: 740
+        y: 17
+        width: 238
+        height: 162
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +287,12 @@ TextureImporter:
       name: brot_steine_7
       rect:
         serializedVersion: 2
-        x: 1153
-        y: 46
-        width: 178
-        height: 140
+        x: 1152
+        y: 45
+        width: 180
+        height: 142
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,12 +309,12 @@ TextureImporter:
       name: brot_steine_8
       rect:
         serializedVersion: 2
-        x: 1455
-        y: 51
-        width: 163
-        height: 128
+        x: 1454
+        y: 50
+        width: 165
+        height: 130
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -341,12 +331,12 @@ TextureImporter:
       name: brot_steine_9
       rect:
         serializedVersion: 2
-        x: 18
-        y: 53
-        width: 136
-        height: 56
+        x: 16
+        y: 52
+        width: 139
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,20 +353,20 @@ TextureImporter:
       name: brot_steine_10
       rect:
         serializedVersion: 2
-        x: 330
-        y: 1
-        width: 278
-        height: 165
+        x: 329
+        y: 0
+        width: 280
+        height: 167
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a61322e1ace5a66198dc6d9ff4315d75
-      internalID: 1068720322
+      spriteID: 4084115eb3c986ac0800000000000000
+      internalID: -3861664899410081788
       vertices: []
       indices: 
       edges: []
@@ -385,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3e42b0a66539559bda9d41799df5b8c5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -393,15 +383,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceOnImport
-        value: True
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       brot_steine_0: -6127809311379875558
       brot_steine_1: -2693916250688638604
-      brot_steine_10: 1068720322
+      brot_steine_10: -3861664899410081788
       brot_steine_2: 5475166737216776937
       brot_steine_3: -6561814019891611672
       brot_steine_4: 4622151875478157621

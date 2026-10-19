@@ -6232,16 +6232,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.Inventory
   breadSprites:
-  - {fileID: 1068720322, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: -4375611562936488269, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: 7177532305288283000, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: 7928358586247172495, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: -2580669190715436351, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: -3861664899410081788, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: -4375611562936488269, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: 7177532305288283000, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: 7928358586247172495, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: -2580669190715436351, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
   stoneSprites:
-  - {fileID: 4622151875478157621, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: -6561814019891611672, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: 5475166737216776937, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
-  - {fileID: -2693916250688638604, guid: 8c8668cbf3d002e5888dd1a6c14aa198, type: 3}
+  - {fileID: 4622151875478157621, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: -6561814019891611672, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: 5475166737216776937, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
+  - {fileID: -2693916250688638604, guid: 62cb19bada323aaa6bfa10a9756afff6, type: 3}
   hasNet: 0
 --- !u!114 &1727744964
 MonoBehaviour:
