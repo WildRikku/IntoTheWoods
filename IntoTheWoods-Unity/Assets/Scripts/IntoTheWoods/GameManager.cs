@@ -46,12 +46,18 @@ namespace IntoTheWoods {
             GameState.Instance.gameOver = false;
 
             Assert.IsNotNull(primaryCharacter);
+            Assert.IsNotNull(secondaryCharacter);
+
+            // swap characters if player chose Gretel
+            if (GameState.Instance.chosenCharacter) {
+                (primaryCharacter, secondaryCharacter) = (secondaryCharacter, primaryCharacter);
+            }
+
             primaryCharacter.AddComponent<PlayerController>();
             _playerWalker = primaryCharacter.GetComponent<Walker>();
             primaryCharacter.GetComponentInChildren<SortingGroup>().sortingOrder = 1; // primary player in front of secondary character
             // primaryCharacter.AddComponent<AudioListener>();
 
-            Assert.IsNotNull(secondaryCharacter);
             FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();
             followerController.leader = _playerWalker;
             // we might need to save the follower walker and subscribe to its events, too, but maybe not since the follower should never walk off the screen if the player doesn't...
