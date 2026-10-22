@@ -299,6 +299,9 @@ namespace IntoTheWoods.Characters {
 
             public override MoveState Enter(Falcon falcon) {
                 _flyingDirection = new(Math.Sign(currentTarget.x - falcon.transform.position.x), 0);
+                if (!falcon.alarmedCaw.isPlaying) {
+                    falcon.alarmedCaw.Play();
+                }
                 Debug.Log("KRAH KRAH");
                 return this;
             }
@@ -323,11 +326,13 @@ namespace IntoTheWoods.Characters {
                 deltaPos = _close ? Vector3.zero : new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
 
                 // TODO change facing direction
-                falcon.alarmedCaw.Play();
                 _crahWaitedTime += Time.deltaTime;
                 if (_crahWaitedTime > 1) {
                     _crahWaitedTime = 0;
                     Debug.Log("KRAH KRAH");
+                    if (!falcon.alarmedCaw.isPlaying) {
+                        falcon.alarmedCaw.Play();
+                    }
                 }
 
                 if (_wasCloseOnce) {
@@ -535,8 +540,9 @@ namespace IntoTheWoods.Characters {
         }
 
         private IEnumerator KillMouseAfterFrame() {
-            //_currentMouse.die.Play(); // TODO 
-            mouseKill.Play();
+            if (!mouseKill.isPlaying) {
+                mouseKill.Play();
+            }
             yield return new WaitForSeconds(0);
             Destroy(_currentMouse.gameObject, 0);
             _currentMouse = null;
