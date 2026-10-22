@@ -401,7 +401,7 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Animator animator;
         [SerializeReference] public State currentState;
         private Mouse _currentMouse;
-        private Character _currentCharacter;
+        private bool _trackingWalker;
 
         #endregion
 
@@ -455,33 +455,72 @@ namespace IntoTheWoods.Characters {
                      currentState is not AttackLandingState && currentState is not OnFloorState && currentState is not RisingState &&
                      currentState is not ReturnBaseState && currentState is not CapturedState) {
                 // TODO replace all these "is not" with matching "is"
-                Character character = other.GetComponent<Character>();
-                if (character == null) {
-                    character = other.transform.parent.parent.GetComponent<Character>();
-                }
-                if (character == null) {
-                    return; // TODO error handling
-                }
-                if (_currentCharacter == null) {
-                    _currentCharacter = character;
+                // Only act if we don't already act on a walker
+                if (!_trackingWalker) {
+                    // Get Walker of detected collider
+                    Walker walker = other.GetComponent<Walker>();
+                    if (walker == null) {
+                        walker = other.transform.parent.parent.GetComponent<Walker>();
+                    }
+                    if (walker == null) {
+                        return; // TODO error handling
+                    }
 
-                    Debug.Log("Found " + character.gameObject.name);
+                    // check if character/walker is on the same screen. Does not make sense but improves playability
+                    if (!GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
+                        Debug.Log("ignored offscreen " + walker.gameObject.name);
+                        return;
+                    }
+                    _trackingWalker = true;
 
-                    currentState?.Exit();
-                    currentState = new ObserveState(character.gameObject, 2) {
+                    Debug.Log("Found " + walker.gameObject.name);
+
+                    StartTrackingWalker(walker);
+                }
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D other) {
+            if (_trackingWalker) {
+                // default case, walker was detected when entering collider
+                return;
+            }
+
+            // walker entered the collider outside screen, need to re-check screen now
+            // Get Walker of detected collider
+            // TODO: Cache this in TriggerEnter
+            Walker walker = other.GetComponent<Walker>();
+            if (walker == null) {
+                walker = other.transform.parent.parent.GetComponent<Walker>();
+            }
+            if (walker == null) {
+                return; // TODO error handling
+            }
+
+            // check if character/walker is on the same screen. Does not make sense but improves playability
+            if (!GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
+                return;
+            }
+
+            Debug.Log(walker.gameObject.name + " is now in screen");
+            _trackingWalker = true;
+            StartTrackingWalker(walker);
+        }
+
+        private void StartTrackingWalker(Walker walker) {
+            currentState?.Exit();
+            currentState = new ObserveState(walker.gameObject, 2) {
+                Done = () => {
+                    currentState.Exit();
+                    currentState = new TellWitchState(this) {
                         Done = () => {
-                            currentState.Exit();
-                            currentState = new TellWitchState(this) {
-                                Done = () => {
-                                    Debug.Log("NOW THE WITCH KNOWS");
-                                    currentState = null;
-                                    NotifiedWitch?.Invoke();
-                                }
-                            }.Enter(this);
+                            Debug.Log("NOW THE WITCH KNOWS");
+                            currentState = null;
+                            NotifiedWitch?.Invoke();
                         }
                     }.Enter(this);
                 }
-            }
+            }.Enter(this);
         }
 
         /// <summary>
