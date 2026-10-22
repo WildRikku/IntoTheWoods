@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Vector2 = UnityEngine.Vector2;
 
 // ReSharper disable Unity.PreferNonAllocApi
@@ -101,6 +103,20 @@ namespace IntoTheWoods.Characters {
             }
         }
 
+        public void OnClick(InputAction.CallbackContext context) {
+            if (!GameState.Instance.gameOver || !context.performed) {
+                return;
+            }
+
+            GoToMainMenu();
+        }
+
+        public void OnMenu(InputAction.CallbackContext context) {
+            if (context.performed) {
+                GoToMainMenu();
+            }
+        }
+
         /// <summary>
         /// Our game does not support analogue movement, so sanitize values from joysticks.
         /// </summary>
@@ -124,6 +140,11 @@ namespace IntoTheWoods.Characters {
             moveVector.y = 0;
 
             _walker.ActivateWalking(moveVector);
+        }
+
+        private void GoToMainMenu() {
+            // return to main menu
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

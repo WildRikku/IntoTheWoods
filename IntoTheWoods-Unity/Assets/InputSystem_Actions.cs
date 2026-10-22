@@ -127,6 +127,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""f00222a4-f324-424d-93fd-80edc2b93d0e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""b132fc39-cf82-4c16-974e-5bc9727f9d75"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -349,6 +367,50 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""UseNet"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2f5449c-eab8-4fbd-b394-bfd54604b3af"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73b6638a-fc61-4dca-9539-e23948d8bd92"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7789d44b-d80a-433f-a796-253bf2df026f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""284c6940-96b6-4c03-8cb5-4d30b6ce7c4c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -378,7 +440,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""15cef263-9014-4fd5-94d9-4e4a6234a6ef"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1038,6 +1100,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_PrimaryPlayer_Jump = m_PrimaryPlayer.FindAction("Jump", throwIfNotFound: true);
         m_PrimaryPlayer_ChangeLane = m_PrimaryPlayer.FindAction("ChangeLane", throwIfNotFound: true);
         m_PrimaryPlayer_UseNet = m_PrimaryPlayer.FindAction("UseNet", throwIfNotFound: true);
+        m_PrimaryPlayer_Click = m_PrimaryPlayer.FindAction("Click", throwIfNotFound: true);
+        m_PrimaryPlayer_Menu = m_PrimaryPlayer.FindAction("Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1143,6 +1207,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PrimaryPlayer_Jump;
     private readonly InputAction m_PrimaryPlayer_ChangeLane;
     private readonly InputAction m_PrimaryPlayer_UseNet;
+    private readonly InputAction m_PrimaryPlayer_Click;
+    private readonly InputAction m_PrimaryPlayer_Menu;
     /// <summary>
     /// Provides access to input actions defined in input action map "PrimaryPlayer".
     /// </summary>
@@ -1170,6 +1236,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PrimaryPlayer/UseNet".
         /// </summary>
         public InputAction @UseNet => m_Wrapper.m_PrimaryPlayer_UseNet;
+        /// <summary>
+        /// Provides access to the underlying input action "PrimaryPlayer/Click".
+        /// </summary>
+        public InputAction @Click => m_Wrapper.m_PrimaryPlayer_Click;
+        /// <summary>
+        /// Provides access to the underlying input action "PrimaryPlayer/Menu".
+        /// </summary>
+        public InputAction @Menu => m_Wrapper.m_PrimaryPlayer_Menu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1208,6 +1282,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @UseNet.started += instance.OnUseNet;
             @UseNet.performed += instance.OnUseNet;
             @UseNet.canceled += instance.OnUseNet;
+            @Click.started += instance.OnClick;
+            @Click.performed += instance.OnClick;
+            @Click.canceled += instance.OnClick;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         /// <summary>
@@ -1231,6 +1311,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @UseNet.started -= instance.OnUseNet;
             @UseNet.performed -= instance.OnUseNet;
             @UseNet.canceled -= instance.OnUseNet;
+            @Click.started -= instance.OnClick;
+            @Click.performed -= instance.OnClick;
+            @Click.canceled -= instance.OnClick;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         /// <summary>
@@ -1751,6 +1837,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUseNet(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
