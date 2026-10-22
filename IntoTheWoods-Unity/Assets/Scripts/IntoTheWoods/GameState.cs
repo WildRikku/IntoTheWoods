@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace IntoTheWoods {
     public class GameState {
-        private const int StartScreen = 4;
+        public const int StartScreen = 4;
         [ShowInInspector] private List<Screen> _screens = new();
         /// <summary>
         /// The screen currently shown by the camera. This is always the screen with the player-controlled character.
@@ -30,8 +30,12 @@ namespace IntoTheWoods {
             _currentScreen = StartScreen;
         }
 
-        public Screen GetCurrentScreen() {
+        public Screen GetScreen() {
             return _screens[_currentScreen];
+        }
+
+        public Screen GetScreen(int index) {
+            return _screens[index];
         }
 
         public bool PlayerIsAtRightMostScreen() {

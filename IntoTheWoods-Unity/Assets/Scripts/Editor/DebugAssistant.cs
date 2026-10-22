@@ -85,7 +85,7 @@ public class DebugAssistant : OdinEditorWindow {
             return;
         }
         SceneView win = GetWindow<SceneView>();
-        win.LookAt(GameState.Instance.GetCurrentScreen().transform.position);
+        win.LookAt(GameState.Instance.GetScreen().transform.position);
     }
 
     [Button(ButtonSizes.Large), ShowIfGroup("InGame", Condition = "_inGame")]

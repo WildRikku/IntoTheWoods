@@ -234,8 +234,8 @@ namespace IntoTheWoods.Characters {
                 deltaPos = new(falcon.speed * Time.deltaTime * _FlyingDirection.x, 0);
                 // only check one end since we know in which direction we are flying.
                 bool onScreen = _FlyingDirection.x > 0
-                    ? GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x - falcon.extentBack, falcon.transform.position.y, 0))
-                    : GameState.Instance.GetCurrentScreen().PositionInScreen(new Vector3(falcon.transform.position.x + falcon.extentBack, falcon.transform.position.y, 0));
+                    ? GameState.Instance.GetScreen().PositionInScreen(new Vector3(falcon.transform.position.x - falcon.extentBack, falcon.transform.position.y, 0))
+                    : GameState.Instance.GetScreen().PositionInScreen(new Vector3(falcon.transform.position.x + falcon.extentBack, falcon.transform.position.y, 0));
 
                 if (!onScreen && !_HasLeftScreen) {
                     _HasLeftScreen = true;

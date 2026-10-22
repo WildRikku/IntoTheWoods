@@ -61,12 +61,13 @@ namespace IntoTheWoods {
             primaryCharacter.AddComponent<PlayerController>();
             _playerWalker = primaryCharacter.GetComponent<Walker>();
             primaryCharacter.GetComponentInChildren<SortingGroup>().sortingOrder = 1; // primary player in front of secondary character
+            _playerWalker.currentScreen = GameState.StartScreen;
             // primaryCharacter.AddComponent<AudioListener>();
 
             FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();
             followerController.leader = _playerWalker;
             _followerWalker = secondaryCharacter.GetComponent<Walker>();
-
+            _followerWalker.currentScreen = GameState.StartScreen;
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
@@ -96,7 +97,7 @@ namespace IntoTheWoods {
             }
             else {
                 globalLight.intensity = 0;
-                gameOverSign.transform.position = GameState.Instance.GetCurrentScreen().transform.position;
+                gameOverSign.transform.position = GameState.Instance.GetScreen().transform.position;
                 gameOverSign.SetActive(true);
             }
         }
@@ -123,11 +124,12 @@ namespace IntoTheWoods {
         /// <param name="walker"></param>
         /// <returns>true if movement was done, false if movement was not allowed because it was at a map edge</returns>
         private bool OnPlayerWillMove(Vector2 nextPosition, Vector2 walkingDirection, Walker walker) {
-            Screen.ScreenEdgeResult edgeStatus = GameState.Instance.GetCurrentScreen().CheckPosition(nextPosition);
+            Screen.ScreenEdgeResult edgeStatus = GameState.Instance.GetScreen(walker.currentScreen).CheckPosition(nextPosition);
             switch (edgeStatus) {
                 case Screen.ScreenEdgeResult.IllegalLeft:
                 case Screen.ScreenEdgeResult.IllegalRight:
                     // Reached forbidden area
+                    Debug.Log($"Not allowing {walker.gameObject.name} to cross boundary");
                     return false;
                 case Screen.ScreenEdgeResult.LeavingRight when walkingDirection.x > 0: {
                     // going right close to the edge
@@ -135,6 +137,7 @@ namespace IntoTheWoods {
                     if (walker == _playerWalker) {
                         if (!GameState.Instance.NextScreen(out int newScreenIndex)) {
                             // player would leave the game
+                            Debug.Log($"Not allowing {walker.gameObject.name} to leave map");
                             return false;
                         }
 
@@ -142,6 +145,11 @@ namespace IntoTheWoods {
                         Vector3 pos = _mainCamera.transform.position;
                         pos.x += Screen.ScreenWidth;
                         _mainCamera.transform.position = pos;
+
+                        walker.currentScreen = newScreenIndex;
+                    }
+                    else {
+                        walker.currentScreen++;
                     }
                     break;
                 }
@@ -151,12 +159,18 @@ namespace IntoTheWoods {
                     if (walker == _playerWalker) {
                         if (!GameState.Instance.PreviousScreen(out int newScreenIndex)) {
                             // player would leave the game
+                            Debug.Log($"Not allowing {walker.gameObject.name} to leave map");
                             return false;
                         }
                         // scroll left
                         Vector3 pos = _mainCamera.transform.position;
                         pos.x -= Screen.ScreenWidth;
                         _mainCamera.transform.position = pos;
+
+                        walker.currentScreen = newScreenIndex;
+                    }
+                    else {
+                        walker.currentScreen--;
                     }
 
                     break;
@@ -174,7 +188,7 @@ namespace IntoTheWoods {
             GameState.Instance.kidsAreDoomed = true;
             // Position witch on the side of the player with more space
             // TODO solve the case in which the player character is on one screen and the follower character is on another (which is not trivial since the follower character might be far away)
-            GameState.Instance.GetCurrentScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
+            GameState.Instance.GetScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
             float witchXPos = percentage > 0.5f ? _playerWalker.transform.position.x - 2 : _playerWalker.transform.position.x + 2;
             witch.gameObject.SetActive(false);
             witch.transform.parent.position = new(witchXPos, -0.57f, 0);
@@ -208,7 +222,7 @@ namespace IntoTheWoods {
 
 #if UNITY_EDITOR
         public void SpawnWitch() {
-            GameState.Instance.GetCurrentScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
+            GameState.Instance.GetScreen().PositionInScreen(_playerWalker.transform.position, out float percentage);
             float witchXPos = percentage > 0.5f ? _playerWalker.transform.position.x - 2 : _playerWalker.transform.position.x + 2;
             witch.gameObject.SetActive(false);
             witch.transform.parent.position = new(witchXPos, -0.57f, 0);
@@ -223,7 +237,7 @@ namespace IntoTheWoods {
 
         private void ExitDetectorOnExitReached() {
             GameState.Instance.gameWon = true;
-            gameWonSign.transform.position = GameState.Instance.GetCurrentScreen().transform.position;
+            gameWonSign.transform.position = GameState.Instance.GetScreen().transform.position;
             gameWonSign.SetActive(true);
         }
     }

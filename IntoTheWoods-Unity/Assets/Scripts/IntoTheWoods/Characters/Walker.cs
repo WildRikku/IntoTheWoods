@@ -66,6 +66,11 @@ namespace IntoTheWoods.Characters {
 
         public bool IsTransfering { get; private set; }
 
+        /// <summary>
+        /// Which screen this walker is currntly on
+        /// </summary>
+        public int currentScreen;
+
         // Step Audio
         private FootstepController _footstepController;
 
