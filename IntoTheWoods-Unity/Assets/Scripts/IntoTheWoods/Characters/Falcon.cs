@@ -50,8 +50,14 @@ namespace IntoTheWoods.Characters {
         /// </summary>
         [Serializable]
         public abstract class MoveState : State {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="falcon"></param>
+            /// <returns>Returns this instance so it can be saved when creating and immediately calling <see cref="Enter"/>
+            /// </returns>
             public virtual MoveState Enter(Falcon falcon) {
-                return this; // TODO why?
+                return this;
             }
 
             public abstract bool UpdateState(Falcon falcon, out Vector3 deltaPos);
