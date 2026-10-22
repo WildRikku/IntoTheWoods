@@ -331,9 +331,9 @@ TextureImporter:
       name: brot_steine_9
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 8
-        width: 280
+        width: 263
         height: 167
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -371,6 +371,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: brot_steine_12
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 263
+        width: 280
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e50a472b3c2f31884da773fcbe62ff
+      internalID: -2062102983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -388,6 +410,8 @@ TextureImporter:
       brot_steine_0: -6127809311379875558
       brot_steine_1: -2693916250688638604
       brot_steine_10: -3861664899410081788
+      brot_steine_11: 1401059732
+      brot_steine_12: -2062102983
       brot_steine_2: 5475166737216776937
       brot_steine_3: -6561814019891611672
       brot_steine_4: 4622151875478157621
