@@ -17,6 +17,7 @@ namespace IntoTheWoods {
         public bool kidsAreSafe;
         public bool kidsAreDoomed;
         public bool gameOver;
+        public bool gameWon;
 
         public void InitializeScreens(List<Screen> screens) {
             _screens = screens;
