@@ -7,8 +7,6 @@ using Vector2 = UnityEngine.Vector2;
 // ReSharper disable Unity.PreferNonAllocApi
 
 namespace IntoTheWoods.Characters {
-    public delegate bool PlayerWillMoveEventHandler(Vector2 nextPosition, Vector2 direction);
-
     /// <summary>
     /// Human control on top of a <see cref="Walker"/>.
     /// </summary>

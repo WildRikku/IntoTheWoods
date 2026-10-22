@@ -6,10 +6,11 @@ using UnityEngine.Assertions;
 using UnityEngine.Rendering;
 
 namespace IntoTheWoods.Characters {
+    public delegate bool CharacterWillMoveEventHandler(Vector2 nextPosition, Vector2 direction, Walker walker);
+
     public delegate void MoveEventHandler(Vector2 newPosition, bool ignoreDistance = false, bool inTransferZone = false);
 
     public delegate void TransferEventHandler(Vector2 moveVector);
-
 
     /// <summary>
     /// Any character that can walk, not necessarily controled by a human.
@@ -69,7 +70,7 @@ namespace IntoTheWoods.Characters {
         private FootstepController _footstepController;
 
         // events
-        public event PlayerWillMoveEventHandler WillMove;
+        public event CharacterWillMoveEventHandler WillMove;
         public event MoveEventHandler Moved;
         public event TransferEventHandler Transfering;
         public event Action Transfered;
@@ -113,7 +114,7 @@ namespace IntoTheWoods.Characters {
 
                 if (_walkingDirection.y == 0) {
                     // actual player-controled walking has y = 0 set manually
-                    if (!WillMove?.Invoke(transform.position + posDelta, _walkingDirection) ?? false) {
+                    if (!WillMove?.Invoke(transform.position + posDelta, _walkingDirection, this) ?? false) {
                         StopWalking();
                         return;
                     }

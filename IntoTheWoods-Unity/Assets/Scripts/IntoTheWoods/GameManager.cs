@@ -17,6 +17,7 @@ namespace IntoTheWoods {
         private Camera _mainCamera;
 
         private Walker _playerWalker;
+        private Walker _followerWalker;
 
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
@@ -64,7 +65,8 @@ namespace IntoTheWoods {
 
             FollowerController followerController = secondaryCharacter.AddComponent<FollowerController>();
             followerController.leader = _playerWalker;
-            // we might need to save the follower walker and subscribe to its events, too, but maybe not since the follower should never walk off the screen if the player doesn't...
+            _followerWalker = secondaryCharacter.GetComponent<Walker>();
+
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
@@ -75,6 +77,7 @@ namespace IntoTheWoods {
 
         private void OnEnable() {
             _playerWalker.WillMove += OnPlayerWillMove;
+            _followerWalker.WillMove += OnPlayerWillMove;
             falcon.NotifiedWitch += FalconOnNotifiedWitch;
             witch.HexingKids += WitchOnHexingKids;
             witch.KidsHexed += WitchOnKidsHexed;
@@ -100,6 +103,7 @@ namespace IntoTheWoods {
 
         private void OnDisable() {
             _playerWalker.WillMove -= OnPlayerWillMove;
+            _followerWalker.WillMove -= OnPlayerWillMove;
             falcon.NotifiedWitch -= FalconOnNotifiedWitch;
             witch.HexingKids -= WitchOnHexingKids;
             witch.KidsHexed -= WitchOnKidsHexed;
@@ -116,44 +120,47 @@ namespace IntoTheWoods {
         /// </summary>
         /// <param name="nextPosition"></param>
         /// <param name="walkingDirection"></param>
+        /// <param name="walker"></param>
         /// <returns>true if movement was done, false if movement was not allowed because it was at a map edge</returns>
-        private bool OnPlayerWillMove(Vector2 nextPosition, Vector2 walkingDirection) {
+        private bool OnPlayerWillMove(Vector2 nextPosition, Vector2 walkingDirection, Walker walker) {
             Screen.ScreenEdgeResult edgeStatus = GameState.Instance.GetCurrentScreen().CheckPosition(nextPosition);
             switch (edgeStatus) {
                 case Screen.ScreenEdgeResult.IllegalLeft:
                 case Screen.ScreenEdgeResult.IllegalRight:
                     // Reached forbidden area
                     return false;
-                case Screen.ScreenEdgeResult.LeavingRight when walkingDirection.x > 0:
+                case Screen.ScreenEdgeResult.LeavingRight when walkingDirection.x > 0: {
                     // going right close to the edge
-                    if (!GameState.Instance.PlayerIsAtRightMostScreen()) {
+                    // Actions are different according to whether this is the actively controlled character
+                    if (walker == _playerWalker) {
+                        if (!GameState.Instance.NextScreen(out int newScreenIndex)) {
+                            // player would leave the game
+                            return false;
+                        }
+
                         // scroll right
                         Vector3 pos = _mainCamera.transform.position;
                         pos.x += Screen.ScreenWidth;
                         _mainCamera.transform.position = pos;
-                        GameState.Instance.NextScreen();
                     }
-                    else {
-                        // player would leave the game
-                        return false;
-                    }
-
                     break;
-                case Screen.ScreenEdgeResult.LeavingLeft when walkingDirection.x < 0:
+                }
+                case Screen.ScreenEdgeResult.LeavingLeft when walkingDirection.x < 0: {
                     // going left close to the edge
-                    if (!GameState.Instance.PlayerIsAtLeftMostScreen()) {
+                    // Actions are different according to whether this is the actively controlled character
+                    if (walker == _playerWalker) {
+                        if (!GameState.Instance.PreviousScreen(out int newScreenIndex)) {
+                            // player would leave the game
+                            return false;
+                        }
                         // scroll left
                         Vector3 pos = _mainCamera.transform.position;
                         pos.x -= Screen.ScreenWidth;
                         _mainCamera.transform.position = pos;
-                        GameState.Instance.PreviousScreen();
-                    }
-                    else {
-                        // player would leave the game
-                        return false;
                     }
 
                     break;
+                }
             }
 
             return true;

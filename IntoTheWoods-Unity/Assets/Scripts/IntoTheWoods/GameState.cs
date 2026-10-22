@@ -7,6 +7,9 @@ namespace IntoTheWoods {
     public class GameState {
         private const int StartScreen = 4;
         [ShowInInspector] private List<Screen> _screens = new();
+        /// <summary>
+        /// The screen currently shown by the camera. This is always the screen with the player-controlled character.
+        /// </summary>
         [ShowInInspector] private int _currentScreen = StartScreen; // configure start screen here (0-based)
 
         /// <summary>
@@ -39,19 +42,23 @@ namespace IntoTheWoods {
             return _currentScreen == 0;
         }
 
-        public bool NextScreen() {
+        public bool NextScreen(out int newScreenIndex) {
             if (!PlayerIsAtRightMostScreen()) {
                 _currentScreen++;
+                newScreenIndex = _currentScreen;
                 return true;
             }
+            newScreenIndex = _currentScreen;
             return false;
         }
 
-        public bool PreviousScreen() {
+        public bool PreviousScreen(out int newScreenIndex) {
             if (!PlayerIsAtLeftMostScreen()) {
                 _currentScreen--;
+                newScreenIndex = _currentScreen;
                 return true;
             }
+            newScreenIndex = _currentScreen;
             return false;
         }
 
