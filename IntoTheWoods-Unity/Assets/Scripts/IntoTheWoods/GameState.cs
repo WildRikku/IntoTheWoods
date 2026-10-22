@@ -9,6 +9,11 @@ namespace IntoTheWoods {
         [ShowInInspector] private List<Screen> _screens = new();
         [ShowInInspector] private int _currentScreen = StartScreen; // configure start screen here (0-based)
 
+        /// <summary>
+        /// true = Gretel, false = Hänsel
+        /// </summary>
+        public bool chosenCharacter;
+
         public bool kidsAreSafe;
         public bool kidsAreDoomed;
         public bool gameOver;
