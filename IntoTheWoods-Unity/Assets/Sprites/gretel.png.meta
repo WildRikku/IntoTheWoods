@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fdd55560fd1e2485789ad1cdc5ccb708
+guid: ab64bacd41a11a2c9ac8a79eeb16800b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -117,19 +117,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -142,7 +129,7 @@ TextureImporter:
         width: 527
         height: 661
       alignment: 9
-      pivot: {x: 0.5932115, y: 0.4775363}
+      pivot: {x: 0.59211975, y: 0.47321728}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,12 +146,12 @@ TextureImporter:
       name: gretel_1
       rect:
         serializedVersion: 2
-        x: 717
-        y: 1583
+        x: 718
+        y: 1586
         width: 707
         height: 526
       alignment: 9
-      pivot: {x: 0.56141675, y: 0.23116103}
+      pivot: {x: 0.55823046, y: 0.2333077}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +168,12 @@ TextureImporter:
       name: gretel_2
       rect:
         serializedVersion: 2
-        x: 181
+        x: 180
         y: 678
         width: 131
         height: 316
       alignment: 9
-      pivot: {x: 0.3325299, y: 0.85255545}
+      pivot: {x: 0.34868652, y: 0.8522422}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +190,12 @@ TextureImporter:
       name: gretel_3
       rect:
         serializedVersion: 2
-        x: 708
-        y: 688
+        x: 705
+        y: 690
         width: 142
         height: 246
       alignment: 9
-      pivot: {x: 0.2448335, y: 0.870076}
+      pivot: {x: 0.2627396, y: 0.8592504}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,12 +212,12 @@ TextureImporter:
       name: gretel_4
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 710
+        x: 1003
+        y: 711
         width: 408
         height: 211
       alignment: 9
-      pivot: {x: 0.15262648, y: 0.7438042}
+      pivot: {x: 0.15142582, y: 0.724019}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,12 +234,12 @@ TextureImporter:
       name: gretel_5
       rect:
         serializedVersion: 2
-        x: 289
-        y: 332
+        x: 291
+        y: 333
         width: 391
         height: 258
       alignment: 9
-      pivot: {x: 0.16513826, y: 0.7651336}
+      pivot: {x: 0.17047314, y: 0.7604394}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,12 +256,12 @@ TextureImporter:
       name: gretel_6
       rect:
         serializedVersion: 2
-        x: 836
+        x: 838
         y: 117
         width: 213
         height: 341
       alignment: 9
-      pivot: {x: 0.8306664, y: 0.89206827}
+      pivot: {x: 0.82088244, y: 0.88732433}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,12 +278,12 @@ TextureImporter:
       name: gretel_7
       rect:
         serializedVersion: 2
-        x: 1164
-        y: 133
+        x: 1163
+        y: 134
         width: 160
         height: 299
       alignment: 9
-      pivot: {x: 0.75368273, y: 0.8965292}
+      pivot: {x: 0.75976866, y: 0.8938511}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -313,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3a09731bbf9f3c094bc8cfde7d571341
+    spriteID: 66c41c166d25c91039b8ae200dad2d5f
     internalID: 0
     vertices: []
     indices: 
@@ -331,6 +318,7 @@ TextureImporter:
       gretel_5: 2535385930813085909
       gretel_6: 7472425925995214776
       gretel_7: -2961432739762154989
+      gretel_8: -689959225
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,31 +1,40 @@
 fileFormatVersion: 2
-guid: 922cc6c22629f63699e5f025821684c0
+guid: 62cb19bada323aaa6bfa10a9756afff6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7862088658525600248
-    second: haensel_0
+      213: -6127809311379875558
+    second: brot_steine_0
   - first:
-      213: -6091231406590392246
-    second: haensel_1
+      213: -2693916250688638604
+    second: brot_steine_1
   - first:
-      213: 3077713645418656930
-    second: haensel_2
+      213: 5475166737216776937
+    second: brot_steine_2
   - first:
-      213: 919358645992669412
-    second: haensel_3
+      213: -6561814019891611672
+    second: brot_steine_3
   - first:
-      213: -4008812760760794697
-    second: haensel_4
+      213: 4622151875478157621
+    second: brot_steine_4
   - first:
-      213: 9159960079245603818
-    second: haensel_5
+      213: -5095602179307578758
+    second: brot_steine_5
   - first:
-      213: -2253923628098864587
-    second: haensel_6
+      213: -4375611562936488269
+    second: brot_steine_6
   - first:
-      213: -5270191454528275386
-    second: haensel_7
+      213: 7177532305288283000
+    second: brot_steine_7
+  - first:
+      213: 7928358586247172495
+    second: brot_steine_8
+  - first:
+      213: -2580669190715436351
+    second: brot_steine_9
+  - first:
+      213: -3861664899410081788
+    second: brot_steine_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -69,7 +78,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1000
@@ -117,194 +126,247 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: haensel_0
+      name: brot_steine_0
       rect:
         serializedVersion: 2
-        x: 838
-        y: 1539
-        width: 580
-        height: 524
-      alignment: 9
-      pivot: {x: 0.39293024, y: 0.19344907}
+        x: 3
+        y: 320
+        width: 163
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80644fb250044e290800000000000000
-      internalID: -7862088658525600248
+      spriteID: a191fd7d5e5a5faa0800000000000000
+      internalID: -6127809311379875558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_1
+      name: brot_steine_1
       rect:
         serializedVersion: 2
-        x: 907
-        y: 1125
-        width: 126
-        height: 285
-      alignment: 9
-      pivot: {x: 0.42522177, y: 0.8575602}
+        x: 417
+        y: 352
+        width: 190
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a480a75fe49977ba0800000000000000
-      internalID: -6091231406590392246
+      spriteID: 4713d0761794d9ad0800000000000000
+      internalID: -2693916250688638604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_2
+      name: brot_steine_2
       rect:
         serializedVersion: 2
-        x: 1190
-        y: 1123
-        width: 131
-        height: 264
-      alignment: 9
-      pivot: {x: 0.31486407, y: 0.87551695}
+        x: 761
+        y: 351
+        width: 190
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a43d8b014c36ba20800000000000000
-      internalID: 3077713645418656930
+      spriteID: 9ea27d98323bbfb40800000000000000
+      internalID: 5475166737216776937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_3
+      name: brot_steine_3
       rect:
         serializedVersion: 2
-        x: 170
-        y: 478
-        width: 161
-        height: 281
-      alignment: 9
-      pivot: {x: 0.7372884, y: 0.9069505}
+        x: 1073
+        y: 351
+        width: 190
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e0c39b41d732cc00800000000000000
-      internalID: 919358645992669412
+      spriteID: 8e7be263ae0cfe4a0800000000000000
+      internalID: -6561814019891611672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_4
+      name: brot_steine_4
       rect:
         serializedVersion: 2
-        x: 591
-        y: 79
-        width: 308
-        height: 502
-      alignment: 9
-      pivot: {x: 0.51103747, y: 0.30242938}
+        x: 1377
+        y: 348
+        width: 190
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b1cccf9806dd58c0800000000000000
-      internalID: -4008812760760794697
+      spriteID: 539f7cb34ae252040800000000000000
+      internalID: 4622151875478157621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_5
+      name: brot_steine_5
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 545
-        width: 356
-        height: 254
-      alignment: 9
-      pivot: {x: 0.09911424, y: 0.86926556}
+        x: 25
+        y: 177
+        width: 79
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae371381927be1f70800000000000000
-      internalID: 9159960079245603818
+      spriteID: a7a5aa9c0d8c849b0800000000000000
+      internalID: -5095602179307578758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_6
+      name: brot_steine_6
       rect:
         serializedVersion: 2
-        x: 164
-        y: 53
-        width: 211
-        height: 322
-      alignment: 9
-      pivot: {x: 0.8069678, y: 0.89733547}
+        x: 697
+        y: 12
+        width: 280
+        height: 167
+      alignment: 3
+      pivot: {x: 1, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53abe4ce66478b0e0800000000000000
-      internalID: -2253923628098864587
+      spriteID: 3be241c6774b643c0800000000000000
+      internalID: -4375611562936488269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: haensel_7
+      name: brot_steine_7
       rect:
         serializedVersion: 2
-        x: 1067
-        y: 214
-        width: 380
-        height: 221
-      alignment: 9
-      pivot: {x: 0.094784066, y: 0.8304018}
+        x: 1052
+        y: 20
+        width: 280
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64cfa867bc48cd6b0800000000000000
-      internalID: -5270191454528275386
+      spriteID: 873499c7a97bb9360800000000000000
+      internalID: 7177532305288283000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brot_steine_8
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 13
+        width: 280
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f815e21c020370e60800000000000000
+      internalID: 7928358586247172495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brot_steine_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 8
+        width: 280
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c29c944b0f9f2cd0800000000000000
+      internalID: -2580669190715436351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brot_steine_10
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 0
+        width: 280
+        height: 167
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4084115eb3c986ac0800000000000000
+      internalID: -3861664899410081788
       vertices: []
       indices: 
       edges: []
@@ -313,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: eb1e3213a1ab735088a165ebbac28b97
+    spriteID: 712a93658b40da48d94d91ff464f3dc7
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +385,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      haensel_0: -7862088658525600248
-      haensel_1: -6091231406590392246
-      haensel_2: 3077713645418656930
-      haensel_3: 919358645992669412
-      haensel_4: -4008812760760794697
-      haensel_5: 9159960079245603818
-      haensel_6: -2253923628098864587
-      haensel_7: -5270191454528275386
+      brot_steine_0: -6127809311379875558
+      brot_steine_1: -2693916250688638604
+      brot_steine_10: -3861664899410081788
+      brot_steine_2: 5475166737216776937
+      brot_steine_3: -6561814019891611672
+      brot_steine_4: 4622151875478157621
+      brot_steine_5: -5095602179307578758
+      brot_steine_6: -4375611562936488269
+      brot_steine_7: 7177532305288283000
+      brot_steine_8: 7928358586247172495
+      brot_steine_9: -2580669190715436351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
