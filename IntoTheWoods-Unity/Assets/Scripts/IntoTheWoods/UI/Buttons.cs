@@ -1,40 +1,34 @@
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
-public class Buttons : MonoBehaviour {
-    public GameObject Haensel;
-    public GameObject Gretel;
-    
-    public string targetScene;
-    public void Play() {
-        Debug.Log("Play");
-        Haensel.gameObject.SetActive(true);
-        Gretel.gameObject.SetActive(true);
-    }
+namespace IntoTheWoods {
+    public class Buttons : MonoBehaviour {
+        [FormerlySerializedAs("Haensel")]
+        public GameObject haensel;
+        [FormerlySerializedAs("Gretel")]
+        public GameObject gretel;
 
-    public void Quit() {
-        Application.Quit();
-    }
+        public void Play() {
+            Debug.Log("Play");
+            haensel.gameObject.SetActive(true);
+            gretel.gameObject.SetActive(true);
+        }
 
-    public void HaenselPlayer() {
-        targetScene = "MainScene";
-        LoadScene();
-    }
+        public void Quit() {
+            Application.Quit();
+        }
 
-    public void GretelPlayer() {
-        targetScene = "MainScene";
-        LoadScene();
+        public void HaenselPlayer() {
+            LoadScene();
+        }
+
+        public void GretelPlayer() {
+            LoadScene();
+        }
+
+        private void LoadScene() {
+            SceneManager.LoadScene("MainScene");
+        }
     }
-    
-    void LoadScene()
-    {
-        LoadingData.sceneToLoad = targetScene;
-        SceneManager.LoadScene("MainScene");
-    }
-}
-public static class LoadingData 
-{
-    public static string sceneToLoad;
 }
