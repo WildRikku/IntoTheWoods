@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using IntoTheWoods.Characters;
+using IntoTheWoods.Helpers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -27,6 +28,8 @@ namespace IntoTheWoods {
         [SerializeField] private GameObject mousePrefab;
         [SerializeField] private Light2D globalLight;
         [SerializeField] private GameObject gameOverSign;
+        [SerializeField] private GameObject gameWonSign;
+        [SerializeField] private ExitDetector exitDetector;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -44,6 +47,7 @@ namespace IntoTheWoods {
             GameState.Instance.kidsAreDoomed = false;
             GameState.Instance.kidsAreSafe = false;
             GameState.Instance.gameOver = false;
+            GameState.Instance.gameWon = false;
 
             Assert.IsNotNull(primaryCharacter);
             Assert.IsNotNull(secondaryCharacter);
@@ -75,6 +79,7 @@ namespace IntoTheWoods {
             witch.HexingKids += WitchOnHexingKids;
             witch.KidsHexed += WitchOnKidsHexed;
             witchParticleSystem.GetComponent<ParticleSystemEndedNotifier>().ParticleSystemDone += OnWitchParticleSystemDone;
+            exitDetector.ExitReached += ExitDetectorOnExitReached;
         }
 
         private void Update() {
@@ -99,6 +104,7 @@ namespace IntoTheWoods {
             witch.HexingKids -= WitchOnHexingKids;
             witch.KidsHexed -= WitchOnKidsHexed;
             witchParticleSystem.GetComponent<ParticleSystemEndedNotifier>().ParticleSystemDone -= OnWitchParticleSystemDone;
+            exitDetector.ExitReached -= ExitDetectorOnExitReached;
         }
 
         private void ScreenOnInsideShadowChanged(bool safe) {
@@ -207,5 +213,11 @@ namespace IntoTheWoods {
 #endif
 
         #endregion
+
+        private void ExitDetectorOnExitReached() {
+            GameState.Instance.gameWon = true;
+            gameWonSign.transform.position = GameState.Instance.GetCurrentScreen().transform.position;
+            gameWonSign.SetActive(true);
+        }
     }
 }
