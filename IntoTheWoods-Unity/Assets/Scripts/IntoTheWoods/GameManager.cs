@@ -19,6 +19,8 @@ namespace IntoTheWoods {
         private Walker _playerWalker;
         private Walker _followerWalker;
 
+        private AudioSource witchAudio;
+
         [SerializeField] private Character primaryCharacter;
         [SerializeField] private Character secondaryCharacter;
         [SerializeField] private Falcon falcon;
@@ -31,6 +33,10 @@ namespace IntoTheWoods {
         [SerializeField] private GameObject gameOverSign;
         [SerializeField] private GameObject gameWonSign;
         [SerializeField] private ExitDetector exitDetector;
+
+        [SerializeField] private AudioClip witchPoof;
+        [SerializeField] private AudioClip witchLaugh;
+        [SerializeField] private AudioClip witchMagic;
 
         private void Awake() {
             Assert.IsNotNull(Camera.main);
@@ -84,6 +90,7 @@ namespace IntoTheWoods {
             witch.KidsHexed += WitchOnKidsHexed;
             witchParticleSystem.GetComponent<ParticleSystemEndedNotifier>().ParticleSystemDone += OnWitchParticleSystemDone;
             exitDetector.ExitReached += ExitDetectorOnExitReached;
+            witchAudio = witch.gameObject.GetComponent<AudioSource>();
         }
 
         private void Update() {
@@ -195,16 +202,19 @@ namespace IntoTheWoods {
             Vector3 scale = witch.transform.parent.localScale;
             scale.x = -1;
             witch.transform.parent.localScale = scale;
+            gameObject.GetComponent<AudioSource>().PlayOneShot(witchPoof);
             witchParticleSystem.SetActive(true);
         }
 
         private void OnWitchParticleSystemDone() {
             witch.gameObject.SetActive(true);
+            witchAudio.PlayOneShot(witchLaugh);
         }
 
         private void WitchOnHexingKids() {
             primaryCharacter.particleSystem.SetActive(true);
             secondaryCharacter.particleSystem.SetActive(true);
+            witchAudio.PlayOneShot(witchMagic);
         }
 
         private void WitchOnKidsHexed() {

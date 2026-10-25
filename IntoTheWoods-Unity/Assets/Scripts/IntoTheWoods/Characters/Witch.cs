@@ -18,6 +18,8 @@ namespace IntoTheWoods.Characters {
 
         public event Action HexingKids;
         public event Action KidsHexed;
+        
+        private AudioSource _audioSource;
 
         private void Awake() {
             Assert.IsNotNull(myWalker);
@@ -28,6 +30,7 @@ namespace IntoTheWoods.Characters {
             if (_animatorSignal != null) {
                 _animatorSignal.AnimationEnded += OnAnimationEnded;
             }
+            _audioSource = gameObject.GetComponent<AudioSource>();
         }
 
         private void OnDisable() {
@@ -72,6 +75,9 @@ namespace IntoTheWoods.Characters {
                         Vector2 moveVector = new(Math.Sign(otherWalkerTransform.position.x - myWalker.transform.position.x), 0);
                         myWalker.ActivateWalking(moveVector, true);
                         myWalker.Moved += MyWalkerOnMoved;
+                        if (!_audioSource.isPlaying) {
+                            _audioSource.Play();
+                        }
                     }
                 }
             }
