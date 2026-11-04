@@ -12,6 +12,7 @@ namespace IntoTheWoods.Characters {
 
         #region Hashes and constants
 
+        private static readonly int Started = Animator.StringToHash("started");
         private static readonly int Attacking = Animator.StringToHash("attacking");
         private static readonly int Captured = Animator.StringToHash("captured");
         private static readonly int Landed = Animator.StringToHash("landed");
@@ -69,6 +70,21 @@ namespace IntoTheWoods.Characters {
 
             protected MoveToTargetState(Vector3 currentTarget) {
                 this.currentTarget = currentTarget;
+            }
+        }
+
+        [Serializable]
+        public class IdleSittingState : PassiveState {
+            public override PassiveState Enter() {
+                return this;
+            }
+
+            public override bool UpdateState() {
+                return false;
+            }
+
+            public override void Exit() {
+                animator.SetBool(Started, true);
             }
         }
 
@@ -307,6 +323,12 @@ namespace IntoTheWoods.Characters {
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
+                // wait until Falcon is flying (set when starting from sitting position)
+                if (!falcon.Flying) {
+                    deltaPos = Vector3.zero;
+                    return false;
+                }
+
                 float distance = _targetObject.transform.position.x - falcon.transform.position.x;
 
                 if (Math.Abs(distance) <= ShortTriggerDistance) {
@@ -403,6 +425,9 @@ namespace IntoTheWoods.Characters {
         private Mouse _currentMouse;
         private bool _trackingWalker;
 
+        [ShowInInspector]
+        public bool Flying { get; private set; }
+
         #endregion
 
         public event Action NotifiedWitch;
@@ -414,6 +439,14 @@ namespace IntoTheWoods.Characters {
             else if (currentState is PassiveState passiveState) {
                 passiveState.Enter();
             }
+        }
+
+        private void OnEnable() {
+            GetComponentInChildren<AnimatorSignal>().AnimationEnded += OnStartingAnimationEnded;
+        }
+
+        private void OnDisable() {
+            GetComponentInChildren<AnimatorSignal>().AnimationEnded -= OnStartingAnimationEnded;
         }
 
         private void Update() {
@@ -429,6 +462,10 @@ namespace IntoTheWoods.Characters {
             if (stateDone) {
                 currentState.Done?.Invoke();
             }
+        }
+
+        private void OnStartingAnimationEnded() {
+            Flying = true;
         }
 
         /// <summary>
@@ -509,7 +546,6 @@ namespace IntoTheWoods.Characters {
 
         private void StartTrackingWalker(Walker walker) {
             currentState?.Exit();
-            // TODO insert starting from sitting here if applicable
             currentState = new ObserveState(walker.gameObject, 2) {
                 Done = () => {
                     currentState.Exit();

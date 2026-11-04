@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 636356683540216357}
   - component: {fileID: 8391297208886941015}
   - component: {fileID: 5298650190488986298}
+  - component: {fileID: 2991588093217509608}
   m_Layer: 7
   m_Name: Falcon
   m_TagString: Untagged
@@ -535,6 +536,18 @@ PolygonCollider2D:
       - {x: -0.81218004, y: -3.328465}
       - {x: 0.6244484, y: 0.060196757}
   m_UseDelaunayMesh: 1
+--- !u!114 &2991588093217509608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2458438580895601012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d4c4eeb34e4bd9ab22b710898f1d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntoTheWoods.AnimatorSignal
 --- !u!1 &3257998002414316072
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,12 +610,14 @@ MonoBehaviour:
   subFalcon: {fileID: 2458438580895601012}
   animator: {fileID: 8391297208886941015}
   currentState:
-    rid: -2
+    rid: 7895509541870108775
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 7895509541870108775
+      type: {class: Falcon/IdleSittingState, ns: IntoTheWoods.Characters, asm: Assembly-CSharp}
+      data:
+        animator: {fileID: 8391297208886941015}
 --- !u!50 &3236241159539448133
 Rigidbody2D:
   serializedVersion: 5
