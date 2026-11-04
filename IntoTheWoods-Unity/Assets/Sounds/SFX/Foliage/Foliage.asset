@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8367545768328831993
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage03_{-8367545768328831993}
+  m_AudioClip: {fileID: 8300000, guid: 98af5052c41d39699bd63cd446575f57, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-5468113097840807631
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage06_{-5468113097840807631}
+  m_AudioClip: {fileID: 8300000, guid: f08ae0e5cf6241b738a23df1088a2e1d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3010105097036152310
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage02_{3010105097036152310}
+  m_AudioClip: {fileID: 8300000, guid: 9dc25aa9f6276b002853322ca7fc5769, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4180097298086233774
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage01_{4180097298086233774}
+  m_AudioClip: {fileID: 8300000, guid: 8ed202fe624f82ddba844106cd004047, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5973572654087944829
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage04_{5973572654087944829}
+  m_AudioClip: {fileID: 8300000, guid: 1e81e2f79ffbf37728ab7c12b05b74ff, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 5
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 10}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 4180097298086233774}
+  - {fileID: 3010105097036152310}
+  - {fileID: -8367545768328831993}
+  - {fileID: 5973572654087944829}
+  - {fileID: 8093085805089640098}
+  - {fileID: -5468113097840807631}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 2
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 0
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 1
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &8093085805089640098
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foliage05_{8093085805089640098}
+  m_AudioClip: {fileID: 8300000, guid: 21351a0f88afbea7db840e667464dc4a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
