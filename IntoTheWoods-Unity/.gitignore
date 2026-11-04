@@ -108,6 +108,10 @@ Assets/_Local\ User\ Stuff\ -\ NO\ USED\ ASSETS\ HERE/*
 # Ignore Odin's auto-generated AOT compatibility dll.
 Assets/Library/Plugins/Sirenix/Assemblies/AOT/*
 
+# Odin since v4.1.0
+Assets/csc.rsp
+Assets/csc.rsp.meta
+
 # Krita
 *.psd~
 *.png~

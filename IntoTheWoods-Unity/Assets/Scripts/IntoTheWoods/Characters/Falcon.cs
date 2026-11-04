@@ -509,6 +509,7 @@ namespace IntoTheWoods.Characters {
 
         private void StartTrackingWalker(Walker walker) {
             currentState?.Exit();
+            // TODO insert starting from sitting here if applicable
             currentState = new ObserveState(walker.gameObject, 2) {
                 Done = () => {
                     currentState.Exit();
