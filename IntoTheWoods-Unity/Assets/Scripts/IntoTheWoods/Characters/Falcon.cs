@@ -525,7 +525,6 @@ namespace IntoTheWoods.Characters {
 
             // walker entered the collider outside screen, need to re-check screen now
             // Get Walker of detected collider
-            // TODO: Cache this in TriggerEnter
             Walker walker = other.GetComponent<Walker>();
             if (walker == null) {
                 walker = other.transform.parent.parent.GetComponent<Walker>();
