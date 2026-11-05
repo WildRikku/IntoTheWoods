@@ -42,15 +42,12 @@ namespace IntoTheWoods {
                 }
 
                 // check if either both kids are safe or the kid that is not safe is not on screen
-                bool kidsAreSafe = totalHiddenKids == HiddenKids.Both
-                                   || (totalHiddenKids == HiddenKids.Haensel && haenselWalker.currentScreen == _currentScreen && haenselWalker.currentScreen != gretelWalker.currentScreen)
-                                   || (totalHiddenKids == HiddenKids.Gretel && gretelWalker.currentScreen == _currentScreen && haenselWalker.currentScreen != gretelWalker.currentScreen);
+                bool newKidsAreSafe = totalHiddenKids == HiddenKids.Both
+                                      || (totalHiddenKids == HiddenKids.Haensel && haenselWalker.currentScreen == _currentScreen && haenselWalker.currentScreen != gretelWalker.currentScreen)
+                                      || (totalHiddenKids == HiddenKids.Gretel && gretelWalker.currentScreen == _currentScreen && haenselWalker.currentScreen != gretelWalker.currentScreen);
 
-                if (kidsAreSafe != _kidsAreSafe) {
-                    KidsAreSafeChanged?.Invoke(kidsAreSafe);
-                }
+                KidsAreSafe = newKidsAreSafe;
 
-                _kidsAreSafe = kidsAreSafe;
                 return _kidsAreSafe;
             }
             set {
