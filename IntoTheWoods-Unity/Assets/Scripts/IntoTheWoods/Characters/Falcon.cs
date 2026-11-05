@@ -501,7 +501,8 @@ namespace IntoTheWoods.Characters {
                     walker = other.transform.parent.parent.GetComponent<Walker>();
                 }
                 if (walker == null) {
-                    return; // TODO error handling
+                    Debug.LogError("no walker found on a detected character (trigger enter)");
+                    return;
                 }
 
                 // check if character/walker is on the same screen. Does not make sense but improves playability
@@ -530,7 +531,8 @@ namespace IntoTheWoods.Characters {
                 walker = other.transform.parent.parent.GetComponent<Walker>();
             }
             if (walker == null) {
-                return; // TODO error handling
+                Debug.LogError("no walker found on a detected character (trigger stay)");
+                return;
             }
 
             // check if character/walker is now on the same screen. Does not make sense but improves playability
