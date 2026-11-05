@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4316566040947135340}
   m_Layer: 6
   m_Name: ArmBack
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4838743973881831056}
   m_Layer: 6
   m_Name: Body
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 498370061808138132}
   m_Layer: 0
   m_Name: Haensel
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 1821568717347806647}
   m_Layer: 6
   m_Name: ArmFront
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 53895700795200671}
   m_Layer: 15
   m_Name: TriggerCollider
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 4673303281192322855}
   m_Layer: 6
   m_Name: LegBackLower
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 540102076076754960}
   m_Layer: 6
   m_Name: LegFrontLower
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 2239809343398059785}
   m_Layer: 6
   m_Name: LegFrontUpper
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1415,7 +1415,7 @@ GameObject:
   - component: {fileID: 8066224004831757081}
   m_Layer: 6
   m_Name: LegBackUpper
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1621,7 +1621,7 @@ GameObject:
   - component: {fileID: 8956111346806210148}
   m_Layer: 6
   m_Name: Head
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

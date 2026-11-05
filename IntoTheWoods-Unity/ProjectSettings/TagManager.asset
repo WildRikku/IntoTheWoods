@@ -9,6 +9,8 @@ TagManager:
   - Mouse
   - Witch
   - Obstacle
+  - Haensel
+  - Gretel
   layers:
   - Default
   - TransparentFX

@@ -67,7 +67,7 @@ public class Screen : MonoBehaviour {
     }
 #endif
 
-    public event Action<bool> InsideShadowChanged;
+    public event Action<HiddenKids, int> InsideShadowChanged;
 
     private void Awake() {
         foreach (InsideShadowCheck check in GetComponentsInChildren<InsideShadowCheck>()) {
@@ -152,8 +152,8 @@ public class Screen : MonoBehaviour {
         return isWithin;
     }
 
-    protected virtual void OnInsideShadowChanged(bool obj) {
-        InsideShadowChanged?.Invoke(obj);
+    protected virtual void OnInsideShadowChanged(HiddenKids obj, int shadowInstanceId) {
+        InsideShadowChanged?.Invoke(obj, shadowInstanceId);
     }
 
     public override string ToString() {

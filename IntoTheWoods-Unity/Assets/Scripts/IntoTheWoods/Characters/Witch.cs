@@ -18,7 +18,7 @@ namespace IntoTheWoods.Characters {
 
         public event Action HexingKids;
         public event Action KidsHexed;
-        
+
         private AudioSource _audioSource;
 
         private void Awake() {
@@ -40,7 +40,7 @@ namespace IntoTheWoods.Characters {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.gameObject.CompareTag("Player")) {
+            if (other.CompareTag("Haensel") || other.CompareTag("Gretel")) {
                 Walker otherWalker = other.gameObject.GetComponentInParent<Walker>();
                 if (otherWalker == null) {
                     // whatever the fuck happened

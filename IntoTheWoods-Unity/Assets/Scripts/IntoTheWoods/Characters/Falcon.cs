@@ -488,7 +488,7 @@ namespace IntoTheWoods.Characters {
                     _currentMouse = mouse;
                 }
             }
-            else if (other.CompareTag("Player") && !GameState.Instance.kidsAreSafe && currentState is not ApproachingState &&
+            else if ((other.CompareTag("Haensel") || other.CompareTag("Gretel")) && !GameState.Instance.KidsAreSafe && currentState is not ApproachingState &&
                      currentState is not AttackLandingState && currentState is not OnFloorState && currentState is not RisingState &&
                      currentState is not ReturnBaseState && currentState is not CapturedState) {
                 // TODO replace all these "is not" with matching "is"
@@ -534,8 +534,9 @@ namespace IntoTheWoods.Characters {
                 return; // TODO error handling
             }
 
-            // check if character/walker is on the same screen. Does not make sense but improves playability
-            if (!GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
+            // check if character/walker is now on the same screen. Does not make sense but improves playability
+            // need to re-check KidsAreSafe, too, because of the case that one kid is now on the same screen but the other still isn't
+            if (GameState.Instance.KidsAreSafe || !GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
                 return;
             }
 

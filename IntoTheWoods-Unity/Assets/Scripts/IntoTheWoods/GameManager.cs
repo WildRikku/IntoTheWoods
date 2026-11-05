@@ -44,17 +44,12 @@ namespace IntoTheWoods {
 
             // Get all screens
             List<Screen> screens = new(GetComponentsInChildren<Screen>());
-            foreach (Screen screen in screens) {
-                screen.InsideShadowChanged += ScreenOnInsideShadowChanged;
-            }
             Assert.IsTrue(screens.Count > 0);
             GameState.Instance.InitializeScreens(screens);
+            GameState.Instance.KidsAreSafeChanged += OnKidsAreSafeChanged;
 
             // reset globals
-            GameState.Instance.kidsAreDoomed = false;
-            GameState.Instance.kidsAreSafe = false;
-            GameState.Instance.gameOver = false;
-            GameState.Instance.gameWon = false;
+            GameState.Instance.Reset();
 
             Assert.IsNotNull(primaryCharacter);
             Assert.IsNotNull(secondaryCharacter);
@@ -74,6 +69,9 @@ namespace IntoTheWoods {
             followerController.leader = _playerWalker;
             _followerWalker = secondaryCharacter.GetComponent<Walker>();
             _followerWalker.currentScreen = GameState.StartScreen;
+
+            GameState.Instance.gretelWalker = GameState.Instance.chosenCharacter ? _playerWalker : _followerWalker;
+            GameState.Instance.haenselWalker = !GameState.Instance.chosenCharacter ? _playerWalker : _followerWalker;
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
@@ -119,7 +117,7 @@ namespace IntoTheWoods {
             exitDetector.ExitReached -= ExitDetectorOnExitReached;
         }
 
-        private void ScreenOnInsideShadowChanged(bool safe) {
+        private void OnKidsAreSafeChanged(bool safe) {
             characterLight.intensity = safe ? 0.15f : 0.3f;
         }
 

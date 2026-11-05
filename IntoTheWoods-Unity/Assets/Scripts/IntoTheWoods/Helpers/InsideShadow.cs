@@ -4,22 +4,33 @@ using UnityEngine;
 
 namespace IntoTheWoods.Helpers {
     public class InsideShadow : MonoBehaviour {
-        [ShowInInspector] public Dictionary<string, bool> captured = new();
+        [ShowInInspector] public Dictionary<string, bool> capturedHaensel = new();
+        [ShowInInspector] public Dictionary<string, bool> capturedGretel = new();
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (!other.CompareTag("Player")) {
+            if (!(other.CompareTag("Haensel") || other.CompareTag("Gretel"))) {
                 return;
             }
 
-            captured[other.gameObject.name + other.gameObject.GetInstanceID()] = true;
+            if (other.CompareTag("Haensel")) {
+                capturedHaensel[other.gameObject.name + other.gameObject.GetInstanceID()] = true;
+            }
+            else {
+                capturedGretel[other.gameObject.name + other.gameObject.GetInstanceID()] = true;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
-            if (!other.CompareTag("Player")) {
+            if (!(other.CompareTag("Haensel") || other.CompareTag("Gretel"))) {
                 return;
             }
 
-            captured.Remove(other.gameObject.name + other.gameObject.GetInstanceID());
+            if (other.CompareTag("Haensel")) {
+                capturedHaensel.Remove(other.gameObject.name + other.gameObject.GetInstanceID());
+            }
+            else {
+                capturedGretel.Remove(other.gameObject.name + other.gameObject.GetInstanceID());
+            }
         }
     }
 }

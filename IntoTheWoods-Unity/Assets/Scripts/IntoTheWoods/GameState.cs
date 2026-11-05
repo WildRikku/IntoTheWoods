@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using IntoTheWoods.Characters;
+using IntoTheWoods.Helpers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -16,11 +18,63 @@ namespace IntoTheWoods {
         /// true = Gretel, false = Hänsel
         /// </summary>
         public bool chosenCharacter;
+        public Walker haenselWalker;
+        public Walker gretelWalker;
 
-        public bool kidsAreSafe;
+        private bool _kidsAreSafe;
+        [ShowInInspector]
+        private readonly Dictionary<int, HiddenKids> _shadowKidsStates = new();
+
+        [ShowInInspector]
+        public bool KidsAreSafe {
+            get {
+                // Calculate just in time so that we don't need to care about screen changes or which shadow reports when
+                // inefficient but tracking all that would be pretty complicated
+                if (_shadowKidsStates.Count == 0) {
+                    return false;
+                }
+
+                // if a kid is hidden in any shadow, it is hidden, no matter which shadow reported right now
+                // TODO at least the iteration over the dict could be cached
+                HiddenKids totalHiddenKids = HiddenKids.None;
+                foreach (HiddenKids h in _shadowKidsStates.Values) {
+                    totalHiddenKids |= h;
+                }
+
+                // check if either both kids are safe or the kid that is not safe is not on screen
+                bool kidsAreSafe = totalHiddenKids == HiddenKids.Both
+                                   || (totalHiddenKids == HiddenKids.Haensel && haenselWalker.currentScreen == _currentScreen && haenselWalker.currentScreen != gretelWalker.currentScreen)
+                                   || (totalHiddenKids == HiddenKids.Gretel && gretelWalker.currentScreen == _currentScreen && haenselWalker.currentScreen != gretelWalker.currentScreen);
+
+                if (kidsAreSafe != _kidsAreSafe) {
+                    KidsAreSafeChanged?.Invoke(kidsAreSafe);
+                }
+
+                _kidsAreSafe = kidsAreSafe;
+                return _kidsAreSafe;
+            }
+            set {
+                if (value != _kidsAreSafe) {
+                    _kidsAreSafe = value;
+                    KidsAreSafeChanged?.Invoke(_kidsAreSafe);
+                }
+            }
+        }
+
+        public event Action<bool> KidsAreSafeChanged;
+
         public bool kidsAreDoomed;
         public bool gameOver;
         public bool gameWon;
+
+        public void Reset() {
+            kidsAreDoomed = false;
+            KidsAreSafe = false;
+            gameOver = false;
+            gameWon = false;
+            _kidsAreSafe = false;
+            _shadowKidsStates.Clear();
+        }
 
         public void InitializeScreens(List<Screen> screens) {
             _screens = screens;
@@ -66,8 +120,9 @@ namespace IntoTheWoods {
             return false;
         }
 
-        private void ScreenOnInsideShadowChanged(bool safe) {
-            kidsAreSafe = safe;
+        private void ScreenOnInsideShadowChanged(HiddenKids safe, int shadowInstanceId) {
+            // collect kids hiddenness from all shadows
+            _shadowKidsStates[shadowInstanceId] = safe;
         }
 
         #region Singleton management

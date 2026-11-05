@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 170961712}
   m_Layer: 6
   m_Name: HaenselPlayer
-  m_TagString: Player
+  m_TagString: Haensel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 296062541}
   m_Layer: 6
   m_Name: GretelPlayer
-  m_TagString: Player
+  m_TagString: Gretel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2714,6 +2714,22 @@ PrefabInstance:
     - target: {fileID: 4946604233922500115, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948272189926908037, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -3.2062924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948272189926908037, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: -3.1464846
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948272189926908037, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -3.1876924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948272189926908037, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: -0.3704911
       objectReference: {fileID: 0}
     - target: {fileID: 7652507484460424788, guid: fcce7007f6c2f25a89778c2b6f2a9650, type: 3}
       propertyPath: m_Name
