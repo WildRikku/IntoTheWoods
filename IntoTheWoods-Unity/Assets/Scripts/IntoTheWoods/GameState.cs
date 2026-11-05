@@ -30,7 +30,7 @@ namespace IntoTheWoods {
             get {
                 // Calculate just in time so that we don't need to care about screen changes or which shadow reports when
                 // inefficient but tracking all that would be pretty complicated
-                if (_shadowKidsStates.Count == 0) {
+                if (_shadowKidsStates == null || _shadowKidsStates.Count == 0) {
                     return false;
                 }
 
