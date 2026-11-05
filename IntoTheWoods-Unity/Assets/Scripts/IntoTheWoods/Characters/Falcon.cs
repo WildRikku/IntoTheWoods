@@ -431,6 +431,9 @@ namespace IntoTheWoods.Characters {
         [ShowInInspector]
         public bool Flying { get; private set; }
 
+        [ShowInInspector]
+        private bool CanDetectKids => !GameState.Instance.KidsAreSafe && currentState is IdleSittingState or PatrolState;
+
         #endregion
 
         public event Action NotifiedWitch;
@@ -491,32 +494,26 @@ namespace IntoTheWoods.Characters {
                     _currentMouse = mouse;
                 }
             }
-            else if ((other.CompareTag("Haensel") || other.CompareTag("Gretel")) && !GameState.Instance.KidsAreSafe && currentState is not ApproachingState &&
-                     currentState is not AttackLandingState && currentState is not OnFloorState && currentState is not RisingState &&
-                     currentState is not ReturnBaseState && currentState is not CapturedState) {
-                // TODO replace all these "is not" with matching "is"
-                // Only act if we don't already act on a walker
-                if (!_trackingWalker) {
-                    // Get Walker of detected collider
-                    Walker walker = other.GetComponent<Walker>();
-                    if (walker == null) {
-                        walker = other.transform.parent.parent.GetComponent<Walker>();
-                    }
-                    if (walker == null) {
-                        return; // TODO error handling
-                    }
-
-                    // check if character/walker is on the same screen. Does not make sense but improves playability
-                    if (!GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
-                        Debug.Log("ignored offscreen " + walker.gameObject.name);
-                        return;
-                    }
-                    _trackingWalker = true;
-
-                    Debug.Log("Found " + walker.gameObject.name);
-
-                    StartTrackingWalker(walker);
+            else if ((other.CompareTag("Haensel") || other.CompareTag("Gretel")) && CanDetectKids && !_trackingWalker) {
+                // Get Walker of detected collider
+                Walker walker = other.GetComponent<Walker>();
+                if (walker == null) {
+                    walker = other.transform.parent.parent.GetComponent<Walker>();
                 }
+                if (walker == null) {
+                    return; // TODO error handling
+                }
+
+                // check if character/walker is on the same screen. Does not make sense but improves playability
+                if (!GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
+                    Debug.Log("ignored offscreen " + walker.gameObject.name);
+                    return;
+                }
+                _trackingWalker = true;
+
+                Debug.Log("Found " + walker.gameObject.name);
+
+                StartTrackingWalker(walker);
             }
         }
 
@@ -539,7 +536,7 @@ namespace IntoTheWoods.Characters {
 
             // check if character/walker is now on the same screen. Does not make sense but improves playability
             // need to re-check KidsAreSafe, too, because of the case that one kid is now on the same screen but the other still isn't
-            if (GameState.Instance.KidsAreSafe || !GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
+            if (!CanDetectKids || !GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
                 return;
             }
 
