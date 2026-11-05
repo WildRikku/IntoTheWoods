@@ -17,7 +17,7 @@ namespace IntoTheWoods {
         /// <summary>
         /// true = Gretel, false = Hänsel
         /// </summary>
-        public bool chosenCharacter;
+        public bool gretelChosen;
         public Walker haenselWalker;
         public Walker gretelWalker;
 

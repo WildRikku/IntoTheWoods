@@ -20,12 +20,12 @@ namespace IntoTheWoods {
         }
 
         public void HaenselPlayer() {
-            GameState.Instance.chosenCharacter = false;
+            GameState.Instance.gretelChosen = false;
             LoadScene();
         }
 
         public void GretelPlayer() {
-            GameState.Instance.chosenCharacter = true;
+            GameState.Instance.gretelChosen = true;
             LoadScene();
         }
 

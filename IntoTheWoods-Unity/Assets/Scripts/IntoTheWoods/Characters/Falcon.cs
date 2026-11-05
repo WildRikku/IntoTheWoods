@@ -423,6 +423,9 @@ namespace IntoTheWoods.Characters {
         [SerializeField] private Animator animator;
         [SerializeReference] public State currentState;
         private Mouse _currentMouse;
+        /// <summary>
+        /// tracking a walker that has been spotted and was not protected by shadows
+        /// </summary>
         private bool _trackingWalker;
 
         [ShowInInspector]

@@ -55,7 +55,7 @@ namespace IntoTheWoods {
             Assert.IsNotNull(secondaryCharacter);
 
             // swap characters if player chose Gretel
-            if (GameState.Instance.chosenCharacter) {
+            if (GameState.Instance.gretelChosen) {
                 (primaryCharacter, secondaryCharacter) = (secondaryCharacter, primaryCharacter);
             }
 
@@ -70,8 +70,8 @@ namespace IntoTheWoods {
             _followerWalker = secondaryCharacter.GetComponent<Walker>();
             _followerWalker.currentScreen = GameState.StartScreen;
 
-            GameState.Instance.gretelWalker = GameState.Instance.chosenCharacter ? _playerWalker : _followerWalker;
-            GameState.Instance.haenselWalker = !GameState.Instance.chosenCharacter ? _playerWalker : _followerWalker;
+            GameState.Instance.gretelWalker = GameState.Instance.gretelChosen ? _playerWalker : _followerWalker;
+            GameState.Instance.haenselWalker = !GameState.Instance.gretelChosen ? _playerWalker : _followerWalker;
 
             Inventory inventory = GetComponent<Inventory>();
             Assert.IsNotNull(inventory);
