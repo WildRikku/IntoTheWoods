@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace IntoTheWoods.Characters {
@@ -25,6 +26,7 @@ namespace IntoTheWoods.Characters {
         /// determined by what looks good
         /// </summary>
         private static readonly Vector3 mouseShift = new(0.155f, 0.431f, 0);
+        private static readonly Vector3 mouseShiftBackLane = new(0.793f, 0.07f, 0);
 
         #endregion
 
@@ -121,10 +123,12 @@ namespace IntoTheWoods.Characters {
         [Serializable]
         public class ApproachingState : MoveToTargetState {
             private Vector2 _flyingDirection;
-            private readonly Mouse _mouse;
+            protected readonly Mouse _mouse;
+            protected Vector3 _mouseShift;
 
-            public ApproachingState(Mouse mouse) : base(mouse.transform.position + mouseShift) {
+            public ApproachingState(Mouse mouse) : base(mouse.transform.position + (mouse.backLane ? mouseShiftBackLane : mouseShift)) {
                 _mouse = mouse;
+                _mouseShift = mouse.backLane ? mouseShiftBackLane : mouseShift;
             }
 
             public override MoveState Enter(Falcon falcon) {
@@ -133,7 +137,7 @@ namespace IntoTheWoods.Characters {
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
-                currentTarget = _mouse.transform.position + mouseShift;
+                currentTarget = _mouse.transform.position + _mouseShift;
                 deltaPos = new(falcon.speed * Time.deltaTime * _flyingDirection.x, 0);
                 return Math.Abs((currentTarget - falcon.transform.position).x) <= ApproachDistance;
             }
@@ -143,8 +147,8 @@ namespace IntoTheWoods.Characters {
         /// Move falcon to ground as if attacking a mouse on the ground.
         /// </summary>
         [Serializable]
-        public class AttackLandingState : MoveToTargetState {
-            public AttackLandingState(Vector3 currentTarget) : base(currentTarget) {
+        public class AttackLandingState : ApproachingState {
+            public AttackLandingState(Mouse mouse) : base(mouse) {
             }
 
             public override MoveState Enter(Falcon falcon) {
@@ -153,6 +157,7 @@ namespace IntoTheWoods.Characters {
             }
 
             public override bool UpdateState(Falcon falcon, out Vector3 deltaPos) {
+                currentTarget = _mouse.transform.position + _mouseShift;
                 deltaPos = (currentTarget - falcon.transform.position).normalized * (falcon.speed * Time.deltaTime);
                 return Math.Abs((currentTarget - falcon.transform.position).magnitude) < 0.1f;
             }
@@ -563,7 +568,7 @@ namespace IntoTheWoods.Characters {
         /// </summary>
         private void OnMouseApproached() {
             currentState.Exit();
-            currentState = new AttackLandingState(_currentMouse.gameObject.transform.position + mouseShift) {
+            currentState = new AttackLandingState(_currentMouse) {
                 animator = animator,
                 Done = () => {
                     currentState.Exit();
