@@ -6,7 +6,9 @@ namespace IntoTheWoods.Helpers {
         public event Action ExitReached;
 
         private void OnTriggerEnter2D(Collider2D other) {
-            ExitReached?.Invoke();
+            if (other.CompareTag("Haensel") || other.CompareTag("Gretel")) {
+                ExitReached?.Invoke();
+            }
         }
     }
 }
