@@ -5137,6 +5137,14 @@ PrefabInstance:
       value: 7895509860842995712
       objectReference: {fileID: 0}
     - target: {fileID: 6394456840379857586, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
+      propertyPath: currentScreen
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394456840379857586, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
+      propertyPath: respawnScreen
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394456840379857586, guid: e919d358e1c9374c7bce11161507a8b0, type: 3}
       propertyPath: 'managedReferences[7895509860379000943]'
       value: Assembly-CSharp IntoTheWoods.Characters.Falcon/PatrolState
       objectReference: {fileID: 0}

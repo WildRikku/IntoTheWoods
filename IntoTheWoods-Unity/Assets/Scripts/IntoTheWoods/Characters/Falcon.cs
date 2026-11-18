@@ -412,6 +412,7 @@ namespace IntoTheWoods.Characters {
         public float leftEnd;
         public float rightEnd;
         public float speed = 3f;
+        public int currentScreen;
 
         [field: SerializeField]
         public float SafeTimeAfterCapture { get; private set; }
@@ -465,6 +466,14 @@ namespace IntoTheWoods.Characters {
             if (currentState is MoveState moveState) {
                 stateDone = moveState.UpdateState(this, out Vector3 deltaPos);
                 transform.position += deltaPos;
+                switch (GameState.Instance.GetScreen(currentScreen).CheckPositionSimple(transform.position)) {
+                    case Screen.ScreenEdgeResult.LeavingLeft:
+                        currentScreen--;
+                        break;
+                    case Screen.ScreenEdgeResult.LeavingRight:
+                        currentScreen++;
+                        break;
+                }
             }
             else if (currentState is PassiveState passiveState) {
                 stateDone = passiveState.UpdateState();

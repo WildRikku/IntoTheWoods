@@ -125,6 +125,24 @@ public class Screen : MonoBehaviour {
     }
 
     /// <summary>
+    /// Simplified position check that ignores thresholds and lanes and just returns if something is about to leave the screen.
+    /// Useful for the falcon.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns>One of <see cref="ScreenEdgeResult.LeavingLeft"/>, <see cref="ScreenEdgeResult.LeavingRight"/>, <see cref="ScreenEdgeResult.None"/></returns>
+    public ScreenEdgeResult CheckPositionSimple(Vector2 position) {
+        if (position.x < transform.position.x - CrossScreenThreshold) {
+            return ScreenEdgeResult.LeavingLeft;
+        }
+
+        if (position.x > transform.position.x + CrossScreenThreshold) {
+            return ScreenEdgeResult.LeavingRight;
+        }
+
+        return ScreenEdgeResult.None;
+    }
+
+    /// <summary>
     /// Checks if the given <paramref name="position"/> is within this screen on both axes.
     /// </summary>
     public bool PositionInScreen(Vector3 position) {
