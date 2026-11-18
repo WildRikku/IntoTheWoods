@@ -591,7 +591,8 @@ namespace IntoTheWoods.Characters {
                                                     print("respawn falcon");
                                                     transform.position = RespawnPoint;
                                                     subFalcon.SetActive(true);
-                                                    animator.ResetControllerState();
+                                                    // run through starting animation off-screen. kinda dumb but simple
+                                                    animator.SetBool(Started, true);
                                                     currentState = new PatrolState {
                                                         leftEnd = leftEnd,
                                                         rightEnd = rightEnd
