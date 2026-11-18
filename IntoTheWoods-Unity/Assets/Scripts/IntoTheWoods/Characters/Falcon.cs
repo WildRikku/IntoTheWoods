@@ -519,31 +519,27 @@ namespace IntoTheWoods.Characters {
         }
 
         private void OnTriggerStay2D(Collider2D other) {
-            if (_trackingWalker) {
-                // default case, walker was detected when entering collider
-                return;
-            }
+            if ((other.CompareTag("Haensel") || other.CompareTag("Gretel")) && CanDetectKids && !_trackingWalker) {
+                // walker entered the collider outside screen, need to re-check screen now
+                // Get Walker of detected collider
+                Walker walker = other.GetComponent<Walker>();
+                if (walker == null) {
+                    walker = other.transform.parent.parent.GetComponent<Walker>();
+                }
+                if (walker == null) {
+                    Debug.LogError("no walker found on a detected character (trigger stay)");
+                    return;
+                }
 
-            // walker entered the collider outside screen, need to re-check screen now
-            // Get Walker of detected collider
-            Walker walker = other.GetComponent<Walker>();
-            if (walker == null) {
-                walker = other.transform.parent.parent.GetComponent<Walker>();
-            }
-            if (walker == null) {
-                Debug.LogError("no walker found on a detected character (trigger stay)");
-                return;
-            }
+                // check if character/walker is now on the same screen. Does not make sense but improves playability
+                if (!GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
+                    return;
+                }
 
-            // check if character/walker is now on the same screen. Does not make sense but improves playability
-            // need to re-check KidsAreSafe, too, because of the case that one kid is now on the same screen but the other still isn't
-            if (!CanDetectKids || !GameState.Instance.GetScreen(walker.currentScreen).PositionInScreen(new(transform.position.x - extentBack, transform.position.y, 0))) {
-                return;
+                Debug.Log(walker.gameObject.name + " is now in screen");
+                _trackingWalker = true;
+                StartTrackingWalker(walker);
             }
-
-            Debug.Log(walker.gameObject.name + " is now in screen");
-            _trackingWalker = true;
-            StartTrackingWalker(walker);
         }
 
         private void StartTrackingWalker(Walker walker) {

@@ -38,7 +38,7 @@ namespace IntoTheWoods.Characters {
                 return;
             }
 
-            if (context.started) {
+            if (context.started || context.performed) {
                 if (_walker.IsBusy()) {
                     // transfering, wait
                     _walker.Transfered += WalkerOnTransfered;
@@ -117,12 +117,15 @@ namespace IntoTheWoods.Characters {
 
         /// <summary>
         /// Our game does not support analogue movement, so sanitize values from joysticks.
+        /// This also applies a deadzone. We can't use the deadzone processor from input system since that will check
+        /// out of center movement - however, since we drop y input later, we need both directions to have a minimum
+        /// displacement separately.
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         private Vector2 DigitizeMovement(Vector2 input) {
-            float x = input.x > 0 ? 1 : input.x < 0 ? -1 : 0;
-            float y = input.y > 0 ? 1 : input.y < 0 ? -1 : 0;
+            float x = input.x > 0.4f ? 1 : input.x < -0.4f ? -1 : 0;
+            float y = input.y > 0.4f ? 1 : input.y < -0.4f ? -1 : 0;
             return new(x, y);
         }
 
