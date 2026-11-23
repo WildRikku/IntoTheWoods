@@ -3386,6 +3386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1343218476}
   - component: {fileID: 1343218475}
+  - component: {fileID: 1343218477}
   m_Layer: 0
   m_Name: falconMagicSign_0
   m_TagString: Untagged
@@ -3467,6 +3468,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1343218477
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343218474}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.312963, y: 0.52037036}
+    newSize: {x: 1.312963, y: 0.52037036}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.35393545, y: -0.17337961}
+      - {x: 0.43032435, y: -0.15254627}
+      - {x: 0.49282435, y: -0.12824072}
+      - {x: 0.565741, y: -0.093518496}
+      - {x: 0.6143521, y: -0.044907384}
+      - {x: 0.6212966, y: -0.024074052}
+      - {x: 0.6212966, y: 0.03842595}
+      - {x: 0.6143521, y: 0.062731504}
+      - {x: 0.5622688, y: 0.118287064}
+      - {x: 0.534491, y: 0.13564818}
+      - {x: 0.49282435, y: 0.1564815}
+      - {x: 0.3747688, y: 0.21203706}
+      - {x: 0.3296299, y: 0.22592595}
+      - {x: 0.24282435, y: 0.24328706}
+      - {x: 0.010185454, y: 0.24328706}
+      - {x: -0.0037034352, y: 0.23981483}
+      - {x: -0.038425658, y: 0.23634262}
+      - {x: -0.10439788, y: 0.2328704}
+      - {x: -0.17731455, y: 0.22939818}
+      - {x: -0.2918979, y: 0.2189815}
+      - {x: -0.4168979, y: 0.1877315}
+      - {x: -0.5037034, y: 0.15300928}
+      - {x: -0.5662034, y: 0.1252315}
+      - {x: -0.5939812, y: 0.10787039}
+      - {x: -0.6148146, y: 0.09050928}
+      - {x: -0.6356479, y: 0.045370393}
+      - {x: -0.6356479, y: -0.027546274}
+      - {x: -0.6078701, y: -0.06574072}
+      - {x: -0.5453701, y: -0.12824072}
+      - {x: -0.5037034, y: -0.15254627}
+      - {x: -0.4203701, y: -0.18032405}
+      - {x: -0.2502312, y: -0.20115739}
+      - {x: -0.20856455, y: -0.20462961}
+      - {x: -0.12870343, y: -0.20810182}
+      - {x: -0.014120102, y: -0.20810182}
+      - {x: 0.100463234, y: -0.20462961}
+      - {x: 0.2358799, y: -0.19421294}
+      - {x: 0.30532435, y: -0.18379627}
+  m_UseDelaunayMesh: 1
 --- !u!1001 &1344239595
 PrefabInstance:
   m_ObjectHideFlags: 0
